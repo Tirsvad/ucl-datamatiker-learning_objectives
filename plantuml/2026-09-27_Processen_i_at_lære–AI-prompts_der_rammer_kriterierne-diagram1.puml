@@ -1,0 +1,19 @@
+@startuml
+start
+:Udfordring
+Egne prompts rammer ikke mine kriterier;
+:Råd fra kollega
+Lav selve prompten i ChatGPT;
+:Prompten vokser
+Fra 15 til ca. 1150 linjer
+(krav, DRY, clean architecture, målinger);
+:Brug den færdige prompt i mit foretrukne
+AI-værktøj til programmering;
+:Fra scratch til prototype
+ca. 1,5 time;
+:Gennemgang af resultatet
+Visuelt koncept bedre end forventet;
+:Fund
+VRAM- og systemRAM-forbrug skal rettes;
+stop
+@enduml

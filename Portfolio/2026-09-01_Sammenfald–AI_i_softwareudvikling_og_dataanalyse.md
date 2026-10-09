@@ -1,7 +1,7 @@
 # Sammenfald mellem AI i softwareudvikling og dataanalyse
 
 **Dato:** 01/9 2026
-**Læringsmål dækket:** [AI i softwareprojekter](../Læringsmål–AI_til_softwareløsninger.md) og [Dataanalyse og databehandling](../Læringsmål–Dataanalyse_og_databehandling.md)
+**Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
 Mine to læringsmål omhandler AI i softwareudvikling og dataanalyse og databehandling. De har forskellige faglige fokusområder, men når jeg arbejder praktisk med dem i hotelprojektet, opstår der et tydeligt sammenfald.
 
@@ -54,26 +54,7 @@ Hotelprojektet giver mig mulighed for at kombinere de to læringsmål i én saml
 
 Disse variable indgår direkte i dataanalyse-læringsmålet. Processen kan eksempelvis være:
 
-```plantuml
-@startuml
-start
-:HOTELDATA;
-:Dataanalyse
-* Datakvalitet
-* Statistik
-* Trends
-* Visualisering;
-:AI-eksperiment
-* Modelvalg
-* Prompting
-* Fortolkning
-* Prognose;
-:Validering
-AI-output vs. faktiske data;
-:Beslutningsstøtte;
-stop
-@enduml
-```
+![Diagram 1](https://tirsvad.studiesites.dk/wp-content/uploads/sites/82065/2026/09/image.png)
 
 Det betyder, at det samme projekt kan skabe dokumentation til begge læringsmål.
 
@@ -116,19 +97,7 @@ Det svarer til dataanalyse-læringsmålets fokus på at identificere mønstre, u
 
 Sammenfaldet bliver endnu tydeligere, når jeg anvender agentisk AI. En AI-agent kan eksempelvis arbejde gennem flere trin:
 
-```plantuml
-@startuml
-start
-:Problem;
-:Undersøg data;
-:Foreslå metode;
-:Skriv kode;
-:Kør analyse;
-:Undersøg resultat;
-:Foreslå forbedringer;
-stop
-@enduml
-```
+![Diagram 2](https://tirsvad.studiesites.dk/wp-content/uploads/sites/82065/2026/09/image-1.png)
 
 Det giver mig mulighed for at undersøge AI som en del af en mere komplet softwareudviklingsproces. Men agenten bliver ikke den faglige autoritet. Min rolle bliver i højere grad at:
 
@@ -140,21 +109,7 @@ Det passer godt med AI-læringsmålet, hvor jeg skal kunne evaluere AI-output og
 
 Det vigtigste sammenfald mellem læringsmålene er derfor ikke selve teknologien. Det er processen:
 
-```plantuml
-@startuml
-start
-:Problem;
-:Data;
-:Datakvalitet;
-:Analyse;
-:Trends og sammenhænge;
-:AI-eksperiment;
-:AI-fortolkning;
-:Validering;
-:Beslutningsstøtte;
-stop
-@enduml
-```
+![Diagram 3](https://tirsvad.studiesites.dk/wp-content/uploads/sites/82065/2026/09/image-2.png)
 
 Eksempelvis kan dataanalysen vise en historisk sammenhæng mellem events og hotelbelægning. Derefter kan AI bruges til at undersøge, om den kan identificere samme mønster og eventuelt hjælpe med at fortolke, hvilke faktorer der kan have påvirket efterspørgslen. Det er netop en del af AI-læringsmålet at undersøge mønstre, sammenhænge, eventeffekter og mulige forklaringer i hoteldata.
 

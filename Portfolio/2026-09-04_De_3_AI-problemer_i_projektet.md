@@ -1,7 +1,7 @@
 # De 3 AI-problemer i projektet
 
 **Dato:** 20/9 2026
-**Læringsmål dækket:** [AI i softwareprojekter](../Læringsmål–AI_til_softwareløsninger.md) og [Dataanalyse og databehandling](../Læringsmål–Dataanalyse_og_databehandling.md)
+**Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
 For at gøre projektet fagligt stærkt har jeg valgt at opdele arbejdet i tre konkrete AI-problemstillinger, som tager udgangspunkt i hotellets data og potentielle beslutningsbehov.
 
@@ -107,53 +107,7 @@ Det giver en naturlig human-in-the-loop-vinkel, som er en del af mit AI-lærings
 
 De tre problemstillinger hænger sammen. Først skal jeg forstå og kvalitetssikre hoteldataene. Derefter kan jeg analysere trends og sammenhænge, som senere kan bruges som grundlag for AI-eksperimenterne.
 
-```plantuml
-@startuml
-start
-:Historiske data
-* Dato
-* Ugedag
-* Sæson
-* Bookinger
-* Belægning
-* Værelsestype
-* Pris;
-:Dataanalyse & kvalitet
-* Datakvalitet
-* Statistik
-* Trends
-* Mønstre
-* Sammenhænge
-* Visualisering;
-:AI / ML
-* Demand forecasting
-* Eventanalyse
-* Prisforslag;
-fork
-  :Hoteldata
-  * Bookinger
-  * Historik
-  * Priser
-  * Værelser;
-fork again
-  :Eksterne data
-  * Events
-  * Koncerter
-  * Messer
-  * Sport
-  * Helligdage;
-end fork
-:AI-fortolkning og prognoser
-* Belægning: 85 %
-* Prisforslag: ...
-* Eventeffekt: ...;
-:Human-in-the-loop
-* Kontrol
-* Vurdering
-* Beslutning;
-stop
-@enduml
-```
+![Diagram 1](https://tirsvad.studiesites.dk/wp-content/uploads/sites/82065/2026/09/image-3.png)
 
 ### Hvad skal jeg kunne dokumentere?
 
@@ -178,22 +132,7 @@ Det passer med portfolio-kravene i begge læringsmål, hvor både analyse, ekspe
 
 De tre problemstillinger skal ikke bare implementeres. De skal bruges som eksperimenter i min læringsproces.
 
-```plantuml
-@startuml
-start
-repeat
-  :Konkret erfaring
-  Jeg tester data, model eller prompt;
-  :Refleksion
-  Hvad virkede? Hvad virkede ikke?;
-  :Abstrakt begrebsliggørelse
-  Hvad kan forklare resultatet?;
-  :Aktiv eksperimenteren
-  Jeg ændrer model, data, prompt eller metode;
-repeat while (Nyt eksperiment?)
-stop
-@enduml
-```
+![Diagram 2](https://tirsvad.studiesites.dk/wp-content/uploads/sites/82065/2026/09/image-4.png)
 
 **1. Konkret erfaring**
 

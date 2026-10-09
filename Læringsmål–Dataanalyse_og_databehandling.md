@@ -1,6 +1,6 @@
 # Læringsmål – Dataanalyse og databehandling
 
-*Del af 30 ECTS-projekt, 26/8–6/12 2026. Se den fælles [Projektplan – Ugeplan.md](Projektplan%20-%20Ugeplan.md) for tidsplan og timefordeling.*
+*Del af et 30 ECTS-forløb, 26/8–6/12 2026, som køres sideløbende med et andet valgfrit læringsmål (min. 12, maks. 18 ECTS pr. valgfag). Se den fælles [Projektplan – Ugeplan.md](Projektplan%20-%20Ugeplan.md) for tidsplan og timefordeling.*
 
 ## 🎯 Mål
 
@@ -16,15 +16,16 @@ Fokus er på dataenes kvalitet, behandling og fortolkning – ikke på at udvikl
 
 | # | Jeg vil kunne | Bloom-niveau |
 |---|---|---|
-| 1 | dokumentere datakilde, struktur og begrænsninger for et historisk hoteldatasæt | Forstå |
-| 2 | gennemføre en systematisk kontrol af datakvalitet (manglende værdier, dubletter, fejlformater m.m.) | Analysere |
-| 3 | anvende statistiske mål (gennemsnit, median, kvartiler, standardafvigelse m.fl.) | Anvende |
-| 4 | forklare, hvad statistiske resultater fortæller om datasættet | Forstå |
-| 5 | identificere trends, mønstre og sammenhænge i data | Analysere |
-| 6 | vælge og designe relevante visualiseringer til en given problemstilling | Skabe |
-| 7 | begrunde valg af visualiseringstype ud fra hvad den skal vise | Vurdere |
-| 8 | vurdere datakvalitet, begrænsninger og hvad data kan/ikke kan fortælle | Vurdere |
-| 9 | formidle analyseresultater som grundlag for beslutninger om kapacitet, pris, bemanding og planlægning | Skabe |
+| 1 | anvende Python-biblioteker til dataanalyse (Pandas og Matplotlib) | Anvende |
+| 2 | dokumentere datakilde, struktur og begrænsninger for et historisk hoteldatasæt | Forstå |
+| 3 | gennemføre en systematisk kontrol af datakvalitet (manglende værdier, dubletter, fejlformater m.m.) | Analysere |
+| 4 | anvende statistiske mål (gennemsnit, median, kvartiler, standardafvigelse m.fl.) | Anvende |
+| 5 | forklare, hvad statistiske resultater fortæller om datasættet | Forstå |
+| 6 | identificere trends, mønstre og sammenhænge i data | Analysere |
+| 7 | vælge og designe relevante visualiseringer til en given problemstilling | Skabe |
+| 8 | begrunde valg af visualiseringstype ud fra hvad den skal vise | Vurdere |
+| 9 | vurdere datakvalitet, begrænsninger og hvad data kan/ikke kan fortælle | Vurdere |
+| 10 | formidle analyseresultater som grundlag for beslutninger om kapacitet, pris, bemanding og planlægning | Skabe |
 
 Niveauet spænder fra anvende til vurdere/skabe – passende for et 30 ECTS-forløb, hvor formidling og kritisk vurdering af data vejer tungere end ren beskrivelse.
 
@@ -64,12 +65,14 @@ Jeg udarbejder en samlet analyse, hvor jeg forklarer hvilke mønstre der findes,
 
 | Milestone | Uge | Indhold |
 |---|---|---|
-| M1 – Datasæt og datakvalitet | Uge 1–2 (26/8–2/9) | Find/opret datasæt, dokumentér variable/kilde, identificér ≥3 datakvalitetsproblemer, første Kolb-refleksion |
-| M2 – Første databehandling | Uge 3–4 (9/9–16/9) | Rens data, beregn gennemsnit/median/min/maks, ≥2 indledende visualiseringer |
-| M3 – Uddybet statistik | Uge 5 (23/9) | Udvid til ≥4 statistiske mål (kvartiler, standardafvigelse) |
-| M4 – Trends og mønstre | Uge 6–9 (30/9–21/10) | Identificér ≥5 trends/mønstre understøttet af beregning/visualisering, ≥4. visualisering |
-| M5 – Samlet fortolkning | Uge 11 (4/11) | Beskriv hvad data kan/ikke kan fortælle, og analysens begrænsninger |
-| M6 – Konklusion | Uge 14 (25/11) | Samlet konklusion på analysen, portfolio klargøres |
+| M1 – Domæneforståelse | Uge 1–2 (26/8–2/9) | Domæneforståelse af det sideløbende projekt (NF Hotel), som datasættet og analysen tager udgangspunkt i |
+| M2 – Python-opstart | Uge 1–3 (26/8–9/9) | Python-kursus (*100 Days of Code*): opstart på Python-sproget samt Pandas- og Matplotlib-bibliotekerne – kurset er kun påbegyndt i denne periode, ikke gennemført |
+| M3 – Datasæt og datakvalitet | Uge 4–5 (16/9–23/9) | Find/opret datasæt, dokumentér variable/kilde, identificér ≥3 datakvalitetsproblemer, første Kolb-refleksion |
+| M4 – Første databehandling | Uge 6–7 (30/9–7/10) | Rens data, beregn gennemsnit/median/min/maks, ≥2 indledende visualiseringer |
+| M5 – Uddybet statistik | Uge 8 (14/10) | Udvid til ≥4 statistiske mål (kvartiler, standardafvigelse) |
+| M6 – Trends og mønstre | Uge 9–12 (21/10–11/11) | Identificér ≥5 trends/mønstre understøttet af beregning/visualisering, ≥4. visualisering |
+| M7 – Samlet fortolkning | Uge 13 (18/11) | Beskriv hvad data kan/ikke kan fortælle, og analysens begrænsninger |
+| M8 – Konklusion | Uge 14 (25/11) | Samlet konklusion på analysen, portfolio klargøres |
 | Aflevering | Uge 15 (2/12–6/12) | SMART-tjek, samlet konklusion, portfolio |
 
 ## 🔄 Læring gennem Kolbs læringscirkel
@@ -90,22 +93,40 @@ Analyse → refleksion → teori → ny analyse
 
 ## 🗂️ Bevis / portfolio
 
-- Datasæt og datakilde
-- Beskrivelse af variable
-- Analyse af datakvalitet
-- Dokumentation af mindst 3 datakvalitetsproblemer
-- Mindst 4 statistiske beregninger
-- Mindst 4 visualiseringer
-- Mindst 5 identificerede trends/mønstre
-- Fortolkning af resultater
-- Beskrivelse af dataenes begrænsninger
-- Refleksioner efter Kolbs læringscirkel
-- Samlet konklusion på analysen
+- [x] Python
+  - [x] Pandas
+  - [ ] Mathplotlib
+- [x] Datasæt og datakilde
+- [ ] Beskrivelse af variable
+- [x] Analyse af datakvalitet
+- [ ] Dokumentation af mindst 3 datakvalitetsproblemer
+  - [x] Felter uden værdi
+  - [ ] Kolonne der ikke har værdi for data analysen
+  - [x] Fjernelse af rækker hvor der mangler værdi til at analysere
+  - [ ] Fjernelse af duplikater
+- [ ] Mindst 4 statistiske beregninger
+  - [x] Cancellation rate
+  - [ ] Belægning procent af værelser
+  - [ ] Belægning af værelser på helligdage
+  - [ ] Omsætning på værelser
+- [ ] Forklaring af hvad hver statistisk beregning fortæller om datasættet
+- [ ] Mindst 4 visualiseringer
+  - [ ] Cancellation rate
+  - [ ] Belægning procent af værelser
+  - [ ] Belægning af værelser på helligdage
+  - [ ] Omsætning på værelser
+- [ ] Begrundelse for valg af visualiseringstype pr. visualisering
+- [ ] Mindst 5 identificerede trends/mønstre
+- [ ] Fortolkning af resultater
+- [ ] Beskrivelse af dataenes begrænsninger
+- [ ] Refleksioner efter Kolbs læringscirkel
+- [ ] Samlet konklusion på analysen som beslutningsstøtte (kapacitet, pris, bemanding, planlægning)
 
 ## ✅ SMART-tjek
 
 ### 🎯 S – Specifikt
 🎯 **Måltavle:** Jeg vil analysere historiske hoteldata med fokus på datakvalitet, statistik, trends, mønstre og visualisering.
+
 📍 **Placeringsnål:** Målet er placeret ved databehandling og -fortolkning, afgrænset fra ML-modelbygning, som hører til Læringsmål 1.
 
 ### 📊 M – Målbart
@@ -115,14 +136,19 @@ Analyse → refleksion → teori → ny analyse
 
 ### 🤝 A – Attraktivt/Opnåeligt
 🤝 **Håndtryk:** Projektet afgrænses til dataanalyse og databehandling uden krav om at udvikle Machine Learning-modeller.
+
 💪 **Spændt biceps:** De 26 ugentlige lærings-/portfolio-timer giver plads til grundig databehandling og dokumentation gennem hele perioden.
+
 ✅ **Flueben:** Hvert milestone har konkrete, afkrydsbare leverancer (se milestone-tabel og portfolio-liste).
 
 ### ⚖️ R – Relevant
 ⚖️ **Vægt:** Læringsmålet balancerer teknisk databehandling med formidling, der kan bruges til reelle beslutninger.
+
 🔑 **Nøgle:** Det giver et praktisk grundlag for at arbejde med datadrevne softwareløsninger og understøtter projektets dataanalyse-kerneområde.
 
 ### ⏱️ T – Tidsbestemt
 ⏱️ **Stopur:** 26/8–6/12 2026, milestone hver uge (se ugeplan).
-📅 **Kalender:** M1 uge 1–2, M2 uge 3–4, M3 uge 5, M4 uge 6–9, M5 uge 11, M6 uge 14, aflevering uge 15.
+
+📅 **Kalender:** M1 uge 1–2, M2 uge 1–3, M3 uge 4–5, M4 uge 6–7, M5 uge 8, M6 uge 9–12, M7 uge 13, M8 uge 14, aflevering uge 15.
+
 ⏳ **Timeglas:** Ved eksamen afgøres det, om læringsmålet er opnået, ud fra om jeg kan indsamle, behandle, analysere, visualisere og fortolke et datasæt samt forklare mine metodiske valg og analysens begrænsninger.

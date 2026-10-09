@@ -1,7 +1,7 @@
 # Processen i at vælge – IDE til lokal AI
 
 **Dato:** 18/9 2026
-**Læringsmål dækket:** [AI i softwareprojekter](../Læringsmål–AI_til_softwareløsninger.md) og [Dataanalyse og databehandling](../Læringsmål–Dataanalyse_og_databehandling.md)
+**Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
 Jeg blev introduceret til Microsoft Visual Studio på uddannelsen, og det har dannet rammen om mit arbejde de første 3 semestre. Da jeg begyndte at arbejde med lokal AI, opstod der imidlertid et problem, som fik mig til at lede efter et alternativ. Denne post dokumenterer den valgproces.
 

@@ -1,0 +1,45 @@
+@startuml
+start
+:Historiske data
+* Dato
+* Ugedag
+* Sæson
+* Bookinger
+* Belægning
+* Værelsestype
+* Pris;
+:Dataanalyse & kvalitet
+* Datakvalitet
+* Statistik
+* Trends
+* Mønstre
+* Sammenhænge
+* Visualisering;
+:AI / ML
+* Demand forecasting
+* Eventanalyse
+* Prisforslag;
+fork
+  :Hoteldata
+  * Bookinger
+  * Historik
+  * Priser
+  * Værelser;
+fork again
+  :Eksterne data
+  * Events
+  * Koncerter
+  * Messer
+  * Sport
+  * Helligdage;
+end fork
+:AI-fortolkning og prognoser
+* Belægning: 85 %
+* Prisforslag: ...
+* Eventeffekt: ...;
+:Human-in-the-loop
+* Kontrol
+* Vurdering
+* Beslutning;
+stop
+@enduml
