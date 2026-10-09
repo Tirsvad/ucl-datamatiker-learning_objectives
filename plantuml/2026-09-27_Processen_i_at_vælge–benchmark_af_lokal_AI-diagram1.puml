@@ -1,0 +1,11 @@
+@startuml
+start
+:PO-hardware;
+:Benchmark af lokale AI-modeller/LLM'er;
+:Måling af performance og ressourceforbrug;
+:Vurdering af AI-svar med human-in-the-loop;
+:Analyse af resultater;
+:Beslutningsgrundlag;
+:Valg af lokal AI-model/LLM til prototypen;
+stop
+@enduml

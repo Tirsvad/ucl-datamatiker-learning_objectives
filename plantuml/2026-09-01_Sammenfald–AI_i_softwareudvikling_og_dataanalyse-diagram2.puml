@@ -1,0 +1,11 @@
+@startuml
+start
+:Problem;
+:Undersøg data;
+:Foreslå metode;
+:Skriv kode;
+:Kør analyse;
+:Undersøg resultat;
+:Foreslå forbedringer;
+stop
+@enduml

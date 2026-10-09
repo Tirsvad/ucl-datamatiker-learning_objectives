@@ -1,0 +1,18 @@
+@startuml
+start
+:HOTELDATA;
+:Dataanalyse
+* Datakvalitet
+* Statistik
+* Trends
+* Visualisering;
+:AI-eksperiment
+* Modelvalg
+* Prompting
+* Fortolkning
+* Prognose;
+:Validering
+AI-output vs. faktiske data;
+:Beslutningsstøtte;
+stop
+@enduml

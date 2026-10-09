@@ -1,0 +1,13 @@
+@startuml
+start
+:Problem;
+:Data;
+:Datakvalitet;
+:Analyse;
+:Trends og sammenhænge;
+:AI-eksperiment;
+:AI-fortolkning;
+:Validering;
+:Beslutningsstøtte;
+stop
+@enduml

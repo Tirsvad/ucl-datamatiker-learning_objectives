@@ -1,9 +1,9 @@
 # Processen i at vælge – teknologivalg til labbet
 
 **Dato:** 02/9 2026
-**Læringsmål dækket:** [AI i softwareprojekter](../Læringsmål–AI_til_softwareløsninger.md) og [Dataanalyse og databehandling](../Læringsmål–Dataanalyse_og_databehandling.md)
+**Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
-Da jeg satte mit lab op (se [Mit lab – fra simpel opsætning til fejlfinding](2026-09-01_Mit_lab–fra_opsætning_til_fejlfinding.md)), var hver komponent et valg, jeg kan begrunde – og som havde alternativer, jeg bevidst fravalgte. Denne post dokumenterer selve valgprocessen: hvilke kriterier jeg vægtede, og hvilke alternativer jeg overvejede og fravalgte for hver komponent.
+Da jeg satte mit lab op (se [Mit lab – fra simpel opsætning til fejlfinding](https://tirsvad.studiesites.dk/mit-lab-fra-simpel-opsaetning-til-fejlfinding/)), var hver komponent et valg, jeg kan begrunde – og som havde alternativer, jeg bevidst fravalgte. Denne post dokumenterer selve valgprocessen: hvilke kriterier jeg vægtede, og hvilke alternativer jeg overvejede og fravalgte for hver komponent.
 
 Mit udgangspunkt for at finde løsninger var, at de ikke måtte være ressourcekrævende, og at de gerne skulle være open source og self-hosted, så jeg holder mig til privacy by design. Jeg fandt kandidatløsninger via Google AI og tjekkede efterfølgende nogle af de kilder, som Google AI's svar byggede på, for at bekræfte ægtheden af informationen, før jeg lagde den til grund for et valg.
 

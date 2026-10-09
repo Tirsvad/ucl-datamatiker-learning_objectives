@@ -1,0 +1,19 @@
+@startuml
+start
+:Direkte prompting
+AI kan ikke gennemskue det komplekse ark;
+:Projektplanlægning;
+:Kortlægning af Excel-bogen
+(56 ark, 61.000+ referenceværdier,
+makroer, ActiveX);
+:Ligninger
+CSV med alle referencer, formelgrupper;
+:Gateway 1
+Værktøjer til at nedbryde opgaverne;
+repeat
+  :Migrering, ét ark ad gangen;
+  :Tests;
+  :Commit, push og PR;
+repeat while (Flere ark?)
+stop
+@enduml

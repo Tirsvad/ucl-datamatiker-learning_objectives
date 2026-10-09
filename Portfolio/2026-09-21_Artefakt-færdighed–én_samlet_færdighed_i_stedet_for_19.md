@@ -1,7 +1,7 @@
 # Hvorfor én samlet "artefakt-færdighed" til en gruppe af færdigheder?
 
 **Dato:** 21/9 2026
-**Læringsmål dækket:** [AI i softwareprojekter](../Læringsmål–AI_til_softwareløsninger.md) og [Dataanalyse og databehandling](../Læringsmål–Dataanalyse_og_databehandling.md)
+**Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
 Jeg ønskede at oprette AI skills til håndtering af dokumentskabeloner til mine artefakter. Jeg oprettede en skill til hvert artefakt, men bemærkede, at både forbruget af kontekstplads og antallet af tokens steg hurtigt. Denne post dokumenterer, hvorfor jeg i stedet samlede dem i én artefakt-færdighed, og hvad det gav.
 
@@ -60,24 +60,7 @@ De genanvendelige komponenter (QC-tjeklister, færdighedsfilen, kataloget, scrip
 
 Sådan indlæses konteksten nu:
 
-```plantuml
-@startuml
-start
-:Altid indlæst
-Beskrivelse af artefakt-færdigheden (ca. 115 tokens)
-AGENTS.md (ca. 340 tokens);
-:Forespørgsel om et artefakt (fx BC, MIL eller DM);
-:Læs SKILL.md
-Fælles regler;
-:Læs references/SHORT.md og templates/SHORT.md
-Kun for den relevante artefakt-type;
-:Kør scripts
-new-artifact.sh / find-crossreferences.sh;
-:Agenten udarbejder kun det indhold,
-der kræver faglig vurdering;
-stop
-@enduml
-```
+![Diagram 1](../plantuml/2026-09-21_Artefakt-færdighed–én_samlet_færdighed_i_stedet_for_19-diagram1.png)
 
 ### Resultat
 

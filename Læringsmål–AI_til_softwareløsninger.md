@@ -97,19 +97,23 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 
 ## 🗂️ Bevis / portfolio
 
-- Dokumentation fra relevante dele af Python-for-AI-kurset
-- Sammenligning af mindst 3 AI-modeller/LLM'er
-- Begrundelse for valg af model
-- AI-fortolkning af hoteldata
-- Mindst 3 promptstrategier
-- AI-baserede konklusioner om mulige marketingforbedringer
-- Integration af AI-fortolkning i NF Hotel
-- ML/OCR-prototype til pasinformation
-- Mindst 10 dokumenterede testcases
-- Eksempler på fejl og usikkerhed
-- Mine egne vurderinger af AI-output
-- Refleksioner gennem Kolbs læringscirkel
-- Konklusion på AI-teknologiernes anvendelighed
+- [ ] Dokumentation fra relevante dele af Python-for-AI-kurset
+- [ ] Sammenligning af mindst 3 AI-modeller/LLM'er
+  - [ ] microsoft/phi-4
+  - [ ] google/gemma-4-31b-qat
+  - [ ] whittle-moe-27b-a18b
+  - [ ] qwen3.8-27b
+- [ ] Begrundelse for valg af model
+- [ ] AI-fortolkning af hoteldata
+- [ ] Mindst 3 promptstrategier
+- [ ] AI-baserede konklusioner om mulige marketingforbedringer
+- [ ] Integration af AI-fortolkning i NF Hotel
+- [ ] ML/OCR-prototype til pasinformation
+- [ ] Mindst 10 dokumenterede testcases
+- [x] Eksempler på fejl og usikkerhed
+- [ ] Mine egne vurderinger af AI-output
+- [ ] Refleksioner gennem Kolbs læringscirkel
+- [ ] Konklusion på AI-teknologiernes anvendelighed
 
 ## ✅ SMART-tjek
 

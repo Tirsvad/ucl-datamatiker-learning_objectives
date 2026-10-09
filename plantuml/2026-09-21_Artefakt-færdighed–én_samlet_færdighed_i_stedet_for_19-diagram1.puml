@@ -1,0 +1,16 @@
+@startuml
+start
+:Altid indlæst
+Beskrivelse af artefakt-færdigheden (ca. 115 tokens)
+AGENTS.md (ca. 340 tokens);
+:Forespørgsel om et artefakt (fx BC, MIL eller DM);
+:Læs SKILL.md
+Fælles regler;
+:Læs references/SHORT.md og templates/SHORT.md
+Kun for den relevante artefakt-type;
+:Kør scripts
+new-artifact.sh / find-crossreferences.sh;
+:Agenten udarbejder kun det indhold,
+der kræver faglig vurdering;
+stop
+@enduml

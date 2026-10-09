@@ -1,7 +1,7 @@
 # Mit lab – fra simpel opsætning til fejlfinding
 
 **Dato:** 01/9 2026
-**Læringsmål dækket:** [AI i softwareprojekter](../Læringsmål–AI_til_softwareløsninger.md) og [Dataanalyse og databehandling](../Læringsmål–Dataanalyse_og_databehandling.md)
+**Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
 Som en del af mine to valgfag AI i softwareprojekter og Dataanalyse og databehandling har jeg arbejdet med at opbygge mit eget lab-miljø.
 
@@ -17,7 +17,7 @@ Mit lab består blandt andet af:
 
 På papiret ser opsætningen forholdsvis simpel ud. I praksis viste det sig hurtigt, at det er noget helt andet at få flere services til at fungere sammen.
 
-*Selve begrundelsen for valget af hver komponent (og de fravalgte alternativer) er dokumenteret i sin egen post: [Processen i at vælge – teknologivalg til labbet](2026-09-17_Processen_i_at_vælge–teknologivalg_til_labbet.md).*
+*Selve begrundelsen for valget af hver komponent (og de fravalgte alternativer) er dokumenteret i sin egen post: [Processen i at vælge – teknologivalg til labbet](https://tirsvad.studiesites.dk/portfolio-post-processen-i-at-vaelge-teknologivalg-til-labbet/).*
 
 ## 🧩 Udfordringer, løsninger og reflektion
 

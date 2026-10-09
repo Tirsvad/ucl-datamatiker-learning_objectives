@@ -1,0 +1,14 @@
+@startuml
+start
+repeat
+  :Konkret erfaring
+  Jeg tester data, model eller prompt;
+  :Refleksion
+  Hvad virkede? Hvad virkede ikke?;
+  :Abstrakt begrebsliggørelse
+  Hvad kan forklare resultatet?;
+  :Aktiv eksperimenteren
+  Jeg ændrer model, data, prompt eller metode;
+repeat while (Nyt eksperiment?)
+stop
+@enduml
