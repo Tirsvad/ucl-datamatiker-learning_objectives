@@ -1,6 +1,6 @@
 # Læringsmål – Dataanalyse og databehandling
 
-*Del af et 30 ECTS-forløb, 26/8–6/12 2026, som køres sideløbende med et andet valgfrit læringsmål (min. 12, maks. 18 ECTS pr. valgfag). Se den fælles [Projektplan – Ugeplan.md](Projektplan%20-%20Ugeplan.md) for tidsplan og timefordeling.*
+*Del af et 30 ECTS-forløb, 26/8–6/12 2026, som køres sideløbende med et andet valgfrit læringsmål (min. 12, maks. 18 ECTS pr. valgfag). Dette læringsmål er på **12 ECTS**; det andet (AI til softwareløsninger) er på 18 ECTS. Se den fælles [Projektplan – Ugeplan.md](Projektplan%20-%20Ugeplan.md) for tidsplan og timefordeling.*
 
 ## 🎯 Mål
 
@@ -12,22 +12,39 @@ Jeg vil desuden kunne vurdere datakvalitet og begrænsninger og formidle analyse
 
 Fokus er på dataenes kvalitet, behandling og fortolkning – ikke på at udvikle Machine Learning-modeller (det ligger i [Læringsmål 1](Læringsmål%20–%20AI%20til%20hotelbelægning%20og%20prisforudsigelse.md)).
 
-### Jeg vil kunne – med Bloom-niveau
+### Viden, kunnen og kompetencer – med Bloom-niveau
 
-| # | Jeg vil kunne | Bloom-niveau |
+**Viden** – jeg har viden om
+
+| # | Jeg har viden om | Bloom-niveau |
 |---|---|---|
-| 1 | anvende Python-biblioteker til dataanalyse (Pandas og Matplotlib) | Anvende |
-| 2 | dokumentere datakilde, struktur og begrænsninger for et historisk hoteldatasæt | Forstå |
-| 3 | gennemføre en systematisk kontrol af datakvalitet (manglende værdier, dubletter, fejlformater m.m.) | Analysere |
-| 4 | anvende statistiske mål (gennemsnit, median, kvartiler, standardafvigelse m.fl.) | Anvende |
-| 5 | forklare, hvad statistiske resultater fortæller om datasættet | Forstå |
-| 6 | identificere trends, mønstre og sammenhænge i data | Analysere |
-| 7 | vælge og designe relevante visualiseringer til en given problemstilling | Skabe |
-| 8 | begrunde valg af visualiseringstype ud fra hvad den skal vise | Vurdere |
-| 9 | vurdere datakvalitet, begrænsninger og hvad data kan/ikke kan fortælle | Vurdere |
-| 10 | formidle analyseresultater som grundlag for beslutninger om kapacitet, pris, bemanding og planlægning | Skabe |
+| V1 | datakilder, datastruktur og typiske datakvalitetsproblemer (manglende værdier, dubletter, fejlformater) | Forstå |
+| V2 | deskriptiv statistik: gennemsnit, median, kvartiler, standardafvigelse og variation | Forstå |
+| V3 | visualiseringstyper (linje, søjle, histogram, boxplot, scatterplot) og hvad hver egner sig til | Forstå |
+| V4 | datas begrænsninger og hvad data kan/ikke kan fortælle | Forstå |
 
-Niveauet spænder fra anvende til vurdere/skabe – passende for et 30 ECTS-forløb, hvor formidling og kritisk vurdering af data vejer tungere end ren beskrivelse.
+**Kunnen** – jeg kan
+
+| # | Jeg kan | Bloom-niveau |
+|---|---|---|
+| K1 | anvende Python-biblioteker til dataanalyse (Pandas og Matplotlib) | Anvende |
+| K2 | dokumentere datakilde, struktur og begrænsninger for et historisk hoteldatasæt | Forstå |
+| K3 | gennemføre en systematisk kontrol af datakvalitet (manglende værdier, dubletter, fejlformater m.m.) | Analysere |
+| K4 | anvende statistiske mål (gennemsnit, median, kvartiler, standardafvigelse m.fl.) | Anvende |
+| K5 | forklare, hvad statistiske resultater fortæller om datasættet | Forstå |
+| K6 | identificere trends, mønstre og sammenhænge i data | Analysere |
+
+**Kompetencer** – jeg kan selvstændigt
+
+| # | Jeg kan selvstændigt | Bloom-niveau |
+|---|---|---|
+| C1 | vælge og designe relevante visualiseringer til en given problemstilling | Skabe |
+| C2 | begrunde valg af visualiseringstype ud fra hvad den skal vise | Vurdere |
+| C3 | vurdere datakvalitet, begrænsninger og hvad data kan/ikke kan fortælle | Vurdere |
+| C4 | formidle analyseresultater som grundlag for beslutninger om kapacitet, pris, bemanding og planlægning | Skabe |
+| C5 | overføre min dataforståelse til nye opgaver og domæner | Anvende |
+
+Niveauet spænder fra forstå (viden) over anvende/analysere (kunnen) til vurdere/skabe (kompetencer) – passende for et 30 ECTS-forløb, hvor formidling og kritisk vurdering af data vejer tungere end ren beskrivelse.
 
 ## 📚 Kerneområder
 

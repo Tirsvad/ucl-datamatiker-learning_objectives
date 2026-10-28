@@ -12,6 +12,18 @@
 
 → Opfylder kravet om mindst 3 kerneområder, heraf 2 i større grad og 1-2 i mindre grad.
 
+## Fordeling af ECTS og timer
+
+30 ECTS over 15 uger à 40 timer = 600 timer, dvs. 20 timer pr. ECTS.
+
+| Læringsmål | ECTS | Andel | Timer i alt | Timer/uge (af 40) |
+|---|---:|---:|---:|---:|
+| 1 – AI til softwareløsninger | 18 | 60 % | 360 t | 24 t |
+| 2 – Dataanalyse og databehandling | 12 | 40 % | 240 t | 16 t |
+| **Samlet** | **30** | **100 %** | **600 t** | **40 t** |
+
+Fordelingen gælder alle aktiviteter i tabellen nedenfor (kode, vejledning, teammøde, læring og portfolio), og fælles aktiviteter, der gavner begge spor (fx projektanalyse, lab, artefakt-framework, omstillingsparathed), fordeles efter samme 60/40.
+
 ## Ugentlig timefordeling (40 t/uge, gælder alle 15 uger)
 
 | Aktivitet | Timer/uge | Formål |
@@ -33,20 +45,20 @@ Begge læringsmål køres parallelt. Hver uge har ét primært fokus, men de 40 
 | 2 | 2/9 | Fortsæt projektanalyse og prioritering af PO-opgaver. Fortsæt 100 Days of Code | Afprøv de 3 LLM'er på en mindre mængde hoteldata | **M1 (Data) afslut:** domæneforståelse af projektet | 🟡 Delvist – 3 datakvalitetsproblemer findes i data (7.220 dubletter, urealistiske værdier som 55 voksne, 13 bookinger uden gæster) og håndteres i `DataCleaningService`. LLM-test gennemført: 4 kørsler (`docs/python-ai/ai-test-svar/descriptive-analysis-001..004.md`) af qwen3.8-27b (lokalt) og claude-sonnet-5 (sky, manuel – endnu ikke koblet på appens `LLM_BASE_URL`) på den deskriptive statistik. Fundet undervejs: qwen3's "tænke"-tekst bruger et andet markørformat (`__LM_STUDIO_INTERNAL_LSEP_..._END_...__`) end det `<think>...</think>`-mønster, som `LLMReportService._strip_thinking` leder efter – rå ræsonnement ville derfor lække urenset ud i 3 af de 4 svar. Mangler: 3. LLM-kandidat, portfolio-post |
 | 3 | 9/9 | Afslut/konsolidér 100 Days of Code | **M1 (AI):** sammenlign kvalitet/hastighed/pris/privacy, vælg model(ler) | **M2 (Data) afslut:** opstart på Python, Pandas og Matplotlib (100 Days of Code fortsat – ikke færdiggjort) | 🟡 Delvist – datarensning implementeret og testet. Model­sammenligning delvist i gang på baggrund af de 4 testsvar: **hastighed** – qwen 220–378 s, faldt markant da prompten fik en eksplicit "svar uden at stille spørgsmål, i markdown"-instruks (før det: 1+ time); claude ikke tidsmålt endnu (kørt manuelt, ikke gennem pipelinen). **Kvalitet** – claude's svar er struktureret og flagger selv datakvalitetsproblemer (fx `adults`=0, outliers, `agent` som ID); qwens svar er indholdsrige, men 3 af 4 har urenset ræsonnement-tekst i outputtet (se uge 2). **Privacy** – qwen kører selvhostet/lokalt, claude er cloud. **Pris** – ikke sammenlignet endnu. Mangler: endeligt modelvalg, pris-sammenligning, portfolio-post |
 | 4 | 16/9 | **Opstart Python-for-AI-kursus** (Udemy) | Design 3 forskellige promptstrategier | **M3 (Data) start:** find/opret historisk hoteldatasæt, dokumentér variable og kilde | 🟡 Delvist – gennemsnit, median, min/maks beregnes via `describe()`. Mangler: 2 visualiseringer, 3 promptstrategier (kun 1 prompt), portfolio-post |
-| 5 | 23/9 | | **M2 (AI) start:** kør første systematiske prompt-eksperimenter på hoteldata | **M3 (Data) afslut:** identificér mindst 3 datakvalitetsproblemer | 🟡 Delvist – kvartiler og standardafvigelse er allerede med i `describe()`. Mangler: systematiske prompt-eksperimenter |
+| 5 | 23/9 | **Værktøjsvalg og prompt-læring:** Jupyter til lokal visualisering, benchmark af lokal AI og AI-prompts, der rammer kriterierne (portfolio 22/9 og 27/9) | **M2 (AI) start:** kør første systematiske prompt-eksperimenter på hoteldata | **M3 (Data) afslut:** identificér mindst 3 datakvalitetsproblemer | 🟡 Delvist – kvartiler og standardafvigelse er allerede med i `describe()`. Mangler: systematiske prompt-eksperimenter |
 | 6 | 30/9 | | Sammenlign prompt-resultater, identificér mønstre/sammenhænge | **M4 (Data) start:** rens data baseret på uge 5's fund | ⬜ Ikke startet |
-| 7 | 7/10 | | Identificér mulige årsager til ændringer i efterspørgsel | **M4 (Data) afslut:** beregn gennemsnit/median/min/maks; 2 indledende visualiseringer | ⬜ Ikke startet |
+| 7 | 7/10 | **Omstillingsparathed:** ny opgave fra anden PO (Excel-bog → VBA, 56 ark) løst med AI og projektplanlægning (portfolio 9/10) | Identificér mulige årsager til ændringer i efterspørgsel | **M4 (Data) afslut:** beregn gennemsnit/median/min/maks; 2 indledende visualiseringer | ⬜ Ikke startet |
 | 8 | 14/10 | | **M2 (AI) afslut:** AI-baserede konklusioner om marketingforbedringer | **M5 (Data):** udvid til mindst 4 statistiske mål (kvartiler, standardafvigelse); midtvejsrefleksion (Kolb) på tværs af begge spor | ⬜ Ikke startet |
 | 9 | 21/10 | | Forbered integration: definér snitflade til NF Hotel | **M6 (Data) start:** identificér mindst 3 foreløbige trends/mønstre | 🟡 Delvist – REST-snitflade er de facto defineret (`/report/from-file`, `/report/from-json`, API-nøgle). Mangler: afstemning med NF Hotel, visualisering nr. 4, trends |
-| 10 | 28/10 | | **M3 (AI):** implementér AI-fortolkning i NF Hotel | **M6 (Data) fortsat:** understøt trends med beregning/visualisering nr. 3 | 🟡 Delvist – AI-fortolkning findes som selvstændig API-tjeneste. Ikke verificeret integreret i NF Hotel |
+| 10 | 28/10 | **Perspektivering:** ensartede artefakter (template, scripts, kvalitetstjekliste) set i lyset af erfaringer fra LEGO-koncernen via Trines praktik (portfolio 28/10). Læringsmålene omskrevet til viden, kunnen og kompetencer | **M3 (AI):** implementér AI-fortolkning i NF Hotel | **M6 (Data) fortsat:** understøt trends med beregning/visualisering nr. 3 | 🟡 Delvist – AI-fortolkning findes som selvstændig API-tjeneste. Ikke verificeret integreret i NF Hotel |
 | 11 | 4/11 | | **M4 (AI) start:** afprøv OCR/ML-teknologi på pasbilleder | **M6 (Data) fortsat:** udvid til 5 identificerede trends/mønstre, visualisering nr. 4 | ⬜ Ikke startet |
 | 12 | 11/11 | | Test OCR/ML-nøjagtighed på flere testbilleder | **M6 (Data) afslut:** kvalitetssikring af visualiseringer og beregninger | ⬜ Ikke startet |
 | 13 | 18/11 | | **M4 (AI) afslut:** min. 10 dokumenterede testcases på tværs af AI-funktioner | **M7 (Data):** samlet fortolkning – hvad data kan/ikke kan fortælle, og analysens begrænsninger | ⬜ Ikke startet |
 | 14 | 25/11 | | Færdiggør dokumentation og tekniske valg | **M8 (Data):** samlet konklusion på analysen; sidste kvalitetstjek af portfolio-materiale | ⬜ Ikke startet |
 | 15 | 2/12–6/12 | | **Aflevering:** SMART-tjek, samlet konklusion, portfolio | **Aflevering:** SMART-tjek, samlet konklusion, portfolio | ⬜ Ikke startet |
 
-**Færdig-kolonnen** (status pr. 22/9 2026, vurderet ud fra portfolioen og Python-projektet `Other.NFHotelDataanalysis`): 🟢 færdig og dokumenteret · 🟡 delvist – ofte udført i kode, men endnu ikke dokumenteret i portfolioen · 🔴 forfalden, men hverken i kode eller portfolio · ⬜ endnu ikke startet. Portfolioposterne om lab, teknologivalg, IDE og artefakt-færdighed hører ikke til et bestemt milestone i planen og er derfor ikke talt med.
+**Færdig-kolonnen** (status pr. 22/9 2026, vurderet ud fra portfolioen og Python-projektet `Other.NFHotelDataanalysis`): 🟢 færdig og dokumenteret · 🟡 delvist – ofte udført i kode, men endnu ikke dokumenteret i portfolioen · 🔴 forfalden, men hverken i kode eller portfolio · ⬜ endnu ikke startet. Portfolioposterne om lab, teknologivalg, IDE og artefakt-færdighed hører ikke til et bestemt milestone i planen og er derfor ikke talt med. Kolonnens statusser er ikke opdateret siden 22/9; posterne fra 22/9–28/10 (Jupyter, benchmark, AI-prompts, omstillingsparathed, perspektivering af ensartede artefakter) er kun tilføjet i kolonnen "Fælles / kursus".
 
 Se de to læringsmåls egne dokumenter for detaljerede succeskriterier bag hvert milestone:
-- [Læringsmål – AI til hotelbelægning og prisforudsigelse.md](Læringsmål%20–%20AI%20til%20hotelbelægning%20og%20prisforudsigelse.md)
-- [Læringsmål – Dataanalyse og databehandling.md](Læringsmål%20–%20Dataanalyse%20og%20databehandling.md)
+- [Læringsmål – AI til softwareløsninger.md](Læringsmål–AI_til_softwareløsninger.md) (18 ECTS)
+- [Læringsmål – Dataanalyse og databehandling.md](Læringsmål–Dataanalyse_og_databehandling.md) (12 ECTS)
