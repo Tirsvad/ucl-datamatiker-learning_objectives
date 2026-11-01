@@ -118,12 +118,12 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 ## 🗂️ Bevis / portfolio
 
 - [ ] Dokumentation fra relevante dele af Python-for-AI-kurset
-- [ ] Sammenligning af mindst 3 AI-modeller/LLM'er
-  - [ ] microsoft/phi-4
-  - [ ] google/gemma-4-31b-qat
-  - [ ] whittle-moe-27b-a18b
+- [x] Sammenligning af mindst 3 AI-modeller/LLM'er ([bevis](Portfolio/2026-10-28_sammenligning_af_lokale_LLMer.md))
+  - [x] microsoft/phi-4
+  - [ ] google/gemma-4-31b-qat (kun `gemma4:e2b` testet)
+  - [x] whittle-moe-27b-a18b
   - [ ] qwen3.8-27b
-- [ ] Begrundelse for valg af model
+- [ ] Begrundelse for valg af model (valgt: phi4)
 - [ ] AI-fortolkning af hoteldata
 - [ ] Mindst 3 promptstrategier
 - [ ] AI-baserede konklusioner om mulige marketingforbedringer

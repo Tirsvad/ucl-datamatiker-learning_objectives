@@ -110,7 +110,7 @@ Analyse → refleksion → teori → ny analyse
 
 ## 🗂️ Bevis / portfolio
 
-- [x] Python
+- [x] Python ([bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md))
   - [x] Pandas
   - [ ] Mathplotlib
 - [x] Datasæt og datakilde
@@ -123,19 +123,19 @@ Analyse → refleksion → teori → ny analyse
   - [ ] Fjernelse af duplikater
 - [ ] Mindst 4 statistiske beregninger
   - [x] Cancellation rate
-  - [ ] Belægning procent af værelser
-  - [ ] Belægning af værelser på helligdage
+  - [x] Belægning procent af værelser
+  - [x] Belægning af værelser på helligdage
   - [ ] Omsætning på værelser
 - [ ] Forklaring af hvad hver statistisk beregning fortæller om datasættet
-- [ ] Mindst 4 visualiseringer
-  - [ ] Cancellation rate
-  - [ ] Belægning procent af værelser
-  - [ ] Belægning af værelser på helligdage
+- [x] Mindst 4 visualiseringer ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
+  - [x] Cancellation rate
+  - [x] Belægning procent af værelser
+  - [x] Belægning af værelser på helligdage
   - [ ] Omsætning på værelser
-- [ ] Begrundelse for valg af visualiseringstype pr. visualisering
-- [ ] Mindst 5 identificerede trends/mønstre
+- [x] Begrundelse for valg af visualiseringstype pr. visualisering
+- [x] Mindst 5 identificerede trends/mønstre
 - [ ] Fortolkning af resultater
-- [ ] Beskrivelse af dataenes begrænsninger
+- [x] Beskrivelse af dataenes begrænsninger
 - [ ] Refleksioner efter Kolbs læringscirkel
 - [ ] Samlet konklusion på analysen som beslutningsstøtte (kapacitet, pris, bemanding, planlægning)
 
