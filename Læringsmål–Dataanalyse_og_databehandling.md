@@ -121,17 +121,17 @@ Analyse → refleksion → teori → ny analyse
   - [ ] Kolonne der ikke har værdi for data analysen
   - [x] Fjernelse af rækker hvor der mangler værdi til at analysere
   - [ ] Fjernelse af duplikater
-- [ ] Mindst 4 statistiske beregninger
+- [x] Mindst 4 statistiske beregninger ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
   - [x] Cancellation rate
   - [x] Belægning procent af værelser
   - [x] Belægning af værelser på helligdage
-  - [ ] Omsætning på værelser
+  - [x] Omsætning på værelser
 - [ ] Forklaring af hvad hver statistisk beregning fortæller om datasættet
 - [x] Mindst 4 visualiseringer ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
   - [x] Cancellation rate
   - [x] Belægning procent af værelser
   - [x] Belægning af værelser på helligdage
-  - [ ] Omsætning på værelser
+  - [x] Omsætning på værelser
 - [x] Begrundelse for valg af visualiseringstype pr. visualisering
 - [x] Mindst 5 identificerede trends/mønstre
 - [ ] Fortolkning af resultater
