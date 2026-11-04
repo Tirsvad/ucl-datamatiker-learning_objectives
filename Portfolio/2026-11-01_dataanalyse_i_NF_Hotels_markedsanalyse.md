@@ -141,6 +141,17 @@ Min viden om at arbejde med Python-API'er, som markedsanalysen er bygget på, ha
 - `033-iss-location`, `033-kanye-quotes`, `035-rain-alert`, `036-stocknews` og `038-nutritionix`: kald til eksterne API'er og behandling af svarene
 - `025-weather`: Pandas på CSV-data, som er grundlaget for selve analysen
 
+Viden om dataanalyse har jeg fra dag 71 og frem i samme kursus. De dage er endnu ikke med i det nye kursus-repository (`Tirsvad-Udemy-100-days-of-code`, som ender ved dag 41), så de ligger pt. i det gamle repository: [Tirsvad/udemy.python.100-days-of-code](https://github.com/Tirsvad/udemy.python.100-days-of-code). Dag 72 til 79 er rene dataanalyse-projekter:
+
+- `day-72-data-exploration-with-pandas`: udforskning af data med Pandas
+- `day-73-data-visualisation-programming_Languages`: visualisering af data om programmeringssprog
+- `day-74-Lego_Analysis_for_Course`: analyse af LEGO-data
+- `day-75-google-trends-data`: Google Trends-data og visualisering
+- `day-76-google-play-store-project`: analyse af data fra Google Play Store
+- `day-77-computing-with-numpy`: beregninger med NumPy og flerdimensionelle arrays
+- `day-78-Seaborn_and_Linear_Regression`: Seaborn og lineær regression
+- `day-79-Nobel_Prize_Analysis`: analyse af Nobelpris-data
+
 Viden om at få diagrammer og analyser fra Python over i C#-projektet (JSON-skema med SVG-felt) kommer ikke fra kurset, men fra selve projektet.
 
 ## ➡️ Næste skridt: prisforslag med ét klik
@@ -174,6 +185,8 @@ Jeg kørte markedsanalysen på hotellets bookinger og gennemgik de ni analyser m
   > At Non Refund har 96 % annullering. Det er det modsatte af, hvad man forventer, og peger på noget i dataene, der skal undersøges. AI'ens tekster er også værd at tjekke: i forecast af omsætning skriver den beløb med dollartegn, selvom valutaen ikke er kendt, og flere af dens forslag til omsætning har evidensen "0 bookings".
 - Hvad kan resultaterne ikke sige?
   > Årsager. Alt er sammenhænge, og landet er stort set ukendt, så oprindelse kan ikke analyseres.
+- Hvordan stod jeg i forhold til fagområdet?
+  > Markedsanalyse er ikke mit domænesprog. Jeg kender ikke fagets begreber og de analyser, man normalt vælger, så jeg har måttet støtte mig op ad AI til at forstå dem og til at vælge og fortolke analyserne. Det gør det ekstra vigtigt at kontrollere AI'ens svar mod tallene og at få en med hotelfaglig viden til at vurdere dem.
 - Hvad kan jeg gøre bedre?
   > Vurdere AI-opsummeringerne systematisk mod tallene, undersøge Non Refund-fundet og få diagramdata for helligdagene i Cambodia med. Jeg skal også teste kontrakten mellem Python og C# tidligere, så uoverensstemmelser opdages, før de bliver en blokering.
 

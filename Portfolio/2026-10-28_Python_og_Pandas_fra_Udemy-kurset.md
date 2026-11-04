@@ -7,14 +7,10 @@ Begge læringsmål bygger på Python. Denne post er beviset for, at jeg har arbe
 
 ## 🧭 Hvad repositoryet indeholder
 
-Hver dag i kurset er et selvstændigt projekt i en mappe, nummereret fra `001` til `041`. De dækker blandt andet:
+Hver dag i kurset er et selvstændigt projekt i en mappe, nummereret fra `001` til `041`. De første dage handler om grundlæggende Python (variabler, funktioner, løkker, betingelser, spil og logik, objektorienteret programmering og filhåndtering). Det var for basalt til det niveau, jeg er på, så jeg nævner det kun kort. De emner, der har betydning for læringsmålene, er:
 
-| Emne | Eksempler på projekter |
+| Emne | Projekter |
 |---|---|
-| Grundlæggende Python: variabler, funktioner, løkker, betingelser | `001-band-name-generator`, `002-tip-calculator`, `005-py-password-generator`, `012-guess-the-number` |
-| Spil og logik | `003-treasure-island`, `007-hangman`, `011-black-jack`, `014-higher-lower` |
-| Objektorienteret programmering | `015-coffee-machine`, `016-oop-coffee-machine`, `020-snake-game`, `022-pong-game` |
-| Filer og data | `024-mail-merge`, `029-password-manager`, `031-flash-card` |
 | **Pandas og CSV-data** | `025-squirrel`, `025-us-states-game`, `025-weather` |
 | API'er og webdata | `033-iss-location`, `035-rain-alert`, `036-stocknews`, `038-nutritionix` |
 
