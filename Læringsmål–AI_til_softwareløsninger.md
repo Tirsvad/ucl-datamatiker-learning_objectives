@@ -1,6 +1,6 @@
 # Læringsmål – AI til softwareløsninger
 
-*Del af 30 ECTS-projekt, 26/8–6/12 2026. Se den fælles [Projektplan – Ugeplan.md](Projektplan%20-%20Ugeplan.md) for tidsplan og timefordeling.*
+*Del af 30 ECTS-projekt, 26/8–6/12 2026. Dette læringsmål er på **18 ECTS**; det andet (Dataanalyse og databehandling) er på 12 ECTS. Se den fælles [Projektplan – Ugeplan.md](Projektplan%20-%20Ugeplan.md) for tidsplan og timefordeling.*
 
 ## 🎯 Mål
 
@@ -18,24 +18,44 @@ Jeg vil som grundlag for arbejdet gennemføre de relevante dele af et Python-for
 
 Fokus er dermed på at forstå, vælge, anvende og evaluere AI-teknologier – ikke på at udvikle en komplet kommerciel AI-løsning.
 
-### Jeg vil kunne – med Bloom-niveau
+### Viden, kunnen og kompetencer – med Bloom-niveau
 
-| # | Jeg vil kunne | Bloom-niveau |
+**Viden** – jeg har viden om
+
+| # | Jeg har viden om | Bloom-niveau |
 |---|---|---|
-| 1 | identificere hvor AI kan skabe værdi i hotelprojektet | Analysere |
-| 2 | vælge og begrunde valg af relevante LLM'er og AI-modeller | Vurdere |
-| 3 | sammenligne forskellige LLM'er ud fra kriterier som kvalitet, hastighed, pris, privacy og anvendelighed | Analysere |
-| 4 | anvende LLM'er til fortolkning af strukturerede og ustrukturerede hoteldata | Anvende |
-| 5 | formulere prompts, der giver brugbare og reproducerbare resultater | Skabe |
-| 6 | anvende AI til at identificere mønstre, sammenhænge og mulige forklaringer i hoteldata | Analysere |
-| 7 | vurdere AI's fortolkninger kritisk og sammenholde dem med de faktiske data | Vurdere |
-| 8 | undersøge Machine Learning til OCR-behandling af pas | Forstå/Analysere |
-| 9 | udvikle eller integrere en OCR-løsning, der kan identificere pasnummer, navn og nationalitet | Skabe |
-| 10 | teste AI-løsningernes nøjagtighed og håndtere fejl og usikkerhed | Analysere/Vurdere |
-| 11 | vurdere hvornår AI-output kræver menneskelig kontrol | Vurdere |
-| 12 | dokumentere mine valg, eksperimenter, resultater og refleksioner | Forstå/Anvende |
+| V1 | hvordan LLM'er fungerer og anvendes, herunder kontekstvindue, tokens, hallucinationer og usikkerhed | Forstå |
+| V2 | forskelle mellem LLM'er og AI-modeller ud fra kvalitet, hastighed, pris, ressourceforbrug og privacy (lokal versus cloud) | Forstå |
+| V3 | principper for prompt engineering og for genbrugelig AI-kontekst (skills, templates, scripts) | Forstå |
+| V4 | Machine Learning, OCR og feature extraction i en pipeline fra pasbillede til strukturerede pasoplysninger | Forstå |
+| V5 | metoder til at evaluere AI-output, herunder human-in-the-loop | Forstå |
 
-Niveauet spænder bevidst fra analysere til skabe, så ambitionen matcher et 30 ECTS-forløb frem for et rent gengivelses- eller forståelsesniveau.
+**Kunnen** – jeg kan
+
+| # | Jeg kan | Bloom-niveau |
+|---|---|---|
+| K1 | identificere hvor AI kan skabe værdi i hotelprojektet | Analysere |
+| K2 | sammenligne forskellige LLM'er ud fra kriterier som kvalitet, hastighed, pris, privacy og anvendelighed | Analysere |
+| K3 | anvende LLM'er til fortolkning af strukturerede og ustrukturerede hoteldata | Anvende |
+| K4 | anvende AI til at identificere mønstre, sammenhænge og mulige forklaringer i hoteldata | Analysere |
+| K5 | undersøge Machine Learning til OCR-behandling af pas | Forstå/Analysere |
+| K6 | teste AI-løsningernes nøjagtighed og identificere fejl og usikkerhed | Analysere |
+| K7 | anvende template, sammenlignende scripts og kvalitetstjekliste til at sikre ensartede artefakter | Anvende |
+
+**Kompetencer** – jeg kan selvstændigt
+
+| # | Jeg kan selvstændigt | Bloom-niveau |
+|---|---|---|
+| C1 | vælge og begrunde relevante LLM'er og AI-modeller ud fra testresultater | Vurdere |
+| C2 | formulere prompts, der giver brugbare og reproducerbare resultater | Skabe |
+| C3 | udvikle eller integrere en OCR-løsning, der kan identificere pasnummer, navn og nationalitet | Skabe |
+| C4 | vurdere AI's fortolkninger kritisk, sammenholde dem med de faktiske data og afgøre, hvornår output kræver menneskelig kontrol | Vurdere |
+| C5 | håndtere fejl og usikkerhed i AI-løsninger | Vurdere |
+| C6 | designe genbrugelig AI-kontekst (skills, templates, scripts), så prompts bliver kortere og ressourceforbruget lavere | Skabe |
+| C7 | planlægge og nedbryde en ny, ukendt opgave med AI og omstille mig til et nyt domæne | Skabe |
+| C8 | dokumentere mine valg, eksperimenter, resultater og refleksioner og tage ansvar for kvaliteten af mine leverancer | Vurdere |
+
+Niveauet spænder bevidst fra forstå (viden) over anvende/analysere (kunnen) til vurdere/skabe (kompetencer), så ambitionen matcher et 30 ECTS-forløb frem for et rent gengivelses- eller forståelsesniveau.
 
 ## 📚 Kerneområder
 
@@ -98,12 +118,12 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 ## 🗂️ Bevis / portfolio
 
 - [ ] Dokumentation fra relevante dele af Python-for-AI-kurset
-- [ ] Sammenligning af mindst 3 AI-modeller/LLM'er
-  - [ ] microsoft/phi-4
-  - [ ] google/gemma-4-31b-qat
-  - [ ] whittle-moe-27b-a18b
+- [x] Sammenligning af mindst 3 AI-modeller/LLM'er ([bevis](Portfolio/2026-10-28_sammenligning_af_lokale_LLMer.md))
+  - [x] microsoft/phi-4
+  - [ ] google/gemma-4-31b-qat (kun `gemma4:e2b` testet)
+  - [x] whittle-moe-27b-a18b
   - [ ] qwen3.8-27b
-- [ ] Begrundelse for valg af model
+- [ ] Begrundelse for valg af model (valgt: phi4)
 - [ ] AI-fortolkning af hoteldata
 - [ ] Mindst 3 promptstrategier
 - [ ] AI-baserede konklusioner om mulige marketingforbedringer
@@ -113,6 +133,7 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 - [x] Eksempler på fejl og usikkerhed
 - [ ] Mine egne vurderinger af AI-output
 - [ ] Refleksioner gennem Kolbs læringscirkel
+- [x] Ensartede artefakter: template, sammenlignende scripts og kvalitetstjekliste
 - [ ] Konklusion på AI-teknologiernes anvendelighed
 
 ## ✅ SMART-tjek
