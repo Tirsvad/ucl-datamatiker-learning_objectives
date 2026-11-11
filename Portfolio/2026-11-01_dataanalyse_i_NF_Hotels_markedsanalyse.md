@@ -106,7 +106,7 @@ Fordelingerne giver også et billede af gæsterne: 4,5 % er gentagne gæster, 70
 
 Omsætningen på værelser er regnet som pris pr. nat gange antal nætter for de bookinger, der ikke er annulleret (113.551 bookinger, ingen udeladt på grund af manglende pris):
 
-- **Samlet omsætning:** 50.769.820,9 prisenheder, i gennemsnit 447,11 pr. booking. Valutaen er ikke kendt, så beløbene er i inputtets prisenheder.
+- **Samlet omsætning:** 50.769.820,9 US dollars, i gennemsnit 447,11 US dollars pr. booking.
 - **Omsætningen følger sæsonen:** i de seneste 30 måneder er den højeste måned juli 2024 (664.721,1) og den laveste juli 2025 (264.286,8). Sommer og vinterferie ligger højt, og forår og tidlig sommer ligger lavt.
 - **Forecast for januar–juni 2027:** servicen gentager det sæsonmønster, der er i 102 hele måneders historik. Ankomster ligger mellem 998,6 og 1.178,5 pr. måned, belægningen mellem 45,1 % og 48,2 %, og omsætningen vokser fra 393.631,5 i marts til 551.658,3 i juni. Bånd om hver værdi viser spændet mellem laveste og højeste værdi for samme måned i historikken.
 - **Hvad forecastet ikke kan:** det kender ikke trend, prisændringer, nye begivenheder eller ændret antal værelser, og båndet er spændet i historikken og ikke en sandsynlighed. Siden kalder det selv ikke et løfte.
@@ -120,7 +120,7 @@ Siden viser selv, hvad analyserne ikke kan sige. Det jeg lagde mærke til:
 - Den estimerede værdi er et estimat og ikke omsætning. Annullerede bookinger værdisættes som de øvrige.
 - Bookinger uden de nødvendige felter udelades og tælles i `records_left_out`, så fraværet er synligt.
 - Bookingtal og belægning dækker fremtidige måneder. Januar 2027 viser 11,2 % belægning, fordi perioden kun er delvist dækket.
-- Omsætningen er før skatter, gebyrer, rabatter og ekstra ydelser, og valutaen er ikke kendt. Den er ikke regnskabsmæssig omsætning.
+- Omsætningen er før skatter, gebyrer, rabatter og ekstra ydelser. Den er ikke regnskabsmæssig omsætning.
 - Forecastet gentager kun sæsonmønsteret; det kender ikke trend eller nye begivenheder.
 - Grupper med få bookinger er markeret med en stjerne. Eksempel: 16 ændringer i bookingen giver 100 %, men bygger på meget få bookinger.
 - Korrelation er en sammenhæng og ikke en årsag. Spearman finder kun en jævn stigning eller et jævnt fald.
@@ -182,7 +182,7 @@ Jeg kørte markedsanalysen på hotellets bookinger og gennemgik de ni analyser m
 - Hvilke mønstre gav mest værdi?
   > Annullering efter lead time og segment, fordi de kan bruges til at vurdere risiko for tomme værelser, og belægning efter måned, fordi den viser, hvornår der er plads til flere bookinger.
 - Hvad overraskede mig?
-  > At Non Refund har 96 % annullering. Det er det modsatte af, hvad man forventer, og peger på noget i dataene, der skal undersøges. AI'ens tekster er også værd at tjekke: i forecast af omsætning skriver den beløb med dollartegn, selvom valutaen ikke er kendt, og flere af dens forslag til omsætning har evidensen "0 bookings".
+  > At Non Refund har 96 % annullering. Det er det modsatte af, hvad man forventer, og peger på noget i dataene, der skal undersøges. AI'ens tekster er også værd at tjekke: flere af dens forslag til omsætning har evidensen "0 bookings".
 - Hvad kan resultaterne ikke sige?
   > Årsager. Alt er sammenhænge, og landet er stort set ukendt, så oprindelse kan ikke analyseres.
 - Hvordan stod jeg i forhold til fagområdet?
@@ -241,7 +241,7 @@ Jeg kører analysen på andre perioder (seneste år og seneste tre år), ser om 
 | OCR | Stor | 🔴 | Ikke relevant for denne post |
 | Feature extraction | Stor | 🔴 | Ikke relevant for denne post |
 | Fortolkning af hoteldata | Mindre | 🟡 | Hoteldata fortolket af mig og af phi4; jeg har sammenlignet dem enkeltvis |
-| Test og evaluering af AI-output | Mindre | 🟡 | Jeg har fundet AI-tekster, som evidensen ikke understøtter (dollartegn uden kendt valuta, evidens med 0 bookinger); en systematisk evaluering mangler |
+| Test og evaluering af AI-output | Mindre | 🟡 | Jeg har fundet AI-tekster, som evidensen ikke understøtter (evidens med 0 bookinger); en systematisk evaluering mangler |
 | Fejlhåndtering og usikkerhed | Mindre | 🟡 | I en tidligere kørsel viste siden `GUARDRAIL_REJECTED` i stedet for at skjule, at et AI-svar blev afvist |
 | Human-in-the-loop | Mindre | 🟡 | AI-tekst er mærket som hypotese og ikke prognose; det er mig, der vurderer den |
 | Privacy og ansvarlig AI | Mindre | 🔴 | Ikke relevant for denne post |
