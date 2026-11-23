@@ -3,7 +3,7 @@
 **Dato:** 28/10 2026 (opdateret 23/11 2026, efter at kurset er gennemført)
 **Læringsmål dækket:** [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/) og [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/)
 
-Begge læringsmål bygger på Python. Denne post er beviset for, at jeg har gennemført Udemy-kurset *100 Days of Code™: The Complete Python Pro Bootcamp*. Kurset blev afsluttet 22/11 2026 med dag 100. Beviset er organisationen [Tirsvad-Udemy-100-days-of-code](https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code) på min Gitea, som har ét repository pr. projekt (117 repositories, nogle dage har flere).
+Begge læringsmål bygger på Python. Denne post er beviset for, at jeg har gennemført Udemy-kurset *100 Days of Code™: The Complete Python Pro Bootcamp*. Kurset blev afsluttet 22/11 2026 med dag 100. Beviset er organisationen [Tirsvad-Udemy-100-days-of-code](https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code) på min Gitea, som har ét repository pr. projekt (117 repositories, nogle dage har flere). Selve gennemførelsen er dokumenteret med [certifikatet fra Udemy](https://www.udemy.com/certificate/UC-90830d35-8c64-45aa-abff-454acb1812c2/) og i posten [Gennemførelse af Udemy-kursus](2026-11-23_Gennemførelse_af_Udemy-kursus.md).
 
 ## 🧭 Hvad organisationen indeholder
 
@@ -22,7 +22,7 @@ Hver dag i kurset er et selvstændigt projekt, nummereret fra `001` til `100`. D
 
 ## 🛠️ Færdigheder, jeg har fået gennem kurset
 
-Kurset dækker mange teknologier. Tabellen viser dem, jeg kan pege på i konkrete projekter.
+Kurset dækker mange teknologier, og kursets egen oversigt står under [Skills på Udemy](https://www.udemy.com/course/100-days-of-code/learn/practice/1251152#overview). Tabellen viser dem, jeg kan pege på i konkrete projekter.
 
 | Færdighed | Hvor jeg har brugt den |
 |---|---|
