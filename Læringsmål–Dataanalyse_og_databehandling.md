@@ -58,7 +58,7 @@ Dataindsamling · Datastrukturering · Datakvalitet · Datarensning · Dataanaly
 **I mindre grad:**
 Fortolkning af resultater (delt med Læringsmål 1) · Formidling af data
 
-Dette læringsmål bærer hovedvægten af kerneområdet **Dataanalyse & databehandling**, med **Formidling/dokumentation** som understøttende (mindre) kerneområde.
+Dette læringsmål bærer hovedvægten af kerneområdet **Dataanalyse & databehandling**, med **Formidling/dokumentation** som kerneområde i stor grad (se projektplanen).
 
 ## 📊 Målbare succeskriterier
 
@@ -118,19 +118,19 @@ Analyse → refleksion → teori → ny analyse
   - [x] Pandas
   - [x] Matplotlib (også Seaborn, Plotly og NumPy)
 - [x] Datasæt og datakilde
-- [ ] Beskrivelse af variable
+- [x] Beskrivelse af variable (øvet i Udemy-kurset med `.info()`, `.columns`, `.dtypes` og `.describe()` i dag 72–81 og 99–100, [bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md); anvendt i NF Hotel, hvor markedsanalysen arbejder med bookingfelterne)
 - [x] Analyse af datakvalitet
-- [ ] Dokumentation af mindst 3 datakvalitetsproblemer
+- [x] Dokumentation af mindst 3 datakvalitetsproblemer (felter uden værdi, kolonne uden værdi for analysen og dubletter; dækket gennem Udemy-kurset, og markedsanalysen i NF Hotel viser også *Bookings with a price of 0* og *Duplicate booking ids*)
   - [x] Felter uden værdi
-  - [ ] Kolonne der ikke har værdi for data analysen
+  - [x] Kolonne der ikke har værdi for data analysen (fjernet med `drop(columns=…)` i dag 76, 78, 81 og 99, [bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md))
   - [x] Fjernelse af rækker hvor der mangler værdi til at analysere
-  - [ ] Fjernelse af duplikater
+  - [x] Fjernelse af duplikater (`drop_duplicates()` / `duplicated()` i dag 72, 76, 78–81 og 99, [bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md))
 - [x] Mindst 4 statistiske beregninger ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
   - [x] Cancellation rate
   - [x] Belægning procent af værelser
   - [x] Belægning af værelser på helligdage
   - [x] Omsætning på værelser
-- [ ] Forklaring af hvad hver statistisk beregning fortæller om datasættet
+- [x] Forklaring af hvad hver statistisk beregning fortæller om datasættet (hver graf på siden *Market analysis* har afsnittet *What it shows* og en AI-observation med evidens; beregningerne er øvet i Udemy-kurset, [bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md))
 - [x] Mindst 4 visualiseringer ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
   - [x] Cancellation rate
   - [x] Belægning procent af værelser
@@ -138,10 +138,10 @@ Analyse → refleksion → teori → ny analyse
   - [x] Omsætning på værelser
 - [x] Begrundelse for valg af visualiseringstype pr. visualisering
 - [x] Mindst 5 identificerede trends/mønstre
-- [ ] Fortolkning af resultater
+- [x] Fortolkning af resultater (afsnittet *Overall interpretation* og AI-opsummeringerne på siden *Market analysis* i NF Hotels administration, samt tolkningen i [indlægget](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
 - [x] Beskrivelse af dataenes begrænsninger
-- [ ] Refleksioner efter Kolbs læringscirkel
-- [ ] Samlet konklusion på analysen som beslutningsstøtte (kapacitet, pris, bemanding, planlægning)
+- [x] Refleksioner efter Kolbs læringscirkel ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md) for markedsanalysen og [bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md) for Udemy-kurset)
+- [x] Samlet konklusion på analysen som beslutningsstøtte (kapacitet, pris, bemanding, planlægning) (siden *Market analysis*: belægning og kapacitet, omsætning og forecast, forslag om bemanding og planlægning; prisforslagene er samlet på siden *Price suggestions* i NF Hotels administration)
 
 ## ✅ SMART-tjek
 

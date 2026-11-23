@@ -147,10 +147,10 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
   - [x] whittle-moe-27b-a18b
   - [ ] qwen3.8-27b
 - [ ] Begrundelse for valg af model (valgt: phi4)
-- [ ] AI-fortolkning af hoteldata
+- [x] AI-fortolkning af hoteldata ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
 - [ ] Mindst 3 promptstrategier
-- [ ] AI-baserede konklusioner om mulige marketingforbedringer
-- [ ] Integration af AI-fortolkning i NF Hotel
+- [x] AI-baserede konklusioner om mulige marketingforbedringer (AI-forslagene i markedsanalysen og *Further ideas* på prisforslagssiden i NF Hotel)
+- [x] Integration af AI-fortolkning i NF Hotel (siderne *Benchmark*, *Market analysis* og *Price suggestions* i NF Hotels administration)
 - [ ] ML/OCR-prototype til pasinformation (udskudt til efter 24/12, PO: pas-scanning er out of scope)
 - [ ] Mindst 10 dokumenterede testcases
 - [x] Eksempler på fejl og usikkerhed
