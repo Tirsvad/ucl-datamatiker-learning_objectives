@@ -3,13 +3,14 @@
 **Dato:** 23/11 2026
 **Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
-Jeg har brugt meget tid på at lave et framework til dokumentation, kvalitetssikring og AI-genereret kode. For at kunne vise både udfordringerne og det, det giver mig på lang sigt, deler jeg arbejdet op i fem poster:
+Jeg har brugt meget tid på at lave et framework til dokumentation, kvalitetssikring og AI-genereret kode. For at kunne vise både udfordringerne og det, det giver mig på lang sigt, deler jeg arbejdet op i seks poster. Den sidste samler alle de gange, jeg tog fejl, reflekterede og ændrede frameworket, for det er dér, min udvikling som softwareudvikler kan ses:
 
 1. **Dokumentation, artefakter og krydsreferencer** (denne post)
 2. [AI laver artefakter med human-in-the-loop](2026-11-23_Framework–2_AI_laver_artefakter_med_human-in-the-loop.md)
 3. [Kvalitetssikring af artefakter](2026-11-23_Framework–3_Kvalitetssikring_af_artefakter.md)
 4. [AI laver kode ud fra artefakter](2026-11-23_Framework–4_AI_laver_kode_ud_fra_artefakter.md)
 5. [Kvalitetssikring af koden](2026-11-23_Framework–5_Kvalitetssikring_af_koden.md)
+6. [Fejl, refleksion og ændringer](2026-11-23_Framework–6_Fejl_refleksion_og_ændringer.md)
 
 Denne post er fundamentet. Den viser, hvordan dokumenterne er bygget, og hvordan de hænger sammen, og den giver det samlede regnskab for, hvad frameworket har kostet. Beviset er fire repositories på min Gitea, som ændres sammen. Posten [Artefakt-færdighed – én samlet færdighed i stedet for 19](2026-09-21_Artefakt-færdighed–én_samlet_færdighed_i_stedet_for_19.md) og [Perspektivering – ensartede artefakter efter besøg fra LEGO](2026-10-28_Perspektivering–ensartede_artefakter_efter_besøg_fra_LEGO.md) handler om den første del af arbejdet; denne bygger videre på dem.
 
@@ -42,6 +43,37 @@ BC → SA → PP → MIL → US → UC → DM → SSD → OC → SD → DCD → 
 ```
 
 Kataloget har en kolonne `Requires` for dette. Scriptet `new-artifact.sh` nægter at oprette en artefakt, hvor kravet ikke er opfyldt.
+
+## 🏷️ Hvordan jeg fandt frem til, hvad der skal stå i headeren
+
+<!-- UDKAST: Dette afsnit er rekonstrueret ud fra changelogs, MIL-008 og scripts. Det skal rettes og udvides med, hvordan jeg selv husker, at jeg tænkte og besluttede. -->
+
+Headeren (Metadata og Version History) er en lille datamodel for hvert dokument. Jeg satte den ikke op på forhånd. Når jeg læser changelog'en igennem, står hvert felt der, fordi noget gik galt uden det, eller fordi et script skulle læse det. Der er to spørgsmål, jeg kan stille til hvert felt: **hvem læser det**, og **hvad sker der, hvis det mangler eller er forkert?**
+
+| Felt | Hvem læser det | Hvad der gik galt, eller hvorfor det står der |
+|---|---|---|
+| **ID** (`BC-001`) og kort navn | Links, sporbarhedsmatrixen og `new-artifact.sh`, som sætter ID'et ind og tæller registret op | Et ID er nøglen, alt andet peger på. Interessent-ID'er (`S01`) bruges som ejer og reviewer, aldrig et rollenavn |
+| **CrossReference** | `find-crossreferences.sh` og de links, der står nederst i dokumentet | Kandidater i kataloget, men kun artefakter, der findes nu. For et use case citeres kun artefakter i samme mappe |
+| **Language** | `check-languages.sh` (en gyldig BCP 47-kode), `QC-LANG-001` | To filer pr. artefakt gled fra hinanden. Sproget står nu i metadata, og ikke i filnavnet (0.4.0) |
+| **Domain** | `check-languages.sh` og ordbogen (`DICT`) | Værdien skal være fra en liste i registret (`it`, `medical`, `construction`). Det er en kontrolleret liste, så to dokumenter ikke skriver det samme domæne på to måder |
+| **Status** i Version History | `check-plan.sh` og `sync-project.sh`, som læser den sidste række | Alle skabeloner startede som `Accepted`, så en ny milepæl bestod gaten, og scriptet læste en hvilken som helst `Accepted`-række (0.4.0). Nu er det den sidste række |
+| **Reviewer** | Den, der læser, hvem der har gennemgået | Et ID fra Stakeholder Analysis. I processen stod en pladsholder (`<reviewer S-ID>`), til 0.23.5 satte S07 ind |
+| **Commit** | En læser, der vil se, hvad der blev ændret | Et dokument kan ikke indeholde sin egen commit-hash, så der står `pending`, og `resolve-pending-commits.sh` erstatter den bagefter |
+| **Change** | Reviewer | Flere linjer (`<br>`), så en ændring kan beskrives uden at blive en ny række |
+| **Nøglerne på engelsk** | Alle scripts | Overskrifter, nøgler og statusser er engelske, fordi scripts læser dem. Det blev besluttet 3/10 (MIL-008) |
+
+**Op imod NF Hotel.** Projektet `Notebook_Market_Analysis` står stadig på frameworkets udgave `v0.1.0`, og dets dokumenter viser, hvordan headeren så ud, før jeg ændrede den: versionshistorikken har kun fire kolonner (dato, status, forfatter og reviewer), ingen ændringsbeskrivelse og intet link til commit'en, og projektplanen `PP-001` har 11 rækker fra to dage (29/9 og 30/9). Statussen er `Approved`, og hvert dokument har en `DomainLanguages`-række. Det er præcis de felter, jeg senere fjernede eller ændrede, så projektet er et før-billede, jeg kan måle migreringen på.
+
+De felter, der **ikke** er der mere, viser det samme:
+
+| Hvornår | Hvad der blev fjernet eller indført | Hvorfor |
+|---|---|---|
+| 0.1.x | `Applies To` i tjeklisterne fjernet. Versionshistorikken holder kun de to seneste rækker. `Approved` er udgået som status | Tjeklisterne skulle kunne bruges uden mit projekt, git har resten af historikken, og to ord for en godkendelse er forvirrende |
+| 0.3.0 (2/10) | `DomainLanguages`-rækken fjernet fra skabelonerne. Sprog og registre bor i registret | En række i hvert dokument hører hjemme som en indstilling ét sted |
+| 0.4.0 (5/10) | `Language` og `Domain` i hvert dokument, med kontrol | Beslutningen om én fil pr. artefakt. Så skal sproget kunne læses i selve filen |
+| 0.23.3 og 0.23.4 (13/11) | De sidste rester af `DomainLanguages` fjernet i tjeklister og process-dokumenter | `check-languages.sh` fejler på en rest i `docs/`, men process-dokumenterne ligger uden for den mappe |
+
+**Det er en datamodel, og den kan kontrolleres som data.** ID'et er en nøgle, `CrossReference` peger på andre nøgler, `Language` er en kontrolleret kode, og `Domain` er en værdi fra en fast liste. `check-languages.sh` er et lille datakvalitetstjek: den finder manglende eller pladsholder-værdier (fuldstændighed), en sprogkode, der ikke er BCP 47 (gyldighed), et domæne uden for listen (konsistens), en forældet kolonne og en oversat tvilling ved siden af originalen. De dobbelte `RC-084` var et brud på entydighed, som ingen kontrol fangede, og som jeg opdagede i hånden.
 
 ## 🔗 Krydsreferencer og sporbarhed
 
@@ -81,6 +113,25 @@ Der er 26 shell-scripts, og 11 af dem er testscripts, som bygger et lille projek
 **Fire repositories, der ændres sammen.** En ændring i en tjekliste skal gennem tjeklisterne, frameworket og projektet. Derfor er der regler om rækkefølge: én pull request pr. repository i afhængighedsrækkefølge, en pin flyttes kun til en flettet commit eller et tag, og intet udgives, før dets afhængigheder er flettet. Det er mere arbejde end ét repository, men det holder frameworket uden projektdata.
 
 **Parallelle grene gav samme nummer.** To grene lavede hver sin review-record med nummer `RC-084`. Jeg opdagede det, da jeg løste en merge-konflikt mellem dem, omdøbte den ene til `RC-090` og rettede referencerne. Numrene deles ud fra en tæller i registret, og to grene kan tage det samme nummer. Det er en fejl, et script kan fange, og den ligger på listen over næste skridt.
+
+## 🔁 Fejl, refleksion og ændring
+
+<!-- UDKAST: Tabellen bygger på changelogs og records. Refleksionerne er formuleret ud fra dem og skal rettes til mine egne ord. -->
+
+Dokumentationen er det sted, hvor jeg skiftede mening flest gange. De største fejl, vist som Kolbs læringscirkel, står i [post 6](2026-11-23_Framework–6_Fejl_refleksion_og_ændringer.md).
+
+| Hvad gik galt | Hvad jeg fandt ud af | Hvad jeg ændrede |
+|---|---|---|
+| 19 skills, én pr. artefakttype (21/9) | De fyldte i agentens kontekst | Én skill med en reference pr. type |
+| Skabelonen til registret var nævnt i installationen, men fandtes ikke, og to skabeloner lå i en forkert mappe og pegede på en forkert katalogsti (0.1.x) | Dokumentationen var ikke afprøvet, som en ny bruger ville bruge den | Skabelonen blev lavet og filerne flyttet |
+| En dansk og en engelsk udgave af hvert dokument (0.3.0) | De gled fra hinanden | Én fil pr. artefakt på produktejerens sprog, besluttet 3/10 (0.4.0) |
+| Use case-mapper direkte i `docs/` | De fyldte øverste niveau | `docs/use-cases/uc-NNN/` (0.9.0) |
+| 63 filer med CRLF-linjeskift (0.7.0) | Linjeskift ændrer hvert linjes diff | Alle er LF, med `.gitattributes` og `.editorconfig` |
+| Kontrollen af README-overskrifter fik emoji som argumenter, og de blev ødelagt på Windows (0.4.0) | Et script må ikke få emoji som argumenter, når git kører det | Overskrifterne læses fra filer |
+| Wiki-mappen havde en undermappe, og udgiveren fejlede med "has no Markdown pages" (0.19.1) | Wikien skal være flad | `process/wiki.md` siger det, og sidebar-reglen står i `QC-WIKI-001` |
+| To grene tog samme `RC`-nummer (`RC-084`) | Numrene deles ud fra en tæller, to grene kan tage på samme tid | Jeg omdøbte den ene til `RC-090`. Et script bør finde den slags |
+
+**Det, jeg tager med:** Det, der virker for mig, er ikke det samme som det, en ny bruger kan følge. Hver gang et felt, en mappe eller en regel blev flyttet, fik jeg en migrering. Derfor skriver jeg nu beslutningen og begrundelsen ned, før jeg ændrer.
 
 ## 📚 Kilder til viden
 
@@ -143,22 +194,23 @@ Jeg kobler erfaringen til teori om blandt andet:
 - DRY og adskillelse af ansvar (framework og projektdata)
 - semantisk versionering og afhængigheder mellem repositories
 - kontekstøkonomi i AI-skills
+- datamodellering: skema, nøgler, kontrolleret ordforråd og datakvalitet (fuldstændighed, gyldighed, konsistens og entydighed)
 
 **4. Aktiv eksperimenteren**
 
-Jeg bruger frameworket på de næste projekter og tæller, hvad det sparer. De næste fire poster viser, hvordan AI laver artefakter og kode oven på det.
+Jeg bruger frameworket på de næste projekter og tæller, hvad det sparer. De næste fem poster viser, hvordan AI laver artefakter og kode oven på det, og hvad jeg lærte af at tage fejl.
 
 ## 🎯 Hvilke kernemål i læringsmål dækkes
 
-🟢 dækkes helt, 🟡 dækkes delvist, 🔴 dækkes kun lidt eller slet ikke endnu. Posten handler om dokumentation af software og tilføjer ikke ny dækning af dataanalyse.
+🟢 dækkes helt, 🟡 dækkes delvist, 🔴 dækkes kun lidt eller slet ikke endnu. Posten handler om dokumentation af software. Den dækker ikke dataanalyse, men headeren kan læses som en lille datamodel, og det giver delvis dækning af datastrukturering og datakvalitet.
 
 ### Dataanalyse og databehandling
 
 | Kerneområde | Vægt i læringsmål | Dækning | Begrundelse |
 |---|---|:---:|---|
 | Dataindsamling | Stor | 🔴 | Ikke relevant for denne post |
-| Datastrukturering | Stor | 🔴 | Ikke relevant for denne post |
-| Datakvalitet | Stor | 🔴 | Posten gælder dokumenters kvalitet og ikke datasæt |
+| Datastrukturering | Stor | 🟡 | Headeren er en lille datamodel med nøgle, fremmed nøgle og kontrolleret kode. Den er ikke tabeller i en database, og jeg har ikke normaliseret noget |
+| Datakvalitet | Stor | 🟡 | `check-languages.sh` tjekker fuldstændighed, gyldighed og konsistens. Det gælder metadata og ikke et datasæt, og jeg har ikke målt fejlrater |
 | Datarensning | Stor | 🔴 | Ikke relevant for denne post |
 | Dataanalyse | Stor | 🔴 | Ikke relevant for denne post |
 | Statistik | Stor | 🔴 | Ikke relevant for denne post |

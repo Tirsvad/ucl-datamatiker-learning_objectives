@@ -3,142 +3,128 @@
 **Dato:** 23/11 2026
 **Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
-Denne post er nummer 4 i serien om mit framework. [Post 2](2026-11-23_Framework–2_AI_laver_artefakter_med_human-in-the-loop.md) viser, hvordan AI'en skriver dokumenter, og [post 3](2026-11-23_Framework–3_Kvalitetssikring_af_artefakter.md), hvordan de bliver kontrolleret. Her viser jeg næste led: AI'en skriver kode, men kun ud fra artefakter, der er godkendt. Det er en regel, jeg har sat: **AI'en må ikke lave kode uden et use case.** Frameworket har to undtagelser: en rent teknisk opgave, hvilket skal stå i planen, og at jeg selv fravælger planen i chatten for den ene forespørgsel. Beviset er frameworkets regel `plan-first-gate`, skillen `coding-conventions` og scriptet `check-plan.sh`, og et projekt bygget med dem: Udemy-kursets webshop `097-assignment-an-online-shop` ([Gennemførelse af Udemy-kursus](2026-11-23_Gennemførelse_af_Udemy-kursus.md)).
+Dette er post 4 i serien om mit framework. [Post 2](2026-11-23_Framework–2_AI_laver_artefakter_med_human-in-the-loop.md) viser, hvordan AI'en skriver dokumenter (artefakter), og [post 3](2026-11-23_Framework–3_Kvalitetssikring_af_artefakter.md), hvordan de kontrolleres. Her viser jeg næste skridt: AI'en skriver kode, men kun ud fra dokumenter, der er godkendt.
 
-## 🧭 Reglen: ingen kode uden plan
+Min regel er: **AI'en må ikke skrive kode uden en godkendt plan.** For en funktion betyder det et use case (en beskrivelse af, hvad en bruger vil opnå) og et godkendt design. Rene tekniske opgaver, som at sætte CI op, kan undtages, hvis planen siger det. Jeg kan selv fravælge planen i chatten, men kun for den ene forespørgsel.
 
-Intet må ligge under `src/` eller `tests/`, medmindre alle disse fire betingelser er opfyldt (`plan-first-gate.md`):
+## 🧭 Sådan foregår det
 
-| # | Betingelse |
-|---|---|
-| 1 | En milepæl (`MIL-*`) er `Accepted`, og dens seneste review-record har verdict `Go` |
-| 2 | Opgaven er en række i milepælens `## Tasks`, helst allerede en issue |
-| 3 | Opgaven nævner det use case eller den designartefakt, den implementerer, eller den er en ren teknisk opgave (kolonnen `Needs its own Use Case/User Story?` siger `No`) |
-| 4 | For en opgave, der ikke er ren teknisk: use casets Domain Model, Operation Contract, Sequence Diagram og Design Class Diagram (og ERD, hvis data gemmes) er `Accepted` med `Go` |
-
-Hvis betingelserne ikke er opfyldt, skriver AI'en ikke kode. Den planlægger det manglende med `project-planning`-skillen, viser tørkørslen af `sync-project.sh` og stopper for at få et go. Kun jeg kan fravige det, i chatten, for den ene forespørgsel.
-
-### Hvad er et use case, og hvad er en teknisk opgave?
-
-Skillen skiller mellem to slags opgaver: det, en bruger eller et andet system gør ("Gæsten betaler for sin booking"), og det, teamet gør for at bygge noget ("Tilføj et databaseindeks", "Opsæt CI"). Det første har et use case. Det andet er en ren teknisk opgave. Spørgsmålet er: *beskriver rækken et mål, en aktør har, eller et skridt, teamet tager?*
-
-### Designet kommer før koden
-
-Inden for et use case skrives og gennemgås artefakterne i en fast rækkefølge, og hver skal være `Accepted` med `Go`, før den næste oprettes:
+Først godkendes planen og opgaven. Derefter laves designet i en fast rækkefølge, og hvert led skal være godkendt, før det næste laves:
 
 ```
-DM → SSD → OC → SD → DCD → (ERD) → kode
+Use case → Domain Model → SSD → Operation Contract → Sequence Diagram → Design Class Diagram → kode → test og review
 ```
 
-| Artefakt | Hvad den afgør |
+| Led | Hvad det afgør |
 |---|---|
-| Domain Model (DM) | Hvilke begreber domænet har, i produktejerens ord |
-| System Sequence Diagram (SSD) | Hvad aktøren og systemet siger til hinanden |
-| Operation Contract (OC) | Hvad hver systemoperation kræver og ændrer |
-| Sequence Diagram (SD) | Hvordan objekterne samarbejder for at udføre operationen |
-| Design Class Diagram (DCD) | Klasser, lag, afhængigheder og metodesignaturer |
-| ERD | Hvilke data der gemmes |
+| Domain Model | Hvilke begreber domænet har, i produktejerens ord |
+| System Sequence Diagram (SSD) | Hvad brugeren og systemet siger til hinanden |
+| Operation Contract | Hvad hver handling kræver, og hvad den ændrer |
+| Sequence Diagram | Hvordan delene i koden samarbejder om handlingen |
+| Design Class Diagram | Klasser, lag og hvem der må bruge hvem |
 
-`new-artifact.sh` nægter at oprette et led, før det foregående er `Accepted`. Projektets egne modeller (`docs/domain-model.md`, `docs/dcd.md`) ændres først, når use casets egen er godkendt.
+Koden følger designet og ikke omvendt. Viser designet sig at være forkert, ændrer jeg designet først, får det gennemgået og retter så koden. Reviewer sammenligner koden med designet, før den lægges sammen med resten.
 
-### Koden følger designet
+Frameworket kontrollerer det på tre måder:
 
-Kode laves ud fra det godkendte design, og ikke omvendt. Klasse- og pakkenavne, lag og signaturer følger use casets Sequence Diagram og projektets Design Class Diagram. Viser det sig under kodning, at designet er forkert eller mangelfuldt, er det en **designændring**: ret artefakten, få den gennemgået, og ret så koden. Koden må aldrig glide væk, mens diagrammet står. Reviewer sammenligner koden med DCD'et før pull requesten.
+- AI'en skal nævne opgaven og use casen, før den skriver kode. Ellers planlægger den i stedet og stopper for at få mit go.
+- Et script (`new-artifact.sh`) nægter at lave det næste dokument, før det foregående er godkendt.
+- Man kan slå en kontrol til, der afviser en commit med kode, som ikke peger på en godkendt opgave.
 
-### Hvordan AI'en følger reglen
+## 📚 To projekter som bevis
 
-Skillen `coding-conventions` har en forudsætning, som AI'en skal følge, før den skriver eller redigerer kode: **nævn opgaverækken (`MIL-NNN`, opgave N) eller issuen og use casen eller designartefakten, eller sig, at det er en ren teknisk opgave.** Hvis den ikke kan, afviser den og planlægger i stedet. Hvis milepælen stadig er `Proposed`, eller seneste review er `Go-with-conditions` eller `No-Go`, stopper den og siger det.
-
-Reglen kan også håndhæves, når man committer. `install-git-hooks.sh --enable-plan-gate` slår en kontrol til, som afviser en commit, der ændrer `src/` eller `tests/`, uden en `Task: MIL-NNN#N`-trailer, der peger på en eksisterende opgave i en `Accepted` milepæl med seneste review `Go`. Den er valgfri og slået fra, indtil et projekt vælger den. En bevidst undtagelse kræver `ALLOW_UNPLANNED=1` på den ene commit.
-
-### Mappestrukturen, AI'en skriver i
-
-Koden lægges i lag efter `clean-architecture`-skillen: `domain` (ingen afhængigheder), `application` (use cases og porte), `infrastructure` (databaser, eksterne tjenester) og `presentation` (UI, HTTP, CLI), og `tests/` har `unit`, `integration` og `e2e`. Afhængigheder peger indad. Præsentationsmønstret er MVVM for en brugerflade og MVC for et API, og en skitse af skærmbillederne (også en i den første prompt) er AI'ens første udgave. Mappenavne er engelske, uden mellemrum, og i sprogets casing.
-
-## 🛒 Beviset: webshoppen
-
-Webshoppen `097-assignment-an-online-shop` (Flask, SQLite, Stripe Checkout i testtilstand og en Kanban-tavle til ordrer) er bygget med AI efter frameworket:
-
-| Hvad | Hvad projektet viser |
+| Projekt | Hvad det viser |
 |---|---|
-| Plan først | Business Case, Stakeholder Analysis, Project Plan og 7 milepæle blev skrevet og gennemgået, før der kom kode. Hver milepæl gik gennem én pull request med sin egen review-record |
-| Opgaverækker | Milepæl 5 (Stripe) har syv opgaver, hver med en kort beskrivelse og et resultat, og kolonnen for use case siger `No` for dem alle |
-| Task-trailere | Commit-historikken har 46 linjer med `Task:`-trailere |
-| Lag og test | Fire lag under `src/`, og en enhedstest (`test_layering.py`) tjekker, at domæne og application ikke importerer Flask. Review-recorden for milepæl 5 nævner 289 tests og 99,8 % dækning; refleksionssiden nævner 340 tests til sidst |
-| Beslutninger før kode | Skiftet fra standardbiblioteket til Flask blev skrevet i en ADR (`ADR-0002`) og i planen, og først derefter kodet |
-| Review af koden | Milepælenes kode har hver en review-record mod Python-tjeklisten ([post 5](2026-11-23_Framework–5_Kvalitetssikring_af_koden.md)) |
+| **NF Hotel** (`Notebook_Market_Analysis`): et program, der analyserer hotelbookinger fra en JSON-fil | Hele kæden findes: 12 milepæle, 5 use cases, design, 13 beslutninger (ADR) og 30 review-rapporter. Koden har fem lag, 73 testfiler og en kontrol af, at lagene kun bruger hinanden i den rigtige retning |
+| **Webshoppen** fra Udemy-kurset | Planen og 7 milepæle blev godkendt før koden. 289 tests og 99,8 % dækning ved milepæl 5. Her er alle opgaver rent tekniske, så kæden fra use case til design vises ikke |
 
-Webshoppens egen refleksion siger det kort: *"A decision that changes in the middle of a project, here the switch from the standard library to Flask, is cheapest when it is written down first in an ADR and the plan, and only then coded."*
+NF Hotel-projektet bruger stadig den tidligste udgave af frameworket (`v0.1.0`).
 
-## 🧩 Udfordringer undervejs
+## 🔄 Kolbs læringscirkel: tre runder
 
-**Webshoppen har ikke use cases.** Alle opgaver i milepæl 5 er rene tekniske opgaver. Der er ingen Domain Model, Operation Contract, Sequence Diagram eller Design Class Diagram, og review-recorden siger: *"no DCD exists in this plan"*. Reglen om, at kode kommer fra et use case og dets design, er defineret og testet i frameworket og kræves af `new-artifact.sh`, men jeg har endnu ikke vist hele kæden fra use case til kode i et projekt med AI-genereret kode. Webshoppen viser planen, milepælene og reviewet. Det er det vigtigste hul i beviset.
+### Runde 1: Design kom efter koden
 
-**Kontrollen ser kun milepælen.** Commit-kontrollen tjekker, at en opgave findes i en godkendt milepæl. Den tjekker ikke, at use casets DCD er godkendt, eller at koden matcher det. Det skal reviewer gøre.
+**1. Konkret erfaring:** I NF Hotel-projektet sagde planen, at designet skulle være lavet før koden. Alligevel byggede jeg først kernen, analyserne og notebooken. Designet skrev jeg bagefter ("som bygget").
 
-**Rækkefølgen er langsom.** Fem artefakter skal skrives og godkendes, før et use case kan blive til kode. Det er meningen, men det koster. Derfor kan rent tekniske opgaver, der ikke er et brugermål, springe kæden over, og det er også derfor, at hele webshoppen er planlagt som tekniske opgaver.
+**2. Refleksion:** Gennemgangen af designet fandt ni fejl og syv åbne spørgsmål. Fx havde koden fem lag og ti porte, hvor beslutningen beskrev færre, og domænemodellen passede ikke til koden. Det meste løste jeg ved at ændre beslutningen og ikke koden. Det viste mig, at det ikke er nok at skrive "design før kode" i en plan. Jeg bryder den, når jeg har travlt.
 
-**AI'en vil gerne skrive kode med det samme.** Derfor er "byg X" altid planlægning først. Kun en udtrykkelig fravigelse fra mig i chatten, for den ene forespørgsel, ændrer det. Den gælder ikke for næste forespørgsel.
+**3. Abstrakt begrebsliggørelse:** En regel skal håndhæves af en kontrol og ikke kun stå i en tekst. Frameworket krævede først kun, at milepælen var godkendt. Fra 19/11 kræver det også, at designet er godkendt, før koden skrives, og et script tjekker rækkefølgen. Jeg har ikke en record, der siger, at NF Hotel-forløbet førte til ændringen, så det må jeg selv bekræfte.
 
-**Design og kode kan glide fra hinanden.** Det er derfor reglen siger, at et behov for ændring er en designændring, og at DCD'et er sandheden. Jeg har ikke målt, hvor tit det sker.
+**4. Aktiv eksperimenteren:** Næste use case i NF Hotel-projektet laver jeg med designet først.
 
-**Ændringer midt i et projekt.** Webshoppen skiftede fra standardbibliotek til Flask undervejs (`ADR-0002`). Det krævede nye gennemgange af Business Case, Stakeholder Analysis og planen (review-recorderne `RC-014` til `RC-018`). Det er prisen for, at beslutningen er sporbar.
+### Runde 2: Design og kode gled fra hinanden alligevel
 
-## 📚 Kilder til viden
+**1. Konkret erfaring:** De nye use cases (nr. 3 til 5) blev designet før koden. Alligevel var der samme dag seks forskelle mellem design og kode.
 
-- `process/plan-first-gate.md` og `scripts/check-plan.sh`
-- skillerne `coding-conventions`, `project-planning` og `clean-architecture`
-- Larmans rækkefølge fra use case over domænemodel og kontrakter til design
-- webshoppens `docs/` (milepæle, ADR'er, review-records og wiki)
+**2. Refleksion:** Selv med designet først ændrer man ting, mens man koder.
+
+**3. Abstrakt begrebsliggørelse:** Design og kode skal holdes sammen hele vejen. Derfor siger reglen, at et behov for ændring er en designændring: ret designet, og ret så koden.
+
+**4. Aktiv eksperimenteren:** Jeg registrerer forskellene mellem design og kode og tæller dem. Antallet kan vise, om processen virker.
+
+### Runde 3: En beslutning ændrede sig midt i projektet
+
+**1. Konkret erfaring:** I webshoppen skiftede jeg fra Pythons standardbibliotek til Flask, mens projektet var i gang.
+
+**2. Refleksion:** Skiftet var billigt, fordi jeg skrev det ned som en beslutning (ADR) først og så ændrede planen og koden. Det krævede nye gennemgange af forretningsgrundlaget, interessenterne og planen, men det var til at følge.
+
+**3. Abstrakt begrebsliggørelse:** En beslutning, der ændres, er billigst, når den er skrevet ned med en begrundelse, før koden ændres.
+
+**4. Aktiv eksperimenteren:** Jeg skriver en beslutning ned, før jeg ændrer strukturen i et projekt. I webshoppens egen konklusion står også, at jeg skulle have gjort frameworket færdigt, før første milepæl.
+
+## 🧩 Udfordringer
+
+- **Jeg har endnu ikke brugt hele processen, som den er nu, i et projekt fra start til slut.** NF Hotel har kæden, men designet kom efter koden. Webshoppen har den nye regel, men ingen use cases. Det er det vigtigste hul i beviset.
+- **Det går langsommere.** Fem dokumenter skal skrives og godkendes, før et use case kan blive til kode. Rene tekniske opgaver kan springe kæden over, og derfor er hele webshoppen planlagt som tekniske opgaver.
+- **Kontrollen er ikke fuld.** Den tjekker, at milepælen er godkendt, men ikke, at use casets design er det. Det skal en reviewer gøre.
+- **Det koster at holde frameworket opdateret.** NF Hotel-projektet står stadig på den tidlige udgave, så hver ændring i frameworket er en flytning, jeg selv skal lave.
 
 ## 📈 Hvad det giver på lang sigt
 
-| Gevinst | Hvorfor |
-|---|---|
-| Kode, der kan forklares | Hver opgave peger på en milepæl, og en milepæl peger på Business Casen, så jeg kan forklare, hvorfor en linje kode findes |
-| Mindre drift mellem design og kode | Koden skal følge DCD'et, og en ændring går via designet |
-| Mindre risiko ved AI | AI'en kan ikke gå i gang uden en accepteret plan, og dens kode skal igennem en gennemgang |
-| Genbrug | Mappestruktur og lag er den samme i alle projekter, så en ny AI-session finder det samme sted til det samme |
-| Hurtigere at starte næste projekt | Planen, skabelonerne og reglerne er klar; kursets 114 projektmapper bruger dem |
+- Jeg kan forklare, hvorfor en linje kode findes, fordi hver opgave peger på en plan, og planen peger på forretningsgrundlaget.
+- AI'en kan ikke gå i gang uden en godkendt plan, og dens kode gennemgås.
+- Mapper og lag er ens i alle projekter, så en ny AI-session finder det samme sted til det samme.
+- Næste projekt starter med færdige skabeloner og regler.
 
-Prisen er, at AI'en bruger tid på planlægning og dokumenter, før den skriver kode. For et lille projekt fylder det meget; for et projekt, der skal bruges og vedligeholdes, er det tiden, der skal spares senere. Jeg har endnu ikke målt det.
+Jeg har endnu ikke målt, hvor meget tid eller hvor mange fejl det sparer.
 
 ## ➡️ Næste skridt
 
-- Bygge ét use case helt igennem med AI: Domain Model, SSD, Operation Contract, Sequence Diagram og DCD, og så kode ud fra dem. Så kan jeg vise hele kæden.
-- Lade kontrollen tjekke, at use casets artefakter er `Accepted`, og ikke kun milepælen.
-- Måle tid og rettelser for et projekt med og uden kæden, så jeg kan svare på, om det betaler sig.
+- Flytte NF Hotel-projektet til den nuværende udgave af frameworket med `update-framework.sh`.
+- Bygge næste use case dér med designet først, måle tiden og tælle forskellene mellem design og kode.
+- Lade kontrollen tjekke, at use casets design er godkendt, og ikke kun milepælen.
 
-## 🔄 Kolbs læringscirkel i praksis
+## 🔄 Kolbs læringscirkel samlet
 
 **1. Konkret erfaring**
 
-Jeg lod AI'en bygge en webshop efter frameworket: først plan og milepæle, derefter kode i lag, med et review for hver milepæl.
+Jeg brugte AI til at bygge kode ud fra planer og milepæle, i NF Hotel-projektet og i webshoppen.
 
 **2. Refleksion**
 
-- Hvad virkede godt?
-  > At AI'en ikke kunne gå i gang uden en accepteret milepæl. Det tvang mig til at beslutte, før noget blev bygget.
-- Hvad overraskede mig?
-  > At en ændring af beslutning midt i projektet var billigst, når den først blev skrevet som en ADR.
-- Hvad mangler i beviset?
-  > Et projekt, hvor koden kommer ud af et use case og dets design. Webshoppen har kun tekniske opgaver.
-- Hvad kan jeg gøre bedre?
-  > Bygge et use case helt igennem og måle, hvor meget længere det tager, og hvad det sparer.
+Det er ikke nok at skrive "design før kode". Design og kode kan stadig afvige fra hinanden, og ændringer midt i arbejdet skal skrives ned.
 
 **3. Abstrakt begrebsliggørelse**
 
-Jeg kobler erfaringen til teori om blandt andet:
+AI-kode skal bygge på godkendte krav og design. Regler skal følges af kontroller, og en person skal gennemgå resultatet. Jeg kobler det til teori om blandt andet:
 
 - use case-drevet udvikling (Larman) og sporbarhed fra krav til kode
-- clean architecture, porte og adaptere og afhængigheder, der peger indad
+- clean architecture og afhængigheder, der peger indad
 - Domain-Driven Design: domænemodel i fagets ord
-- Architecture Decision Records
+- arkitekturbeslutninger (ADR)
 - generativ AI til kode og kontrol af AI-genereret kode
 
 **4. Aktiv eksperimenteren**
 
-Jeg bygger næste projekt med et use case og hele kæden og måler tiden. Resultatet bruger jeg til at beslutte, hvor mange led i kæden der er nødvendige for et projekt af en given størrelse.
+I næste use case i NF Hotel-projektet godkender jeg designet, før AI'en skriver kode. Jeg måler tiden og registrerer forskellene mellem design og kode.
+
+<!-- UDKAST: Refleksionerne er formuleret ud fra projekternes dokumenter og skal rettes til mine egne ord. -->
+
+## 📚 Kilder til viden
+
+- frameworkets regel `process/plan-first-gate.md` og skillerne `coding-conventions`, `project-planning` og `clean-architecture`
+- Larmans rækkefølge fra use case over domænemodel og kontrakter til design
+- NF Hotel-projektets og webshoppens dokumenter (milepæle, beslutninger, review-rapporter)
 
 ## 🎯 Hvilke kernemål i læringsmål dækkes
 
@@ -171,19 +157,19 @@ Jeg bygger næste projekt med et use case og hele kæden og måler tiden. Result
 | Large Language Models (LLM) | Stor | 🟡 | En LLM skriver koden; modellen er ikke sammenlignet her |
 | Modelvalg og model comparison | Stor | 🔴 | Ikke relevant for denne post |
 | Prompt engineering | Stor | 🟡 | Reglen, planen og skillerne er prompten; prompts er ikke testet systematisk |
-| Generativ AI | Stor | 🟡 | AI'en genererer kode ud fra en plan; hele kæden fra use case er ikke vist |
+| Generativ AI | Stor | 🟡 | AI'en genererer kode ud fra en plan, og i NF Hotel-projektet findes hele kæden; designet blev dog skrevet efter koden for de første to use cases |
 | AI-baseret beslutningsstøtte | Stor | 🔴 | Ikke relevant for denne post |
 | OCR | Stor | 🔴 | Ikke relevant for denne post |
 | Feature extraction | Stor | 🔴 | Ikke relevant for denne post |
 | Fortolkning af hoteldata | Mindre | 🔴 | Ikke relevant for denne post |
-| Test og evaluering af AI-output | Mindre | 🟡 | AI'ens kode har enheds-, integrations- og e2e-tests og et review pr. milepæl; behandles i [post 5](2026-11-23_Framework–5_Kvalitetssikring_af_koden.md) |
-| Fejlhåndtering og usikkerhed | Mindre | 🟡 | Stopregler, når planen mangler eller et review ikke er `Go` |
-| Human-in-the-loop | Mindre | 🟡 | Jeg accepterer planen og kan fravige reglen; reviewet af koden er ikke uafhængigt |
-| Privacy og ansvarlig AI | Mindre | 🟡 | Stripe-nøgler læses kun fra en lokal fil uden for git, og en live-nøgle afvises |
+| Test og evaluering af AI-output | Mindre | 🟡 | AI'ens kode har tests og et review pr. milepæl; behandles i [post 5](2026-11-23_Framework–5_Kvalitetssikring_af_koden.md) |
+| Fejlhåndtering og usikkerhed | Mindre | 🟡 | AI'en stopper, når planen mangler, eller et review ikke er godkendt |
+| Human-in-the-loop | Mindre | 🟡 | Jeg godkender planen og kan fravige reglen; reviewet af koden er ikke uafhængigt |
+| Privacy og ansvarlig AI | Mindre | 🟡 | Betalingsnøgler i webshoppen læses kun fra en lokal fil uden for git, og en live-nøgle afvises |
 
 ## 🏨 Hvilken værdi kan det give et hotel management-system?
 
-- **Bookingfunktioner, der kan spores til et krav:** Hver ny funktion i NF Hotel (fx en betaling eller en prisændring) kan starte som et use case med et design, der er gennemgået, før AI'en skriver kode.
-- **Mindre risiko ved AI-kode i et system med gæstedata:** AI'en kan ikke ændre noget uden en accepteret plan, og dens kode gennemgås.
-- **Webshop og Kanban som mulig model:** Webshoppen viser, hvordan betaling og en ordretavle kan bygges; i et hotel kunne tavlen følge en booking fra forespørgsel til afrejse. Det er en mulighed, ikke en del af opgaven.
-- **Ændringer, der er til at forklare:** En ændring af en beslutning (fx en anden betalingsløsning) er en ADR og en ny gennemgang, så hotellet kan se, hvorfor det blev ændret.
+- **Funktioner, der kan spores til et krav:** Hver ny funktion i NF Hotel kan starte som et use case med et gennemgået design, før AI'en skriver kode, så en ændring kan forklares.
+- **Mindre risiko ved AI-kode i et system med gæstedata:** AI'en kan ikke ændre noget uden en godkendt plan, og dens kode gennemgås.
+- **Ændringer, der er til at forklare:** En ny beslutning, fx en anden betalingsløsning, skrives ned og gennemgås, så hotellet kan se, hvorfor den blev ændret.
+- **Kun en mulighed endnu:** Jeg har endnu ikke målt, hvor meget tid eller hvor mange fejl metoden sparer, så det skal jeg afprøve i et helt use case.

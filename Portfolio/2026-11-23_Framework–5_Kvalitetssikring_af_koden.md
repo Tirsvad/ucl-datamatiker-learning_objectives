@@ -3,155 +3,131 @@
 **Dato:** 23/11 2026
 **Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
-Denne post er nummer 5 og den sidste i serien om mit framework. [Post 4](2026-11-23_Framework–4_AI_laver_kode_ud_fra_artefakter.md) viser, hvordan AI'en skriver kode ud fra godkendte artefakter. Her viser jeg, hvordan koden kontrolleres, før den bliver flettet ind. Læringsmålet for AI kræver, at jeg tester og evaluerer AI-output, og kode fra en AI er output, der skal kontrolleres. Beviset er kode-tjeklisterne i [`sqa-qc-checklists`](https://git.tirsystem.com/TirSystem/sqa-qc-checklists), de delte workflows i [`git-workflows`](https://git.tirsystem.com/TirSystem/git-workflows) og webshoppen `097-assignment-an-online-shop`, som er bygget med dem.
+Dette er post 5 i serien om mit framework. [Post 4](2026-11-23_Framework–4_AI_laver_kode_ud_fra_artefakter.md) viser, hvordan AI'en skriver kode ud fra godkendte dokumenter. Her viser jeg, hvordan koden kontrolleres, før den lægges sammen med resten. Kode fra en AI er output, der skal kontrolleres, ligesom andet AI-output. Beviset er kode-tjeklisterne i [`sqa-qc-checklists`](https://git.tirsystem.com/TirSystem/sqa-qc-checklists), de delte workflows i [`git-workflows`](https://git.tirsystem.com/TirSystem/git-workflows) og webshoppen fra Udemy-kurset, som er bygget med dem.
 
 ## 🧭 Tre lag af kontrol
 
-Koden kontrolleres tre steder. Jo tidligere en fejl findes, jo billigere er den.
+Jo tidligere en fejl findes, jo billigere er den.
 
 | Lag | Hvad | Hvem eller hvad |
 |---|---|---|
-| **1. Lokalt, mens der kodes** | Formatering, linter, typetjek, tests og scripts | AI'en og jeg, før en commit |
-| **2. Review mod en tjekliste** | Kriterier for sproget (`QC-PY-001` og de andre) og en review-record (`RC-*`) før pull requesten | Reviewer (i praksis AI som stand-in og mig) |
-| **3. CI og CD på serveren** | Scanning efter hemmeligheder, kodescanning, delte kvalitetstjek, tests og tjek af changelog | Gitea Actions, i `git-workflows` |
+| **1. Lokalt, mens der kodes** | Formatering, tjek af kodestil, typer og tests | AI'en og jeg, før en commit |
+| **2. Review mod en tjekliste** | Kriterier for sproget, fx `QC-PY-001` til Python, og en review-rapport før koden lægges sammen | Reviewer (i praksis AI som stand-in og mig) |
+| **3. Automatisk på serveren (CI og CD)** | Scanning efter hemmeligheder og sikkerhedsfejl, kvalitetstjek, tests og tjek af ændringsloggen | Delte workflows i `git-workflows` |
 
-### Lag 2: tjeklisterne til kode
+**Tjeklisterne til kode.** Der er 10: Python, C, C++, C#, Rust, Flutter, React, shell, YAML-filer og workflows. Python-tjeklisten har 18 kriterier, fx at koden følger formatteren og stilreglerne, at hver funktion har typer, at fejl ikke bliver slugt, at ingen hemmeligheder står i loggen, at hver klasse kan spores til designet, at tests findes for ny adfærd, og at koden ligger i de aftalte lag.
 
-Der er 10 tjeklister til kode og automatisering: Python, C, C++, C#, Rust, Flutter, React, shell, YAML-filer og CI-workflows. Python-tjeklisten (`QC-PY-001`) har 18 kriterier, fx:
+**Tests.** Frameworket har 14 slags test, fx positive, negative, grænseværdier og fejlhåndtering. En fejl, der rettes, får en test, som fejler uden rettelsen. En GUI-test kører aldrig på min egen skærm, men i Docker eller Windows Sandbox.
 
-- navne og casing følger PEP 8, og navne siger formål i domænets sprog
-- koden er lavet af formatteren og består linteren uden uforklarede undertrykkelser
-- hver signatur har typer, og typetjekket kører uden fejl
-- ingen bar `except:` og ingen slugte undtagelser
-- logging bruger `logging` og ikke `print`, og ingen hemmeligheder står i loggen
-- **klasser og operationer kan spores til det Design Class Diagram, de implementerer; afvigelser er noteret**
-- tests findes for ny adfærd, er navngivet efter adfærden og afhænger ikke af rækkefølge eller netværk
-- hver viden er defineret ét sted (DRY), imports peger indad uden cirkler, og SOLID holder
-- koden ligger i lagene `domain`, `application`, `infrastructure` og `presentation`, og `tests/` har `unit`, `integration` og `e2e`
-- fil- og mappenavne er engelske, uden mellemrum
+**Fælles regler.** Hvert kodeprojekt har en `.editorconfig` med faste indstillinger for tegnsæt, linjeskift og mellemrum, og et script fejler, hvis den mangler.
 
-Hvert kriterium har en ISO/IEC 25010-karakteristik og et niveau, og tjeklisten har en liste over almindelige fejl, ligesom tjeklisterne til dokumenter i [post 3](2026-11-23_Framework–3_Kvalitetssikring_af_artefakter.md). Reviewet af koden skrives som en `RC`, nøjagtig som for et dokument.
+**Workflows på serveren.** De ligger i ét repository og bruges af alle repositories i organisationen:
 
-### Hvad testene skal dække
+- **CI** scanner først efter hemmeligheder (et fund stopper resten og nævner fil og linje, aldrig værdien), derefter validering og sikkerhedsscanning.
+- **CD** venter på, at CI er grøn, og udgiver derefter godkendte milepæle og wiki.
+- Kvalitetstjek for Python, shell, C++ og C#, tællere for kodelinjer og testdækning og et tjek af, at kommentarer er på engelsk.
 
-`coding-conventions` har 14 slags test, og Test Plan skal sige, hvilke der ikke gælder, og hvorfor: positiv, negativ, grænseværdi, kanttilfælde, ækvivalensklasser, tilstandsovergang, samtidighed, kapløb, asynkron adfærd, timeout og genforsøg, fejlhåndtering, integration, regression og udforskende test. En enhedstest bruger et falsk ur og en falsk eller hukommelsesbaseret port og venter eller kalder aldrig netværket. En fejl, der rettes, får en regressionstest, som fejler uden rettelsen.
+Værktøjerne er fastlåst til bestemte versioner. I CI har hvert job kun læserettigheder og en tidsfrist, og intet CI-job har en hemmelighed.
 
-### Regler om, hvor tests kører
+## 🛒 Beviset: webshoppen og NF Hotel
 
-En GUI-test eller end-to-end-test kører aldrig på min egen skærm. Den kører i en Docker-container (Linux) eller i Windows Sandbox, så den ikke tager min mus og tastatur. Reglen er skrevet én gang (`process/gui-testing.md`), og webshoppen bruger Docker kun til skærmbilleder og browsertests.
-
-### Fælles regler for alle kodeprojekter
-
-Hvert kodeprojekt har en `.editorconfig` i roden, lavet af frameworkets skabelon (UTF-8, LF, to mellemrum, afsluttende linjeskift, undtagelser for Markdown, Python og C#). `check-editorconfig.sh` fejler, hvis et repository har kildefiler uden. Det samme gælder `.gitignore` fra GitHubs skabeloner, LF som linjeskift og engelske fil- og mappenavne.
-
-### Lag 3: `git-workflows`
-
-Delte workflows ligger i ét repository og bruges af alle repositories i organisationen. Der er otte workflows:
-
-| Workflow | Hvad den kontrollerer |
+| Projekt | Hvad det viser |
 |---|---|
-| **CI** (scoped, kører i alle repositories) | `secret-scan` først (Gitleaks; et fund fejler kørslen og springer resten over og nævner regel, fil og linje, aldrig værdien), derefter `validate`, `opengrep` (statisk sikkerhedsscan) og `release-check` ved siden af hinanden |
-| **CD** (scoped) | Venter på, at de fire CI-statusser for samme commit er grønne, og kører derefter `release`, udgivelse af godkendte milepæle, wiki og beskrivelsen af GitHub-spejlet for de stier, der er ændret |
-| Quality checks | `ruff`, `mypy`, `shellcheck` og `shfmt` på de sporede filer; ændrer intet |
-| Quality checks C++ og C# | `clang-format` og `clang-tidy` ved eksakte versioner; `dotnet format` og `dotnet build` med advarsler som fejl |
-| Code metrics | Tæller kodefiler og linjer og publicerer dem og testdækningen som tre SVG-badges |
-| English comments | Vurderer sproget i de kommentarer, en pull request tilføjer, og fejler, hvis en ikke er engelsk |
-| Validate workflows | Repositoryets egne tests |
+| **Webshoppen** | Milepæl 1 til 6 har hver en review-rapport for koden mod Python-tjeklisten. Kodestil og typetjek består uden fejl. 289 tests og 99,8 % dækning ved milepæl 5. En test fejler, hvis domænet importerer Flask. Betalingsnøgler læses kun fra en lokal fil uden for git, og betalingen testes uden netværk |
+| **NF Hotel** | 73 testfiler og en kontrol af, at lagene kun bruger hinanden i den rigtige retning. En review-rapport tjekker med et script, at alle 166 tegnede operationer findes i koden |
 
-Værktøjerne er fastlåst til bestemte versioner. I CI har hvert job kun læserettigheder og en tidsfrist, og intet CI-job har en hemmelighed. Workflowene testes offline med `pytest`, og kørslen fejler, hvis dækningen af `tools/` falder under 95 %.
+## 🔄 Kolbs læringscirkel: tre runder
 
-## 🛒 Beviset: webshoppen
+### Runde 1: Mine egne værktøjer brød mine egne regler
 
-Webshoppen er bygget af AI efter frameworket, og kontrollen kan ses i den:
+**1. Konkret erfaring:** Den første gennemgang af mine scripts mod min egen tjekliste fandt et adgangsbevis (token) på kommandolinjen, hvor andre brugere kan se det, og et script, der meldte "ok", selv når noget var fejlet (10/10). Dagen efter brød min egen workflow-skabelon min tjekliste for workflows: ingen tidsfrist, ingen begrænsning af rettigheder og lange scripts inde i filen. Valideringen af workflows fandt senere flere fund i mine scripts (4/11).
 
-| Hvad | Hvad projektet viser |
-|---|---|
-| Review af koden | Milepæl 1 til 6 har hver en review-record for koden mod `QC-PY-001`. `RC-022` (Stripe-milepælen) har alle 18 kriterier med evidens |
-| Linter og typetjek | `ruff check` uden fejl, `mypy --strict src` uden fejl |
-| Tests | 289 tests og 99,8 % dækning, da milepæl 5 blev gennemgået (grænsen er 90 %), og 340 tests til sidst ifølge refleksionssiden |
-| Lag | `test_layering.py` fejler, hvis domæne eller application importerer Flask |
-| Hemmeligheder | Stripe-nøglerne læses kun fra en lokal fil, som git ignorerer, en live-nøgle afvises, og en test viser, at en nøgle aldrig står i fejl eller i loggen |
-| Test uden netværk | Betalingsporten testes mod en falsk gateway og en lokal falsk Stripe-server, så ingen test rammer netværket |
+**2. Refleksion:** Jeg havde skrevet reglerne til koden, men ikke målt mit eget værktøj på dem. Det, jeg selv havde skrevet, havde en sikkerhedsfejl.
 
-Webshoppens egen refleksion beskriver, hvad CI fangede, som mine lokale tjek ikke gjorde: *"a fake `sk_live_` key in a test tripped the secret scan, and SQL built from f-strings tripped the code scan."* Derfor er hver forespørgsel nu en almindelig streng med `?` som pladsholdere, og brugerinput bliver kun en bundet værdi og aldrig en del af SQL-teksten.
+**3. Abstrakt begrebsliggørelse:** Scripts er også kode. En regel er først noget værd, når den også gælder for mig selv.
 
-## 🧩 Udfordringer undervejs
+**4. Aktiv eksperimenteren:** Mine scripts gennemgås mod samme tjekliste som anden kode, og kontrollerne kører automatisk.
 
-**CI finder det, mit lokale tjek ikke gør.** Det var en uventet ting i webshoppen. Den falske nøgle i en test og SQL bygget af f-strings blev først fundet af CI. Min lære er at køre de samme scanninger lokalt før hver push, så en rød CI ikke er første gang, jeg ser fejlen.
+### Runde 2: Det virkede lokalt, men ikke i CI
 
-**Scripts er også kode, og de skal testes i stor skala.** Et script, som læser milepæle og review-records, startede to processer for hver record for hver milepæl. For et projekt med 112 records og 21 milepæle gav det omkring 4.700 `fork`-kald i én kørsel. Det brugte processerne op på en CI-runner (`fork: retry: Resource temporarily unavailable`) og tog dens container-daemon ned. Det blev rettet i frameworkets udgave 0.24.4, så scriptet nu starter én proces pr. milepæl, og resultatet er det samme for alle milepæle i `git-workflows` (sammenlignet før og efter). Fejlen viste sig først, da der var mange records.
+**1. Konkret erfaring:** I webshoppen fandt CI en falsk betalingsnøgle i en test og SQL bygget af tekststumper. Mine lokale tjek fandt dem ikke. Scripts fejlede også i CI: et stoppede midt i læsningen, da en fil blev stor (10/11), og et startede omkring 4.700 programmer i én kørsel og fik serveren til at gå ned (20/11).
 
-**Jeg er min egen reviewer.** Review-recorden for webshoppens kode siger `Mode: autonomous, not independent`, og reviewer er AI som stand-in for mig. Det er et ærligt mærke, men det betyder, at tjeklisten er anvendt, ikke at en anden har set koden. CI, linter og tests er det, der er uafhængigt af mig.
+**2. Refleksion:** Mine lokale tjek og CI kørte ikke det samme, og scripts blev kun prøvet på små eksempler.
 
-**Reglerne håndhæves ikke af frameworket.** Frameworket definerer konventionerne, men håndhæver dem ikke. Det er `git-workflows` der gør det. Det er en bevidst grænse, og den betyder, at et projekt, der ikke bruger workflowene, kun har tjeklisten at holde sig til.
+**3. Abstrakt begrebsliggørelse:** Størrelse og miljø er en del af koden. Test i det miljø, koden skal køre i, og med flere data.
 
-**CI og CD hænger sammen uden en fælles begivenhed.** Instansen giver ikke en hændelse, der starter en workflow efter en anden. CD'en venter derfor ved at spørge efter de fire CI-statusser, op til 600 sekunder. Det er en løsning, der virker, men den er et kompromis.
+**4. Aktiv eksperimenteren:** Jeg kører CI's scanninger lokalt før hver push. Alle forespørgsler i webshoppen er nu faste tekster med pladsholdere. Scripts har tests med store filer.
 
-**Meget arbejde i workflowene.** `git-workflows` har 558 commits og 28 tags frem til udgave 4.0.0. Seks scoped workflows blev i `ADR-0019` samlet i to, CI og CD. Det er vedligeholdelse, der kommer oven i selve projekterne.
+### Runde 3: En rettelse nåede ikke frem
 
-**Dokumentationen halter efter.** README'en i `git-workflows` siger stadig "ikke kørt på instansen" for flere workflows (fx kodescanningen og valideringen), mens webshoppens refleksion viser, at secret-scan og kodescanning har fanget fejl der. Jeg skal tjekke og opdatere README'en, så den siger, hvad der faktisk er sket.
+**1. Konkret erfaring:** Jeg rettede fejlene i frameworket, men de delte workflows brugte stadig en gammel udgave af det og fejlede igen (10/11 og 20/11).
 
-## 📚 Kilder til viden
+**2. Refleksion:** Jeg troede, en fejl var løst, når rettelsen var lavet. Men den, der bruger rettelsen, skal også skifte version.
 
-- `qc/code/qc-programming-*.md`, `qc-yaml.md` og `qc-workflow.md`
-- `coding-conventions`-skillen og dens regler for test, DRY, SOLID og `.editorconfig`
-- `git-workflows`: README, guides og ADR'er (fx `ADR-0019` om CI og CD)
-- webshoppens review-records, README og refleksion
+**3. Abstrakt begrebsliggørelse:** Afhængigheder mellem projekter og versionering.
+
+**4. Aktiv eksperimenteren:** Ved hver rettelse flytter jeg også de dele, der bruger den. Da jeg i 4.0.0 samlede seks workflows i to, ændrede navnene på statuskontrollerne sig, så jeg lavede et værktøj til at flytte kravene i to trin.
+
+## 🧩 Udfordringer
+
+- **Jeg er min egen reviewer.** Review-rapporten for webshoppens kode siger, at AI'en er stand-in for mig. CI, kodekontrol og tests er det, der er uafhængigt af mig.
+- **Frameworket håndhæver ikke reglerne.** Det gør workflowene i `git-workflows`. Et projekt uden dem har kun tjeklisten.
+- **Meget arbejde i workflowene.** `git-workflows` har 558 commits og 28 udgivelser. Det er vedligeholdelse oven i selve projekterne.
+- **Dokumentationen halter.** README'en i `git-workflows` siger stadig "ikke kørt på serveren" for flere workflows, selvom de har fanget fejl i webshoppen. Den skal opdateres.
+- **NF Hotel har ingen automatiske kontroller.** Projektet har ingen workflow-mappe i min lokale kopi, og det ligger på GitHub og ikke på min Gitea. Tjekscriptet i en review-rapport er ikke committet, så kontrollen kan kun gentages med et tilsvarende script.
 
 ## 📈 Hvad det giver på lang sigt
 
-| Gevinst | Hvorfor |
-|---|---|
-| Fejl findes tidligt og af maskiner | Formatering, typer, hemmeligheder og kendte sikkerhedsfejl kontrolleres hver gang, og jeg skal ikke huske det |
-| Kode fra en AI er ikke tillid, men kontrol | AI'ens kode skal bestå samme tests, tjek og review som min egen |
-| Genbrug | De delte workflows bruges af alle repositories i organisationen. Kurset har 114 projektmapper med samme struktur |
-| Et bevis ved siden af koden | Review-records viser, hvad der blev tjekket, og med hvilket resultat |
-| Sikkerhed i bunden | Secret-scan kører først, og et fund stopper resten, så en hemmelighed ikke bliver liggende i historikken |
+- Fejl findes tidligt og af maskiner. Jeg skal ikke selv huske formatering, typer og hemmeligheder.
+- AI'ens kode skal bestå samme tests, tjek og review som min egen. Det er kontrol og ikke tillid.
+- De delte workflows bruges af alle repositories. Kurset har 114 projektmapper med samme struktur.
+- Review-rapporter viser, hvad der blev tjekket, og med hvilket resultat.
 
-Prisen er, at jeg vedligeholder workflows, scripts og tjeklister ud over selve produktet. Det betaler sig, når der er mange projekter og kode skrevet af en AI, der ikke selv har ansvaret for at kontrollere den.
+Prisen er, at jeg vedligeholder workflows, scripts og tjeklister ud over selve produktet.
 
 ## ➡️ Næste skridt
 
-- Køre CI-scanningerne lokalt før hver push i alle projekter.
-- Få et uafhængigt review af koden, så jeg kan sammenligne med AI'ens.
-- Opdatere README'en i `git-workflows` efter en kørsel på instansen og tjekke, at de enkelte status-linjer passer.
-- Lave en test på store mængder records for alle scripts, der læser milepæle og review-records.
+- Køre CI's scanninger lokalt før hver push.
+- Få et uafhængigt review af koden.
+- Opdatere README'en i `git-workflows` efter en kørsel på serveren.
+- Lave en test med mange data for alle scripts, der læser milepæle og review-rapporter.
+- Flytte NF Hotel-projektet til de delte workflows og committe tjekscriptet.
 
-## 🔄 Kolbs læringscirkel i praksis
+## 🔄 Kolbs læringscirkel samlet
 
 **1. Konkret erfaring**
 
-Jeg lod AI'en skrive kode, kørte lokale tjek, lavede review mod `QC-PY-001` og lod CI og CD kontrollere resten. Jeg rettede det, CI fandt.
+Jeg lod AI'en bygge kode og kontrollerede den med tjeklister, tests og workflows. Underveis fejlede mine egne scripts og workflows.
 
 **2. Refleksion**
 
-- Hvad virkede godt?
-  > At maskinerne tager det, de er gode til: format, typer, hemmeligheder og SQL-mønstre. Reviewet kan bruge tiden på design og sporbarhed.
-- Hvad overraskede mig?
-  > At CI fandt noget, mine lokale tjek ikke gjorde, og at et script først fejlede, da der var mange records.
-- Hvad er det svageste punkt?
-  > At reviewet af koden ikke er uafhængigt.
-- Hvad kan jeg gøre bedre?
-  > Køre CI-tjekkene lokalt først og teste mine egne scripts i stor skala.
+Mine egne værktøjer fulgte ikke altid mine regler, og fejl viste sig først i CI eller med mere data.
 
 **3. Abstrakt begrebsliggørelse**
 
 Jeg kobler erfaringen til teori om blandt andet:
 
-- kontinuerlig integration og levering (CI/CD) og "shift left"
-- statisk analyse, hemmelighedsscanning og sikre udviklingsmetoder (SSDF)
-- testpyramiden og slags tests
-- clean architecture og test af lagdeling
-- kvalitetsmodellen ISO/IEC 25010
-- skalering og ressourcegrænser i scripts
+- CI/CD og statisk analyse
+- test i stor skala og regressionstest
+- sikker udvikling og styring af hemmeligheder
+- afhængigheder og versionering mellem repositories
+- Kolbs læringscirkel anvendt på mit eget arbejde
 
 **4. Aktiv eksperimenteren**
 
-Jeg bruger kontrollen på alle nye projekter og tæller, hvad CI finder, og hvad review finder. Tallene bruger jeg til at beslutte, hvilke tjek der skal flyttes til lokalt eller til CI.
+Jeg kører de samme scanninger lokalt som i CI, tester med store datamængder og tæller, om de samme fejltyper kommer igen.
+
+<!-- UDKAST: Refleksionerne er formuleret ud fra changelog, records og webshoppens README og skal rettes til mine egne ord. -->
+
+## 📚 Kilder til viden
+
+- kode-tjeklisterne i `sqa-qc-checklists` og frameworkets regler for kode
+- `git-workflows`: README, guides og beslutningen om at samle workflowene i CI og CD
+- webshoppens og NF Hotel-projektets review-rapporter, README og refleksion
 
 ## 🎯 Hvilke kernemål i læringsmål dækkes
 
-🟢 dækkes helt, 🟡 dækkes delvist, 🔴 dækkes kun lidt eller slet ikke endnu. Posten handler om kontrol af kode og ikke om datasæt.
+🟢 dækkes helt, 🟡 dækkes delvist, 🔴 dækkes kun lidt eller slet ikke endnu. Posten handler om kontrol af kode og ikke om data eller maskinlæring.
 
 ### Dataanalyse og databehandling
 
@@ -174,7 +150,7 @@ Jeg bruger kontrollen på alle nye projekter og tæller, hvad CI finder, og hvad
 
 | Kerneområde | Vægt i læringsmål | Dækning | Begrundelse |
 |---|---|:---:|---|
-| Python for AI | Stor | 🔴 | Ikke relevant for denne post |
+| Python for AI | Stor | 🔴 | Webshoppen er Python, men uden AI-funktioner |
 | Machine Learning | Stor | 🔴 | Ikke relevant for denne post |
 | AI til fortolkning af data | Stor | 🔴 | Ikke relevant for denne post |
 | Large Language Models (LLM) | Stor | 🟡 | En LLM skriver koden; modellen er ikke sammenlignet her |
@@ -185,14 +161,14 @@ Jeg bruger kontrollen på alle nye projekter og tæller, hvad CI finder, og hvad
 | OCR | Stor | 🔴 | Ikke relevant for denne post |
 | Feature extraction | Stor | 🔴 | Ikke relevant for denne post |
 | Fortolkning af hoteldata | Mindre | 🔴 | Ikke relevant for denne post |
-| Test og evaluering af AI-output | Mindre | 🟡 | Tests, linter, typetjek, review og CI vurderer AI'ens kode; en systematisk optælling af, hvad hvert lag finder, mangler |
+| Test og evaluering af AI-output | Mindre | 🟡 | Tests, kodekontrol, review og CI vurderer AI'ens kode; en systematisk optælling af, hvad hvert lag finder, mangler |
 | Fejlhåndtering og usikkerhed | Mindre | 🟡 | CI stopper ved fund, og stopreglerne gælder; en kørsel i stor skala fandt en fejl, jeg ikke havde set |
 | Human-in-the-loop | Mindre | 🟡 | Pull request og review er menneskelige trin, men reviewet er ikke uafhængigt |
 | Privacy og ansvarlig AI | Mindre | 🟡 | Hemmelighedsscanning, nøgler uden for git og regler om, at hemmeligheder aldrig udskrives |
 
 ## 🏨 Hvilken værdi kan det give et hotel management-system?
 
-- **Sikker håndtering af gæstedata og betaling:** Hemmelighedsscanning, kodescanning og regler om nøgler og SQL med pladsholdere er direkte brugbare i et hotelsystem, der gemmer bookinger og kontaktoplysninger.
-- **AI-kode, der kan stoles på:** Hvis AI'en skriver dele af NF Hotel, skal koden gennem de samme tests og tjek som koden, jeg selv skriver.
-- **Fejl i drift findes før gæsterne:** Tests uden netværk og med falske porte gør, at betaling og booking kan testes uden rigtige penge og rigtige gæster.
-- **Overskuelig vedligeholdelse:** Lag, `.editorconfig` og faste navne gør, at en ny udvikler hurtigt finder rundt.
+- **Sikkerhed for gæstedata:** Scanning efter hemmeligheder og regler mod hemmeligheder i logfiler passer til et system, der håndterer gæster. Skal pasoplysninger udlæses med OCR, skal de behandles som hemmeligheder: aldrig på en kommandolinje og aldrig i en log.
+- **Kode, der kan stoles på:** En betaling eller booking, som AI'en har skrevet, skal bestå de samme tests og tjek, før hotellet bruger den.
+- **Fejl i god tid:** Tests i det rigtige miljø og med mange data er det, et hotelsystem med mange bookinger har brug for.
+- **Genbrug:** De delte workflows kan bruges på hotellets repositories uden at starte forfra.
