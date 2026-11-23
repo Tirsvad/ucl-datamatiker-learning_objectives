@@ -18,7 +18,24 @@ Jeg vil som grundlag for arbejdet gennemføre de relevante dele af et Python-for
 
 Fokus er dermed på at forstå, vælge, anvende og evaluere AI-teknologier – ikke på at udvikle en komplet kommerciel AI-løsning.
 
-### Viden, kunnen og kompetencer – med Bloom-niveau
+## ⏸️ Afgrænsning: Python-for-AI-kurset og Machine Learning til OCR er udskudt til efter 24/12
+
+PO har vurderet scanning af pas som **out of scope** for projektet. Derfor er den del af læringsmålet, der handler om Machine Learning til OCR af pas, fravalgt i projektperioden (til 6/12 2026) og udskudt til efter 24/12 2026. Det samme gælder det Python-for-AI-kursus, som skulle bære den del. Der er ikke noget at bygge det på i projektet, så jeg bruger ikke tid på det, før der er brug for det.
+
+Jeg beholder læringsmålet i sin oprindelige form, men følgende er udskudt og indgår ikke i det, jeg dokumenterer inden afleveringen:
+
+- Python-for-AI-kurset (succeskriterium 1)
+- Machine Learning til OCR af pas (succeskriterium 5, V4, F5 og C3)
+- Milepæl M4 – OCR/ML (uge 11–13)
+- ML/OCR-prototypen i portfolioen
+
+Resten af læringsmålet gælder uændret: valg af model, fortolkning af hoteldata, prompts, test og evaluering. Det Python-grundlag, som Python-for-AI-kurset skulle give, er dækket af Udemy-kurset *100 Days of Code*, som jeg gennemførte 22/11.
+
+### Viden, færdigheder og kompetencer – med Bloom-niveau
+
+- **Viden** er det, jeg har læst og set videoer om: teori, begreber og sammenhænge.
+- **Færdigheder** er det, jeg kan udføre i praksis: de konkrete værktøjer, metoder og teknikker.
+- **Kompetencer** er det, jeg har indført i NF Hotel-projektet, hvor viden og færdigheder bruges sammen i en virkelig opgave, med dømmekraft og ansvar for egen læring og arbejdsproces.
 
 **Viden** – jeg har viden om
 
@@ -30,19 +47,19 @@ Fokus er dermed på at forstå, vælge, anvende og evaluere AI-teknologier – i
 | V4 | Machine Learning, OCR og feature extraction i en pipeline fra pasbillede til strukturerede pasoplysninger | Forstå |
 | V5 | metoder til at evaluere AI-output, herunder human-in-the-loop | Forstå |
 
-**Kunnen** – jeg kan
+**Færdigheder** – jeg kan
 
 | # | Jeg kan | Bloom-niveau |
 |---|---|---|
-| K1 | identificere hvor AI kan skabe værdi i hotelprojektet | Analysere |
-| K2 | sammenligne forskellige LLM'er ud fra kriterier som kvalitet, hastighed, pris, privacy og anvendelighed | Analysere |
-| K3 | anvende LLM'er til fortolkning af strukturerede og ustrukturerede hoteldata | Anvende |
-| K4 | anvende AI til at identificere mønstre, sammenhænge og mulige forklaringer i hoteldata | Analysere |
-| K5 | undersøge Machine Learning til OCR-behandling af pas | Forstå/Analysere |
-| K6 | teste AI-løsningernes nøjagtighed og identificere fejl og usikkerhed | Analysere |
-| K7 | anvende template, sammenlignende scripts og kvalitetstjekliste til at sikre ensartede artefakter | Anvende |
+| F1 | identificere hvor AI kan skabe værdi i hotelprojektet | Analysere |
+| F2 | sammenligne forskellige LLM'er ud fra kriterier som kvalitet, hastighed, pris, privacy og anvendelighed | Analysere |
+| F3 | anvende LLM'er til fortolkning af strukturerede og ustrukturerede hoteldata | Anvende |
+| F4 | anvende AI til at identificere mønstre, sammenhænge og mulige forklaringer i hoteldata | Analysere |
+| F5 | undersøge Machine Learning til OCR-behandling af pas | Forstå/Analysere |
+| F6 | teste AI-løsningernes nøjagtighed og identificere fejl og usikkerhed | Analysere |
+| F7 | anvende template, sammenlignende scripts og kvalitetstjekliste til at sikre ensartede artefakter | Anvende |
 
-**Kompetencer** – jeg kan selvstændigt
+**Kompetencer** – jeg kan selvstændigt (indført i NF Hotel)
 
 | # | Jeg kan selvstændigt | Bloom-niveau |
 |---|---|---|
@@ -55,7 +72,7 @@ Fokus er dermed på at forstå, vælge, anvende og evaluere AI-teknologier – i
 | C7 | planlægge og nedbryde en ny, ukendt opgave med AI og omstille mig til et nyt domæne | Skabe |
 | C8 | dokumentere mine valg, eksperimenter, resultater og refleksioner og tage ansvar for kvaliteten af mine leverancer | Vurdere |
 
-Niveauet spænder bevidst fra forstå (viden) over anvende/analysere (kunnen) til vurdere/skabe (kompetencer), så ambitionen matcher et 30 ECTS-forløb frem for et rent gengivelses- eller forståelsesniveau.
+Niveauet spænder bevidst fra forstå (viden) over anvende/analysere (færdigheder) til vurdere/skabe (kompetencer), så ambitionen matcher et 30 ECTS-forløb frem for et rent gengivelses- eller forståelsesniveau.
 
 ## 📚 Kerneområder
 
@@ -74,6 +91,8 @@ Jeg betragter læringsmålet som opnået, når jeg kan dokumentere:
 **1. Python-for-AI-kursus**
 Jeg gennemfører de relevante dele af et Python-for-AI-kursus med fokus på Python, Pandas, NumPy, Matplotlib og Machine Learning, og dokumenterer hvordan læringen anvendes i de efterfølgende AI-eksperimenter og i hotelprojektet.
 
+*Udskudt til efter 24/12 2026 (se afgrænsningen ovenfor). Python, Pandas, NumPy og Matplotlib er dækket af 100 Days of Code.*
+
 **2. Valg af AI-model**
 Jeg undersøger mindst 3 relevante LLM'er eller AI-modeller til projektets problemstillinger. For hver model dokumenterer jeg: hvad den kan anvendes til, styrker/begrænsninger, kvalitet af output, hastighed, ressourceforbrug, privacy/datahåndtering, og hvorfor den er/ikke er relevant. Jeg vælger mindst én model og begrunder valget ud fra konkrete testresultater.
 
@@ -86,6 +105,8 @@ Jeg udvikler mindst 3 forskellige prompts eller promptstrategier til fortolkning
 **5. Machine Learning til OCR**
 Jeg undersøger, hvordan Machine Learning og OCR kan anvendes til automatisk behandling af pasbilleder. Løsningen skal kunne identificere mindst pasnummer, navn og nationalitet. Jeg dokumenterer, hvordan data bevæger sig fra: Pasbillede → OCR/ML → tekst → strukturerede pasoplysninger.
 
+*Udskudt til efter 24/12 2026 (se afgrænsningen ovenfor). PO har vurderet pas-scanning som out of scope.*
+
 **6. Test og evaluering**
 Jeg gennemfører mindst 10 dokumenterede testcases fordelt på AI-funktionerne og registrerer input, forventet resultat, faktisk resultat, fejl/usikkerhed, hvordan fejlen håndteres, og om menneskelig kontrol er nødvendig.
 
@@ -96,7 +117,7 @@ Jeg gennemfører mindst 10 dokumenterede testcases fordelt på AI-funktionerne o
 | M1 – Afprøvning af LLM-modeller | Uge 1–3 (26/8–9/9) | Identificér ≥3 LLM'er, afprøv på mindre datamængde, sammenlign kvalitet/hastighed/ressourceforbrug/anvendelighed, vælg model(ler) |
 | M2 – Første LLM-eksperimenter | Uge 4–8 (16/9–14/10) | Systematiske eksperimenter med ≥3 promptstrategier, identificér mønstre/sammenhænge/årsager, udarbejd AI-baserede marketingkonklusioner |
 | M3 – Implementering i NF Hotel | Uge 9–10 (21/10–28/10) | Integrér valgt AI-model med hoteldata i NF Hotel, præsentér AI-fortolkning som beslutningsstøtte |
-| M4 – OCR/ML | Uge 11–13 (4/11–18/11) | Afprøv OCR/ML-teknologi på testbilleder, identificér pasnummer/navn/nationalitet, dokumentér nøjagtighed/fejl/begrænsninger, vurdér integration i NF Hotel |
+| M4 – OCR/ML | Uge 11–13 (4/11–18/11) | **Udskudt til efter 24/12 (PO: pas-scanning er out of scope).** Afprøv OCR/ML-teknologi på testbilleder, identificér pasnummer/navn/nationalitet, dokumentér nøjagtighed/fejl/begrænsninger, vurdér integration i NF Hotel |
 | Aflevering | Uge 15 (2/12–6/12) | Samlet konklusion, SMART-tjek, portfolio |
 
 ## 🔄 Læring gennem Kolbs læringscirkel
@@ -117,7 +138,9 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 
 ## 🗂️ Bevis / portfolio
 
-- [ ] Dokumentation fra relevante dele af Python-for-AI-kurset
+- [ ] Dokumentation fra relevante dele af Python-for-AI-kurset (udskudt til efter 24/12)
+  - [x] Python, Pandas, NumPy og Matplotlib fra *100 Days of Code*, gennemført 22/11 ([bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md))
+  - [ ] Machine Learning (udskudt til efter 24/12; kun lineær regression med scikit-learn er dækket af 100 Days of Code)
 - [x] Sammenligning af mindst 3 AI-modeller/LLM'er ([bevis](Portfolio/2026-10-28_sammenligning_af_lokale_LLMer.md))
   - [x] microsoft/phi-4
   - [ ] google/gemma-4-31b-qat (kun `gemma4:e2b` testet)
@@ -128,7 +151,7 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 - [ ] Mindst 3 promptstrategier
 - [ ] AI-baserede konklusioner om mulige marketingforbedringer
 - [ ] Integration af AI-fortolkning i NF Hotel
-- [ ] ML/OCR-prototype til pasinformation
+- [ ] ML/OCR-prototype til pasinformation (udskudt til efter 24/12, PO: pas-scanning er out of scope)
 - [ ] Mindst 10 dokumenterede testcases
 - [x] Eksempler på fejl og usikkerhed
 - [ ] Mine egne vurderinger af AI-output

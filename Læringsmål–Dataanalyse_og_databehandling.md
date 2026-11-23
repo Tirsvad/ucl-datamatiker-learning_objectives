@@ -12,7 +12,11 @@ Jeg vil desuden kunne vurdere datakvalitet og begrænsninger og formidle analyse
 
 Fokus er på dataenes kvalitet, behandling og fortolkning – ikke på at udvikle Machine Learning-modeller (det ligger i [Læringsmål 1](Læringsmål%20–%20AI%20til%20hotelbelægning%20og%20prisforudsigelse.md)).
 
-### Viden, kunnen og kompetencer – med Bloom-niveau
+### Viden, færdigheder og kompetencer – med Bloom-niveau
+
+- **Viden** er det, jeg har læst og set videoer om: teori, begreber og sammenhænge.
+- **Færdigheder** er det, jeg kan udføre i praksis: de konkrete værktøjer, metoder og teknikker.
+- **Kompetencer** er det, jeg har indført i NF Hotel-projektet, hvor viden og færdigheder bruges sammen i en virkelig opgave, med dømmekraft og ansvar for egen læring og arbejdsproces.
 
 **Viden** – jeg har viden om
 
@@ -23,18 +27,18 @@ Fokus er på dataenes kvalitet, behandling og fortolkning – ikke på at udvikl
 | V3 | visualiseringstyper (linje, søjle, histogram, boxplot, scatterplot) og hvad hver egner sig til | Forstå |
 | V4 | datas begrænsninger og hvad data kan/ikke kan fortælle | Forstå |
 
-**Kunnen** – jeg kan
+**Færdigheder** – jeg kan
 
 | # | Jeg kan | Bloom-niveau |
 |---|---|---|
-| K1 | anvende Python-biblioteker til dataanalyse (Pandas og Matplotlib) | Anvende |
-| K2 | dokumentere datakilde, struktur og begrænsninger for et historisk hoteldatasæt | Forstå |
-| K3 | gennemføre en systematisk kontrol af datakvalitet (manglende værdier, dubletter, fejlformater m.m.) | Analysere |
-| K4 | anvende statistiske mål (gennemsnit, median, kvartiler, standardafvigelse m.fl.) | Anvende |
-| K5 | forklare, hvad statistiske resultater fortæller om datasættet | Forstå |
-| K6 | identificere trends, mønstre og sammenhænge i data | Analysere |
+| F1 | anvende Python-biblioteker til dataanalyse (Pandas og Matplotlib) | Anvende |
+| F2 | dokumentere datakilde, struktur og begrænsninger for et historisk hoteldatasæt | Forstå |
+| F3 | gennemføre en systematisk kontrol af datakvalitet (manglende værdier, dubletter, fejlformater m.m.) | Analysere |
+| F4 | anvende statistiske mål (gennemsnit, median, kvartiler, standardafvigelse m.fl.) | Anvende |
+| F5 | forklare, hvad statistiske resultater fortæller om datasættet | Forstå |
+| F6 | identificere trends, mønstre og sammenhænge i data | Analysere |
 
-**Kompetencer** – jeg kan selvstændigt
+**Kompetencer** – jeg kan selvstændigt (indført i NF Hotel)
 
 | # | Jeg kan selvstændigt | Bloom-niveau |
 |---|---|---|
@@ -44,7 +48,7 @@ Fokus er på dataenes kvalitet, behandling og fortolkning – ikke på at udvikl
 | C4 | formidle analyseresultater som grundlag for beslutninger om kapacitet, pris, bemanding og planlægning | Skabe |
 | C5 | overføre min dataforståelse til nye opgaver og domæner | Anvende |
 
-Niveauet spænder fra forstå (viden) over anvende/analysere (kunnen) til vurdere/skabe (kompetencer) – passende for et 30 ECTS-forløb, hvor formidling og kritisk vurdering af data vejer tungere end ren beskrivelse.
+Niveauet spænder fra forstå (viden) over anvende/analysere (færdigheder) til vurdere/skabe (kompetencer) – passende for et 30 ECTS-forløb, hvor formidling og kritisk vurdering af data vejer tungere end ren beskrivelse.
 
 ## 📚 Kerneområder
 
@@ -83,7 +87,7 @@ Jeg udarbejder en samlet analyse, hvor jeg forklarer hvilke mønstre der findes,
 | Milestone | Uge | Indhold |
 |---|---|---|
 | M1 – Domæneforståelse | Uge 1–2 (26/8–2/9) | Domæneforståelse af det sideløbende projekt (NF Hotel), som datasættet og analysen tager udgangspunkt i |
-| M2 – Python-opstart | Uge 1–3 (26/8–9/9) | Python-kursus (*100 Days of Code*): opstart på Python-sproget samt Pandas- og Matplotlib-bibliotekerne – kurset er kun påbegyndt i denne periode, ikke gennemført |
+| M2 – Python-opstart | Uge 1–3 (26/8–9/9) | Python-kursus (*100 Days of Code*): opstart på Python-sproget samt Pandas- og Matplotlib-bibliotekerne. Kurset blev først færdigt 22/11 (dag 100) og dækker også NumPy, Seaborn, Plotly og lineær regression |
 | M3 – Datasæt og datakvalitet | Uge 4–5 (16/9–23/9) | Find/opret datasæt, dokumentér variable/kilde, identificér ≥3 datakvalitetsproblemer, første Kolb-refleksion |
 | M4 – Første databehandling | Uge 6–7 (30/9–7/10) | Rens data, beregn gennemsnit/median/min/maks, ≥2 indledende visualiseringer |
 | M5 – Uddybet statistik | Uge 8 (14/10) | Udvid til ≥4 statistiske mål (kvartiler, standardafvigelse) |
@@ -112,7 +116,7 @@ Analyse → refleksion → teori → ny analyse
 
 - [x] Python ([bevis](Portfolio/2026-10-28_Python_og_Pandas_fra_Udemy-kurset.md))
   - [x] Pandas
-  - [ ] Mathplotlib
+  - [x] Matplotlib (også Seaborn, Plotly og NumPy)
 - [x] Datasæt og datakilde
 - [ ] Beskrivelse af variable
 - [x] Analyse af datakvalitet

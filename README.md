@@ -23,7 +23,7 @@ flowchart TD
 
 | Sti | Indhold |
 |---|---|
-| [`Læringsmål–AI_til_softwareløsninger.md`](Læringsmål–AI_til_softwareløsninger.md) | Fuldt læringsmål for AI-sporet: mål, Bloom-niveauer, kerneområder, succeskriterier, milestones, Kolbs læringscirkel og SMART-tjek |
+| [`Læringsmål–AI_til_softwareløsninger.md`](Læringsmål–AI_til_softwareløsninger.md) | Fuldt læringsmål for AI-sporet: mål, viden/færdigheder/kompetencer med Bloom-niveauer, kerneområder, succeskriterier, milestones, Kolbs læringscirkel og SMART-tjek |
 | [`Læringsmål–Dataanalyse_og_databehandling.md`](Læringsmål–Dataanalyse_og_databehandling.md) | Fuldt læringsmål for dataanalyse-sporet: samme struktur som ovenfor |
 | [`Projektplan-Ugeplan.md`](Projektplan-Ugeplan.md) | Fælles projektplan med kerneområder, ugentlig timefordeling og en uge-for-uge milestone-plan for begge læringsmål |
 | [`Portfolio/`](Portfolio) | Løbende portfolio-poster (logbog), der dokumenterer konkrete erfaringer, valg og refleksioner undervejs i projektet |
