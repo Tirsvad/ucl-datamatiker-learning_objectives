@@ -85,7 +85,7 @@ Jeg viser fejlene som fem gennemløb af Kolbs læringscirkel, så man kan se, hv
 
 ## 🏨 Erfaringer for NF Hotel
 
-NF Hotel-projektet bruger stadig den tidligste udgave af frameworket (`v0.1.0`). Det er derfor et godt før-billede: dokumenterne har den gamle status "Approved", en gammel sprogrække og en versionshistorik med fire kolonner. Næste gang vil jeg:
+NF Hotel-projektet bruger stadig den tidligste udgave af frameworket (`v0.1.0`). Det er derfor et godt før-billede: dokumenterne har den gamle status "Approved", en gammel sprogrække og en versionshistorik med fire kolonner og flere end de to rækker, reglen tillader. Næste gang vil jeg:
 
 - designe og få designet godkendt, før jeg skriver koden
 - føre prompt-log fra første dag. I dag findes kun planlægningsprompten

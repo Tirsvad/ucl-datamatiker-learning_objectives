@@ -64,6 +64,16 @@ Headeren (Metadata og Version History) er en lille datamodel for hvert dokument.
 
 **Op imod NF Hotel.** Projektet `Notebook_Market_Analysis` står stadig på frameworkets udgave `v0.1.0`, og dets dokumenter viser, hvordan headeren så ud, før jeg ændrede den: versionshistorikken har kun fire kolonner (dato, status, forfatter og reviewer), ingen ændringsbeskrivelse og intet link til commit'en, og projektplanen `PP-001` har 11 rækker fra to dage (29/9 og 30/9). Statussen er `Approved`, og hvert dokument har en `DomainLanguages`-række. Det er præcis de felter, jeg senere fjernede eller ændrede, så projektet er et før-billede, jeg kan måle migreringen på.
 
+Her er headeren i NF Hotels Domain Model (`DM-001`). `CrossReference` peger på syv andre artefakter, og hvert ID er et link. Versionshistorikken har ingen `Change`- og `Commit`-kolonne, og de fem rækker siger alle `Approved`, så man kan ikke se, hvad der skiftede mellem dem. Fem rækker er også for mange. Reglen i frameworket er højst **to** rækker, og git har resten (den står i changelog'en for 0.1.0 og 0.1.1). NF Hotels dokumenter blev skrevet, før reglen kom, og er aldrig konverteret, så billedet viser et dokument, der bryder den regel, som frameworket har i dag.
+
+![Headeren i NF Hotels Domain Model: CrossReference med links til syv artefakter og en versionshistorik uden Commit-kolonne](../images/2026-11-23_Framework-1_NF-Hotel_domain-model_header.png)
+
+Til sammenligning er her en Domain Model (`DM-001` for use case `UC-001`) i NF Hotels repo `NFHotel`, som bruger den nuværende udgave af frameworket. Det er et skærmbillede fra GitHub. `CrossReference` er stadig links (her til use casen, use case-diagrammet og ordbogen), og `DomainLanguages` er blevet til `Language` og `Domain`. Versionshistorikken har kun de to seneste rækker. Hver række har en `Change`-beskrivelse med henvisning til milepæl, ADR og review-record (`MIL-085`, `ADR-0049`, `RC-417`) og et link til den commit, der lavede ændringen. Reviewer er `AI as stand-in for S01`, så man kan se, at det var AI'en og ikke en person, der gennemgik.
+
+![Skærmbillede fra GitHub af Domain Model DM-001 i NFHotel: CrossReference med links, Language og Domain og en versionshistorik med to rækker, Change og commit-links](../images/2026-11-23_Framework-1_NFHotel_dm-001_github.png)
+
+*Det første billede er gengivet lokalt fra markdown-filen i `Notebook_Market_Analysis`, fordi repoet er privat. Det andet er et skærmbillede fra GitHub.*
+
 De felter, der **ikke** er der mere, viser det samme:
 
 | Hvornår | Hvad der blev fjernet eller indført | Hvorfor |
