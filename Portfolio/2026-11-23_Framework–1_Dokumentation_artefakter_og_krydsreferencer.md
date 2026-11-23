@@ -114,32 +114,71 @@ Der er 26 shell-scripts, og 11 af dem er testscripts, som bygger et lille projek
 
 ## 🧩 Udfordringer undervejs
 
-**Kontekst, der fyldte for meget.** Min første version havde én skill pr. artefakttype (19). De fyldte meget i agentens kontekst og gentog de samme afsnit. Jeg samlede dem i én skill med en lille reference pr. type. Det er beskrevet i [Artefakt-færdighed](2026-09-21_Artefakt-færdighed–én_samlet_færdighed_i_stedet_for_19.md): beskrivelserne, som altid indlæses, gik fra ca. 1.550 til ca. 115 tokens, og redigering af en Business Case fra ca. 4.000 til ca. 1.400 (groft estimat).
+Jeg viser udfordringerne som fem gennemløb af Kolbs læringscirkel, så man kan se, hvordan hver af dem blev til en ændring.
 
-**Et dokument kan ikke indeholde sin egen commit.** Versionshistorikken skal linke til den commit, der lavede ændringen, men en commits hash kendes først, når den er lavet. Løsningen er `pending`, som scriptet erstatter i en efterfølgende commit. Der må ikke bruges amend, fordi hashen så ændres, og linket peger på en commit, der aldrig bliver pushet. Reglen virker, men den kræver, at jeg og AI'en husker den. Historikken har kun de to seneste rækker, fordi git har resten.
+### Runde 1: Kontekst, der fyldte for meget
 
-**Ét sprog pr. dokument.** Først havde jeg en dansk og en engelsk udgave af hvert dokument. De gled fra hinanden. Nu findes hvert dokument én gang. De typer, der skrives på produktejerens sprog, har rækkerne `Language` og `Domain`; de tekniske typer (fx Design Class Diagram og review-records) er altid på engelsk. Overskrifter, nøgler, ID'er og statusser er altid engelske, fordi scripts læser dem. En ordbog (`DICT`) oversætter produktejerens ord til de tekniske ord, så Domain Model bruger produktejerens ord, mens Operation Contract og Design Class Diagram bruger de tekniske.
+**1. Konkret erfaring:** Min første version havde én skill pr. artefakttype (19). De fyldte meget i agentens kontekst og gentog de samme afsnit. Beskrivelserne, som altid indlæses, var ca. 1.550 tokens, og redigering af en Business Case ca. 4.000 (groft estimat).
 
-**Fire repositories, der ændres sammen.** En ændring i en tjekliste skal gennem tjeklisterne, frameworket og projektet. Derfor er der regler om rækkefølge: én pull request pr. repository i afhængighedsrækkefølge, en pin flyttes kun til en flettet commit eller et tag, og intet udgives, før dets afhængigheder er flettet. Det er mere arbejde end ét repository, men det holder frameworket uden projektdata.
+**2. Refleksion:** Det, jeg havde lavet for at hjælpe agenten, tog plads fra selve opgaven.
 
-**Parallelle grene gav samme nummer.** To grene lavede hver sin review-record med nummer `RC-084`. Jeg opdagede det, da jeg løste en merge-konflikt mellem dem, omdøbte den ene til `RC-090` og rettede referencerne. Numrene deles ud fra en tæller i registret, og to grene kan tage det samme nummer. Det er en fejl, et script kan fange, og den ligger på listen over næste skridt.
+**3. Abstrakt begrebsliggørelse:** Kontekst er en begrænset ressource. Det, der altid indlæses, skal være småt, og resten skal hentes, når det skal bruges.
+
+**4. Aktiv eksperimenteren:** Jeg samlede dem i én skill med en lille reference pr. type. Det er beskrevet i [Artefakt-færdighed](2026-09-21_Artefakt-færdighed–én_samlet_færdighed_i_stedet_for_19.md): beskrivelserne gik til ca. 115 tokens, og redigering af en Business Case til ca. 1.400.
+
+### Runde 2: Et dokument kan ikke indeholde sin egen commit
+
+**1. Konkret erfaring:** Versionshistorikken skal linke til den commit, der lavede ændringen, men en commits hash kendes først, når den er lavet.
+
+**2. Refleksion:** Det er en lille detalje, men den kostede lige så meget tid som de store valg. Reglen virker, men den kræver, at jeg og AI'en husker den.
+
+**3. Abstrakt begrebsliggørelse:** Sporbarhed må ske i to trin. Amend ændrer hashen, så linket peger på en commit, der aldrig bliver pushet.
+
+**4. Aktiv eksperimenteren:** Historikken får `pending`, som `resolve-pending-commits.sh` erstatter i en efterfølgende commit. Der bruges ikke amend. Historikken har kun de to seneste rækker, fordi git har resten.
+
+### Runde 3: Ét sprog pr. dokument
+
+**1. Konkret erfaring:** Først havde jeg en dansk og en engelsk udgave af hvert dokument. De gled fra hinanden.
+
+**2. Refleksion:** To udgaver er to sandheder, og den ene bliver før eller siden forkert.
+
+**3. Abstrakt begrebsliggørelse:** Hver oplysning skal stå ét sted (DRY). Scripts læser overskrifter, nøgler, ID'er og statusser, så de skal være ens og derfor altid engelske.
+
+**4. Aktiv eksperimenteren:** Nu findes hvert dokument én gang. De typer, der skrives på produktejerens sprog, har rækkerne `Language` og `Domain`; de tekniske typer (fx Design Class Diagram og review-records) er altid på engelsk. En ordbog (`DICT`) oversætter produktejerens ord til de tekniske ord, så Domain Model bruger produktejerens ord, mens Operation Contract og Design Class Diagram bruger de tekniske.
+
+### Runde 4: Fire repositories, der ændres sammen
+
+**1. Konkret erfaring:** En ændring i en tjekliste skal gennem tjeklisterne, frameworket og projektet.
+
+**2. Refleksion:** Det er mere arbejde end ét repository, men det holder frameworket uden projektdata.
+
+**3. Abstrakt begrebsliggørelse:** Afhængigheder mellem repositories og semantisk versionering. Ændringer skal følge afhængighedsrækkefølgen.
+
+**4. Aktiv eksperimenteren:** Der er nu regler om rækkefølge: én pull request pr. repository i afhængighedsrækkefølge, en pin flyttes kun til en flettet commit eller et tag, og intet udgives, før dets afhængigheder er flettet.
+
+### Runde 5: Parallelle grene gav samme nummer
+
+**1. Konkret erfaring:** To grene lavede hver sin review-record med nummer `RC-084`. Jeg opdagede det, da jeg løste en merge-konflikt mellem dem, omdøbte den ene til `RC-090` og rettede referencerne.
+
+**2. Refleksion:** Numrene deles ud fra en tæller i registret, og to grene kan tage det samme nummer. Jeg opdagede det kun, fordi der var en konflikt.
+
+**3. Abstrakt begrebsliggørelse:** Et fortløbende nummer er ikke entydigt, når to arbejder parallelt. Det er en fejl, et script kan fange.
+
+**4. Aktiv eksperimenteren:** Ikke løst endnu. Et script, der finder dobbelte `RC`-numre ved en merge, ligger på listen over næste skridt.
 
 ## 🔁 Fejl, refleksion og ændring
 
 <!-- UDKAST: Tabellen bygger på changelogs og records. Refleksionerne er formuleret ud fra dem og skal rettes til mine egne ord. -->
 
-Dokumentationen er det sted, hvor jeg skiftede mening flest gange. De største fejl, vist som Kolbs læringscirkel, står i [post 6](2026-11-23_Framework–6_Fejl_refleksion_og_ændringer.md).
+Dokumentationen er det sted, hvor jeg skiftede mening flest gange. De største udfordringer står som runder af Kolbs læringscirkel ovenfor. Her er de mindre fejl, og de største fejl på tværs af framework og kode står i [post 6](2026-11-23_Framework–6_Fejl_refleksion_og_ændringer.md).
 
 | Hvad gik galt | Hvad jeg fandt ud af | Hvad jeg ændrede |
 |---|---|---|
-| 19 skills, én pr. artefakttype (21/9) | De fyldte i agentens kontekst | Én skill med en reference pr. type |
 | Skabelonen til registret var nævnt i installationen, men fandtes ikke, og to skabeloner lå i en forkert mappe og pegede på en forkert katalogsti (0.1.x) | Dokumentationen var ikke afprøvet, som en ny bruger ville bruge den | Skabelonen blev lavet og filerne flyttet |
-| En dansk og en engelsk udgave af hvert dokument (0.3.0) | De gled fra hinanden | Én fil pr. artefakt på produktejerens sprog, besluttet 3/10 (0.4.0) |
 | Use case-mapper direkte i `docs/` | De fyldte øverste niveau | `docs/use-cases/uc-NNN/` (0.9.0) |
 | 63 filer med CRLF-linjeskift (0.7.0) | Linjeskift ændrer hvert linjes diff | Alle er LF, med `.gitattributes` og `.editorconfig` |
 | Kontrollen af README-overskrifter fik emoji som argumenter, og de blev ødelagt på Windows (0.4.0) | Et script må ikke få emoji som argumenter, når git kører det | Overskrifterne læses fra filer |
 | Wiki-mappen havde en undermappe, og udgiveren fejlede med "has no Markdown pages" (0.19.1) | Wikien skal være flad | `process/wiki.md` siger det, og sidebar-reglen står i `QC-WIKI-001` |
-| To grene tog samme `RC`-nummer (`RC-084`) | Numrene deles ud fra en tæller, to grene kan tage på samme tid | Jeg omdøbte den ene til `RC-090`. Et script bør finde den slags |
 
 **Det, jeg tager med:** Det, der virker for mig, er ikke det samme som det, en ny bruger kan følge. Hver gang et felt, en mappe eller en regel blev flyttet, fik jeg en migrering. Derfor skriver jeg nu beslutningen og begrundelsen ned, før jeg ændrer.
 
