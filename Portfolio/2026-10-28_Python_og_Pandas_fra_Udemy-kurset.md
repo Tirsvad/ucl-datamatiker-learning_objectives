@@ -1,82 +1,129 @@
 # Python og Pandas fra Udemy-kurset
 
-**Dato:** 28/10 2026
+**Dato:** 28/10 2026 (opdateret 23/11 2026, efter at kurset er gennemført)
 **Læringsmål dækket:** [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/) og [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/)
 
-Begge læringsmål bygger på Python. Denne post er beviset for, at jeg har arbejdet med Python og Pandas gennem Udemy-kurset *100 Days of Code™: The Complete Python Pro Bootcamp*. Beviset er repositoryet `Tirsvad-Udemy-100-days-of-code`. Kurset er ikke færdigt: jeg er nået til dag 41, og Matplotlib er endnu ikke brugt, så den del af læringsmålet er ikke afkrydset.
+Begge læringsmål bygger på Python. Denne post er beviset for, at jeg har gennemført Udemy-kurset *100 Days of Code™: The Complete Python Pro Bootcamp*. Kurset blev afsluttet 22/11 2026 med dag 100. Beviset er organisationen [Tirsvad-Udemy-100-days-of-code](https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code) på min Gitea, som har ét repository pr. projekt (117 repositories, nogle dage har flere). Selve gennemførelsen er dokumenteret med [certifikatet fra Udemy](https://www.udemy.com/certificate/UC-90830d35-8c64-45aa-abff-454acb1812c2/) og i posten [Gennemførelse af Udemy-kursus](2026-11-23_Gennemførelse_af_Udemy-kursus.md).
 
-## 🧭 Hvad repositoryet indeholder
+## 🧭 Hvad organisationen indeholder
 
-Hver dag i kurset er et selvstændigt projekt i en mappe, nummereret fra `001` til `041`. De første dage handler om grundlæggende Python (variabler, funktioner, løkker, betingelser, spil og logik, objektorienteret programmering og filhåndtering). Det var for basalt til det niveau, jeg er på, så jeg nævner det kun kort. De emner, der har betydning for læringsmålene, er:
+Hver dag i kurset er et selvstændigt projekt, nummereret fra `001` til `100`. De første dage handler om grundlæggende Python (variabler, funktioner, løkker, betingelser, spil og logik, objektorienteret programmering og filhåndtering). Det var for basalt til det niveau, jeg er på, så jeg nævner det kun kort. De emner, der har betydning for læringsmålene, er:
 
-| Emne | Projekter |
+| Emne | Dage | Eksempler på projekter |
+|---|---|---|
+| **Pandas og CSV-data** | 25, 72–76 | `025-weather`, `072-data-exploration-with-pandas`, `074-lego-analysis-for-course` |
+| **Datavisualisering** (Matplotlib, Seaborn, Plotly) | 73, 75, 76, 78–81, 99, 100 | `073-data-visualisation-programming-languages`, `076-google-play-store-project`, `099-assignment-analyse-and-visualise-the-space-race` |
+| **NumPy** | 77 | `077-computing-with-numpy` |
+| **Regression og statistik** (scikit-learn, SciPy) | 78, 80, 81 | `078-seaborn-and-linear-regression`, `080-dr-semmelweis-handwashing-discovery`, `081-multivariable-regression-and-valuation-model` |
+| API'er og webdata | 33–39, 66, 96 | `033-iss-location`, `035-rain-alert`, `036-stocknews`, `038-nutritionix`, `066-cafe-api` |
+| Webscraping (Requests, BeautifulSoup, Selenium) | 45–53, 93 | `045-scrape-movies`, `048-fill-out-form`, `093-assignment-custom-web-scraper` |
+| Webudvikling (Flask, SQLite, godkendelse, deployment) | 54–71, 88, 90, 97 | `063-library-project`, `068-flask-auth`, `071-blog-for-deployment` |
+| GUI og spil (Tkinter, Turtle) | 18–23, 27–30, 86, 87, 95 | `028-pomodoro`, `020-snake-game`, `087-assignment-breakout-game` |
+
+## 🛠️ Færdigheder, jeg har fået gennem kurset
+
+Kurset dækker mange teknologier, og kursets egen oversigt står under [Skills på Udemy](https://www.udemy.com/course/100-days-of-code/learn/practice/1251152#overview). Tabellen viser dem, jeg kan pege på i konkrete projekter.
+
+| Færdighed | Hvor jeg har brugt den |
 |---|---|
-| **Pandas og CSV-data** | `025-squirrel`, `025-us-states-game`, `025-weather` |
-| API'er og webdata | `033-iss-location`, `035-rain-alert`, `036-stocknews`, `038-nutritionix` |
+| Python 3 og scripting/automatisering | `032-birthday-wisher`, `098-assignment-custom-automation` |
+| Spiludvikling | `011-blackjack`, `020-snake-game`, `022-pong-game`, `095-assignment-space-invaders` |
+| Pandas | `025-weather`, `072` til `076`, `079`, `080`, `081` |
+| NumPy | `077-computing-with-numpy` |
+| Matplotlib | `073`, `075`, `077`, `080`, `081`, `100` |
+| Seaborn | `078`, `079`, `081` |
+| Plotly | `076`, `079`, `099`, `100` |
+| scikit-learn (lineær regression) | `078-seaborn-and-linear-regression`, `081-multivariable-regression-and-valuation-model` |
+| Jupyter Notebook | notebooks i dag 72–81, 99 og 100 |
+| API'er og Requests | `033` til `039`, `066-cafe-api`, `096-assignment-custom-api-based-website` |
+| Webscraping: BeautifulSoup og Selenium | `045`, `046`, `047`, `048` til `052`, `053`, `093` |
+| Turtle og Tkinter (GUI) | `018` til `023`, `027` til `030`, `086` |
+| HTML og CSS, Bootstrap | `042` til `044`, `058`, `059` |
+| Flask, REST, WTForms | `054`, `057`, `059` til `064`, `066` til `069` |
+| Databaser (SQLite, SQLAlchemy) og godkendelse | `063-library-project`, `068-flask-auth` |
+| Deployment (gunicorn, PostgreSQL, Docker) | `071-blog-for-deployment` |
+| Git, GitHub og versionsstyring | `070-version-control` og alle projekter som egne repositories |
 
-## 📊 Pandas i praksis
+Teknologier fra kursets liste, som jeg ikke har peget på i et projekt her (fx Google Colab, Heroku og Bash), tæller jeg ikke med.
 
-Pandas blev brugt i tre projekter fra dag 25:
+## 📊 Dataanalyse i kurset
 
-- **`025-weather`:** CSV-filen med vejrdata blev læst ind i en `DataFrame` med `pandas.read_csv`, konverteret til en dictionary og en liste, og jeg beregnede gennemsnits- og maksimumstemperatur samt udvalgte rækker. Pandas-delen ligger i ét modul (`analysis.py`) og er en valgfri afhængighed.
-- **`025-squirrel`:** Pandas er afhængighed i projektet, som arbejder med en CSV-fil med egernoptællinger (`squirrel_count.csv`).
-- **`025-us-states-game`:** Pandas bruges til at gemme og læse data i spillets lager.
+Dag 72 til 81 samt 99 og 100 er egentlige dataanalyseprojekter. Hver ligger i sit eget repository, de fleste som en Python-pakke med tests og en Jupyter-notebook.
+
+| Dag | Projekt | Hvad det viser |
+|---|---|---|
+| 25 | `025-weather` | Pandas på CSV-data: gennemsnit og maksimum for temperatur |
+| 72 | `072-data-exploration-with-pandas` | Udforskning af løn efter uddannelse med Pandas |
+| 73 | `073-data-visualisation-programming-languages` | Programmeringssprogs popularitet over tid, Pandas og Matplotlib |
+| 74 | `074-lego-analysis-for-course` | Gruppering og sammenfletning af data i et LEGO-datasæt |
+| 75 | `075-google-trends-data` | Tidsserier fra Google Trends (Tesla, Bitcoin, arbejdsløshed) med Pandas og Matplotlib |
+| 76 | `076-google-play-store-project` | Rensning af Google Play Store-data og visualisering med Plotly |
+| 77 | `077-computing-with-numpy` | NumPy: arrays, slicing, broadcasting og matrixmultiplikation |
+| 78 | `078-seaborn-and-linear-regression` | Seaborn og lineær regression med scikit-learn |
+| 79 | `079-nobel-prize-analysis` | 120 års Nobelpris-data med Pandas, Plotly, Matplotlib og Seaborn |
+| 80 | `080-dr-semmelweis-handwashing-discovery` | Analyse med Pandas, Matplotlib og SciPy |
+| 81 | `081-multivariable-regression-and-valuation-model` | Multivariabel regression på boligpriser med Pandas, Seaborn, Plotly og scikit-learn |
+| 99 | `099-assignment-analyse-and-visualise-the-space-race` | Analyse og visualisering af rumkapløbet |
+| 100 | `100-assignment-analyse-deaths-involving-police-in-the-united-states` | Analyse af data fra Washington Post og folketællingen |
 
 ## 🔄 Kolbs læringscirkel i praksis
 
 **1. Konkret erfaring**
 
-Jeg løste kursets opgaver dag for dag og lagde hver i sit eget projekt, med struktur, dokumentation og afhængigheder.
+Jeg løste kursets opgaver dag for dag og lagde hver i sit eget projekt, med struktur, tests og dokumentation. Dag 72 til 81 samt 99 og 100 gjorde jeg som dataanalyse med Pandas, NumPy, Matplotlib, Seaborn og Plotly.
 
 **2. Refleksion**
 
 - Hvad lærte jeg af at læse en CSV-fil med Pandas?
   > At en hel tabel kan indlæses i én linje, og at beregninger som gennemsnit og maksimum er korte, når data ligger i en `DataFrame`.
+- Hvad lærte jeg af de senere dage?
+  > At den største del af arbejdet er at rense og samle data, før man kan vise noget. Valget af diagramtype afhænger af, hvad jeg vil vise, og regression viser en sammenhæng, ikke en årsag.
 - Hvad mangler?
-  > Matplotlib og de senere dage i kurset, hvor Pandas bruges til egentlig analyse og visualisering. Det er først dér, jeg kan dokumentere visualiseringer af data.
+  > Machine Learning går kun så langt som lineær regression med scikit-learn, så OCR og andre ML-metoder til AI-læringsmålet er ikke dækket. Python-for-AI-kurset er et andet kursus, som er udskudt til efter 24/12, fordi PO har vurderet pas-scanning som out of scope.
 - Hvad kan jeg bruge det til?
-  > Til at indlæse, undersøge og rense bookingsdata, før de analyseres og vises.
+  > Til at indlæse, undersøge, rense og visualisere bookingsdata. Markedsanalysen af NF Hotel viser, hvordan jeg bruger det på hoteldata.
 
 **3. Abstrakt begrebsliggørelse**
 
 Jeg kobler erfaringen til teori om blandt andet:
 
-- tabelbaserede data (`DataFrame`) og kolonner
-- læsning af CSV-filer
-- gennemsnit, maksimum og udvælgelse af rækker
-- adskillelse af ansvar: Pandas ligger i ét modul, resten af programmet er uafhængigt
+- tabelbaserede data (`DataFrame`), kolonner og flerdimensionelle arrays
+- datarensning, gruppering og sammenfletning af datasæt
+- valg af visualiseringstype efter, hvad den skal vise
+- lineær og multivariabel regression
+- adskillelse af ansvar: databehandling i egne moduler, så den kan testes
 
 **4. Aktiv eksperimenteren**
 
-Jeg fortsætter kurset til Matplotlib og bruger Pandas på hotelbookingsdata.
+Jeg bruger Pandas og visualisering på hotelbookingsdata i [markedsanalysen af NF Hotel](https://tirsvad.studiesites.dk/dataanalyse-i-nf-hotels-markedsanalyse/).
 
 ## 🎯 Hvilke kernemål i læringsmål dækkes
 
-🟢 dækkes helt, 🟡 dækkes delvist, 🔴 dækkes kun lidt eller slet ikke endnu.
+🟢 dækkes helt, 🟡 dækkes delvist, 🔴 dækkes kun lidt eller slet ikke endnu. Kurset bruger øvelsesdata, ikke hoteldata, så dækningen er højst delvis.
 
 ### Dataanalyse og databehandling
 
 | Kerneområde | Vægt i læringsmål | Dækning | Begrundelse |
 |---|---|:---:|---|
-| Dataindsamling | Stor | 🟡 | CSV-filer blev indlæst med Pandas |
-| Datastrukturering | Stor | 🟡 | Data blev lagt i en `DataFrame` og konverteret til dictionary og liste |
-| Datakvalitet | Stor | 🔴 | Ikke relevant for denne post |
-| Datarensning | Stor | 🔴 | Ikke relevant for denne post |
-| Dataanalyse | Stor | 🟡 | Enkle beregninger og udvælgelse af rækker |
-| Statistik | Stor | 🔴 | Kun gennemsnit og maksimum |
-| Deskriptiv statistik | Stor | 🟡 | Gennemsnit og maksimum for temperatur |
-| Trends og mønstre | Stor | 🔴 | Ikke relevant for denne post |
-| Sammenhænge mellem variable | Stor | 🔴 | Ikke relevant for denne post |
-| Datavisualisering | Stor | 🔴 | Matplotlib er ikke brugt endnu |
-| Fortolkning af resultater | Mindre | 🔴 | Ikke relevant for denne post |
+| Dataindsamling | Stor | 🟡 | CSV-filer, API'er og webscraping (dag 33–53, 72–100) |
+| Datastrukturering | Stor | 🟡 | `DataFrame`, NumPy-arrays, gruppering og sammenfletning (dag 72–77) |
+| Datakvalitet | Stor | 🟡 | Rensning af Google Play Store-data (dag 76) |
+| Datarensning | Stor | 🟡 | Rensning i dag 76 og senere analyser |
+| Dataanalyse | Stor | 🟡 | Dag 72–81, 99 og 100 |
+| Statistik | Stor | 🟡 | Regression og SciPy (dag 78, 80, 81) |
+| Deskriptiv statistik | Stor | 🟡 | Gennemsnit, maksimum og gruppering |
+| Trends og mønstre | Stor | 🟡 | Tidsserier i dag 73 og 75 |
+| Sammenhænge mellem variable | Stor | 🟡 | Lineær og multivariabel regression (dag 78 og 81) |
+| Datavisualisering | Stor | 🟡 | Matplotlib, Seaborn og Plotly |
+| Fortolkning af resultater | Mindre | 🔴 | Ikke dokumenteret her; ligger i markedsanalysen |
 | Formidling af data | Mindre | 🔴 | Ikke relevant for denne post |
 
 ### AI i softwareprojekter
 
 | Kerneområde | Vægt i læringsmål | Dækning | Begrundelse |
 |---|---|:---:|---|
-| Python for AI | Stor | 🟡 | Python-grundlaget er på plads, men selve Python-for-AI-kurset er ikke påbegyndt |
-| Machine Learning | Stor | 🔴 | Ikke relevant for denne post |
+| Python for AI | Stor | 🟡 | Python, Pandas, NumPy og Matplotlib er dækket af dette kursus, men Python-for-AI-kurset er et andet og er udskudt til efter 24/12 |
+| Machine Learning | Stor | 🟡 | Kun lineær regression med scikit-learn (dag 78 og 81) |
 | AI til fortolkning af data | Stor | 🔴 | Ikke relevant for denne post |
 | Large Language Models (LLM) | Stor | 🔴 | Ikke relevant for denne post |
 | Modelvalg og model comparison | Stor | 🔴 | Ikke relevant for denne post |
@@ -93,6 +140,7 @@ Jeg fortsætter kurset til Matplotlib og bruger Pandas på hotelbookingsdata.
 
 ## 🏨 Hvilken værdi kan det give et hotel management-system?
 
-- **Grundlag for dataanalysen:** Indlæsning af CSV-filer, udvælgelse af rækker og enkle beregninger er byggestenene i analysen af hotelbookingsdata.
-- **Overskuelig kode:** At holde Pandas i ét modul gør det lettere at udskifte eller teste databehandlingen i NF Hotels analyseservice.
+- **Grundlag for dataanalysen:** Indlæsning, rensning, gruppering og visualisering af data er byggestenene i analysen af hotelbookingsdata.
+- **Overskuelig kode:** At holde databehandlingen i egne moduler med tests gør det lettere at udskifte eller teste den i NF Hotels analyseservice.
 - **Fundament for AI-arbejdet:** Python-færdighederne bruges til benchmark, dataopsummering og senere integration af AI-funktioner i hotelsystemet.
+- **Webgrundlag:** Flask, API'er og databaser gør det lettere at forstå og udvide den del af systemet, som viser analyserne.
