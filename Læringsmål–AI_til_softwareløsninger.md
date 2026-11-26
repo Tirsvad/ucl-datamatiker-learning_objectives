@@ -8,24 +8,24 @@ Jeg vil opnå praktisk kompetence i at anvende AI til fortolkning af hoteldata o
 
 Mit fokus er at forstå, hvordan forskellige AI-teknologier og LLM'er kan anvendes til at fortolke data, samt hvordan jeg vælger den AI-model eller teknologi, der passer bedst til en konkret problemstilling.
 
-Som en del af projektet vil jeg desuden undersøge og anvende Machine Learning til OCR-behandling af pas, så relevante oplysninger som pasnummer, navn og nationalitet automatisk kan identificeres fra et pasbillede.
+Som en del af projektet vil jeg desuden undersøge og anvende Machine Learning til OCR-behandling af indkøbsordrer, så varebeskrivelse og EAN-nummer automatisk kan identificeres fra en indkøbsordre.
 
 Jeg vil som grundlag for arbejdet gennemføre de relevante dele af et Python-for-AI-kursus med fokus på:
 
 - Python
 - LLM (rapportgenerering med visuelle modeller og konklusion for forbedringer)
-- Machine Learning (lagring af pasinformationer)
+- Machine Learning (udlæsning af varebeskrivelse og EAN-nummer fra indkøbsordrer)
 
 Fokus er dermed på at forstå, vælge, anvende og evaluere AI-teknologier – ikke på at udvikle en komplet kommerciel AI-løsning.
 
-## ⏸️ Afgrænsning: Python-for-AI-kurset og Machine Learning til OCR er udskudt til efter 24/12
+## ⏸️ Afgrænsning: Python-for-AI-kurset og Machine Learning er udskudt til efter 24/12
 
-PO har vurderet scanning af pas som **out of scope** for projektet. Derfor er den del af læringsmålet, der handler om Machine Learning til OCR af pas, fravalgt i projektperioden (til 6/12 2026) og udskudt til efter 24/12 2026. Det samme gælder det Python-for-AI-kursus, som skulle bære den del. Der er ikke noget at bygge det på i projektet, så jeg bruger ikke tid på det, før der er brug for det.
+PO har vurderet scanning af pas som **out of scope** for projektet, så pas indgår ikke længere. En ny PO ønsker i stedet at automatisere varebeskrivelse og EAN-nummer ud fra indkøbsordrer. Den del af læringsmålet, der handler om Machine Learning (og OCR), er fravalgt i projektperioden (til 6/12 2026) og udskudt til efter 24/12 2026. Det samme gælder det Python-for-AI-kursus, som skulle bære den del. Der er ikke noget at bygge det på i projektet, så jeg bruger ikke tid på det, før der er brug for det.
 
 Jeg beholder læringsmålet i sin oprindelige form, men følgende er udskudt og indgår ikke i det, jeg dokumenterer inden afleveringen:
 
 - Python-for-AI-kurset (succeskriterium 1)
-- Machine Learning til OCR af pas (succeskriterium 5, V4, F5 og C3)
+- Machine Learning og OCR af indkøbsordrer (succeskriterium 5, V4, F5 og C3)
 - Milepæl M4 – OCR/ML (uge 11–13)
 - ML/OCR-prototypen i portfolioen
 
@@ -44,7 +44,7 @@ Resten af læringsmålet gælder uændret: valg af model, fortolkning af hotelda
 | V1 | hvordan LLM'er fungerer og anvendes, herunder kontekstvindue, tokens, hallucinationer og usikkerhed | Forstå |
 | V2 | forskelle mellem LLM'er og AI-modeller ud fra kvalitet, hastighed, pris, ressourceforbrug og privacy (lokal versus cloud) | Forstå |
 | V3 | principper for prompt engineering og for genbrugelig AI-kontekst (skills, templates, scripts) | Forstå |
-| V4 | Machine Learning, OCR og feature extraction i en pipeline fra pasbillede til strukturerede pasoplysninger | Forstå |
+| V4 | Machine Learning, OCR og feature extraction i en pipeline fra indkøbsordre til strukturerede vareoplysninger | Forstå |
 | V5 | metoder til at evaluere AI-output, herunder human-in-the-loop | Forstå |
 
 **Færdigheder** – jeg kan
@@ -55,7 +55,7 @@ Resten af læringsmålet gælder uændret: valg af model, fortolkning af hotelda
 | F2 | sammenligne forskellige LLM'er ud fra kriterier som kvalitet, hastighed, pris, privacy og anvendelighed | Analysere |
 | F3 | anvende LLM'er til fortolkning af strukturerede og ustrukturerede hoteldata | Anvende |
 | F4 | anvende AI til at identificere mønstre, sammenhænge og mulige forklaringer i hoteldata | Analysere |
-| F5 | undersøge Machine Learning til OCR-behandling af pas | Forstå/Analysere |
+| F5 | undersøge Machine Learning til OCR-behandling af indkøbsordrer | Forstå/Analysere |
 | F6 | teste AI-løsningernes nøjagtighed og identificere fejl og usikkerhed | Analysere |
 | F7 | anvende template, sammenlignende scripts og kvalitetstjekliste til at sikre ensartede artefakter | Anvende |
 
@@ -65,7 +65,7 @@ Resten af læringsmålet gælder uændret: valg af model, fortolkning af hotelda
 |---|---|---|
 | C1 | vælge og begrunde relevante LLM'er og AI-modeller ud fra testresultater | Vurdere |
 | C2 | formulere prompts, der giver brugbare og reproducerbare resultater | Skabe |
-| C3 | udvikle eller integrere en OCR-løsning, der kan identificere pasnummer, navn og nationalitet | Skabe |
+| C3 | udvikle eller integrere en OCR-løsning, der kan identificere varebeskrivelse og EAN-nummer fra en indkøbsordre | Skabe |
 | C4 | vurdere AI's fortolkninger kritisk, sammenholde dem med de faktiske data og afgøre, hvornår output kræver menneskelig kontrol | Vurdere |
 | C5 | håndtere fejl og usikkerhed i AI-løsninger | Vurdere |
 | C6 | designe genbrugelig AI-kontekst (skills, templates, scripts), så prompts bliver kortere og ressourceforbruget lavere | Skabe |
@@ -105,9 +105,9 @@ Jeg anvender mindst 1 prompt til fortolkning af hoteldata og dokumenterer prompt
 *Ændret 26/11 2026. Før: mindst 3 forskellige prompts eller promptstrategier.*
 
 **5. Machine Learning til OCR**
-Jeg undersøger, hvordan Machine Learning og OCR kan anvendes til automatisk behandling af pasbilleder. Løsningen skal kunne identificere mindst pasnummer, navn og nationalitet. Jeg dokumenterer, hvordan data bevæger sig fra: Pasbillede → OCR/ML → tekst → strukturerede pasoplysninger.
+Jeg undersøger, hvordan Machine Learning og OCR kan anvendes til automatisk behandling af indkøbsordrer. Løsningen skal kunne identificere mindst varebeskrivelse og EAN-nummer. Jeg dokumenterer, hvordan data bevæger sig fra: Indkøbsordre → OCR/ML → tekst → strukturerede vareoplysninger.
 
-*Udskudt til efter 24/12 2026 (se afgrænsningen ovenfor). PO har vurderet pas-scanning som out of scope.*
+*Machine Learning er udskudt til efter 24/12 2026 (se afgrænsningen ovenfor). Det handler ikke længere om pas: PO har vurderet pas-scanning som out of scope, og en ny PO ønsker i stedet at automatisere varebeskrivelse og EAN-nummer ud fra indkøbsordrer.*
 
 **6. Test og evaluering**
 Jeg gennemfører mindst 5 dokumenterede testcases af AI-modeller og registrerer input, forventet resultat, faktisk resultat og fejl.
@@ -121,7 +121,7 @@ Jeg gennemfører mindst 5 dokumenterede testcases af AI-modeller og registrerer 
 | M1 – Afprøvning af LLM-modeller | Uge 1–3 (26/8–9/9) | Identificér ≥3 LLM'er, afprøv på mindre datamængde, sammenlign kvalitet/hastighed/ressourceforbrug/anvendelighed, vælg model(ler) |
 | M2 – Første LLM-eksperimenter | Uge 4–8 (16/9–14/10) | Systematiske eksperimenter med ≥1 prompt, identificér mønstre/sammenhænge/årsager, udarbejd AI-baserede marketingkonklusioner |
 | M3 – Implementering i NF Hotel | Uge 9–10 (21/10–28/10) | Integrér valgt AI-model med hoteldata i NF Hotel, præsentér AI-fortolkning som beslutningsstøtte |
-| M4 – OCR/ML | Uge 11–13 (4/11–18/11) | **Udskudt til efter 24/12 (PO: pas-scanning er out of scope).** Afprøv OCR/ML-teknologi på testbilleder, identificér pasnummer/navn/nationalitet, dokumentér nøjagtighed/fejl/begrænsninger, vurdér integration i NF Hotel |
+| M4 – OCR/ML | Uge 11–13 (4/11–18/11) | **Machine Learning er udskudt til efter 24/12.** Afprøv OCR/ML-teknologi på indkøbsordrer, identificér varebeskrivelse og EAN-nummer, dokumentér nøjagtighed/fejl/begrænsninger, vurdér integration |
 | Aflevering | Uge 15 (2/12–6/12) | Samlet konklusion, SMART-tjek, portfolio |
 
 ## 🔄 Læring gennem Kolbs læringscirkel
@@ -155,7 +155,7 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 - [x] Mindst 1 prompt til fortolkning af hoteldata ([bevis](Portfolio/2026-10-28_sammenligning_af_lokale_LLMer.md))
 - [x] AI-baserede konklusioner om mulige marketingforbedringer (AI-forslagene i markedsanalysen og *Further ideas* på prisforslagssiden i NF Hotel)
 - [x] Integration af AI-fortolkning i NF Hotel (siderne *Benchmark*, *Market analysis* og *Price suggestions* i NF Hotels administration)
-- [ ] ML/OCR-prototype til pasinformation (udskudt til efter 24/12, PO: pas-scanning er out of scope)
+- [ ] ML/OCR-prototype til varebeskrivelse og EAN-nummer fra indkøbsordrer (udskudt til efter 24/12)
 - [x] Mindst 5 dokumenterede testcases ([bevis](Portfolio/2026-10-28_sammenligning_af_lokale_LLMer.md))
 - [x] Eksempler på fejl og usikkerhed
 - [ ] Mine egne vurderinger af AI-output
@@ -166,13 +166,13 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 ## ✅ SMART-tjek
 
 ### 🎯 S – Specifikt
-🎯 **Måltavle:** Jeg vil udvikle mine kompetencer inden for AI ved at anvende LLM'er og Machine Learning på konkrete problemstillinger i NF Hotel, med fokus på AI-baseret fortolkning af hoteldata, rapportgenerering og OCR-behandling af pasinformation.
-📍 **Placeringsnål:** Målet er placeret præcist ved skæringspunktet mellem modelvalg, prompt engineering og OCR/ML til pasdata – ikke bred AI-udvikling generelt.
+🎯 **Måltavle:** Jeg vil udvikle mine kompetencer inden for AI ved at anvende LLM'er og Machine Learning på konkrete problemstillinger i NF Hotel, med fokus på AI-baseret fortolkning af hoteldata, rapportgenerering og OCR-behandling af indkøbsordrer.
+📍 **Placeringsnål:** Målet er placeret præcist ved skæringspunktet mellem modelvalg, prompt engineering og OCR/ML til indkøbsordrer – ikke bred AI-udvikling generelt.
 
 ### 📊 M – Målbart
 📊 **Søjlediagram:** Sammenligning af ≥3 AI-modeller/LLM'er på tværs af kvalitet, hastighed, ressourceforbrug og privacy.  
 📈 **Stigende kurve:** ≥1 prompt til fortolkning af hoteldata, afprøvet på tværs af modeller.  
-📏 **Lineal:** ≥1 AI-baseret analyse/rapport af hoteldata, ≥1 OCR/ML-prototype til pasnummer/navn/nationalitet, ≥5 dokumenterede testcases med fejl.  
+📏 **Lineal:** ≥1 AI-baseret analyse/rapport af hoteldata, ≥1 OCR/ML-prototype til varebeskrivelse og EAN-nummer, ≥5 dokumenterede testcases med fejl.  
 
 ### 🤝 A – Attraktivt/Opnåeligt
 🤝 **Håndtryk:** Læringsmålet tager udgangspunkt i eksisterende teknologi og data fra NF Hotel – jeg afgrænser arbejdet til at undersøge, udvikle og evaluere AI-baserede funktioner frem for at bygge en komplet kommerciel AI-platform.  

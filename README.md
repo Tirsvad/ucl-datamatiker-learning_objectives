@@ -39,7 +39,7 @@ Fokus på at forstå, vælge, anvende og evaluere AI-teknologier – ikke på at
 - Python for AI (via kursus)
 - Sammenligning og valg af LLM'er/AI-modeller
 - Prompt engineering til fortolkning af hoteldata
-- Machine Learning/OCR til automatisk udlæsning af pasoplysninger (pasnummer, navn, nationalitet)
+- Machine Learning/OCR til automatisk udlæsning af varebeskrivelse og EAN-nummer fra indkøbsordrer (udskudt til efter 24/12)
 - Test, evaluering og human-in-the-loop-vurdering af AI-output
 
 Se [Læringsmål–AI_til_softwareløsninger.md](Læringsmål–AI_til_softwareløsninger.md) for detaljerede succeskriterier og milestones.
