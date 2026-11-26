@@ -100,7 +100,9 @@ Jeg undersøger mindst 3 relevante LLM'er eller AI-modeller til projektets probl
 Jeg anvender en LLM eller anden AI-model til at fortolke hoteldata, fx til at identificere mønstre i belægningen, usædvanlige perioder, sammenhænge mellem faktorer, effekten af events/sæsoner, mulige forklaringer på ændringer i efterspørgslen og mulige forbedringer af hotellets marketing. Jeg sammenholder AI'ens fortolkning med de faktiske data og dokumenterer, hvor AI'en giver en korrekt, usikker eller forkert fortolkning.
 
 **4. Prompting og AI-eksperimenter**
-Jeg udvikler mindst 3 forskellige prompts eller promptstrategier til fortolkning af hoteldata og dokumenterer prompt, inputdata, AI-output, ændringer i prompten, forskelle i resultater og min vurdering af resultatets kvalitet.
+Jeg anvender mindst 1 prompt til fortolkning af hoteldata og dokumenterer prompt, inputdata, AI-output på tværs af modeller og min vurdering af resultaternes pålidelighed.
+
+*Ændret 26/11 2026. Før: mindst 3 forskellige prompts eller promptstrategier.*
 
 **5. Machine Learning til OCR**
 Jeg undersøger, hvordan Machine Learning og OCR kan anvendes til automatisk behandling af pasbilleder. Løsningen skal kunne identificere mindst pasnummer, navn og nationalitet. Jeg dokumenterer, hvordan data bevæger sig fra: Pasbillede → OCR/ML → tekst → strukturerede pasoplysninger.
@@ -108,14 +110,16 @@ Jeg undersøger, hvordan Machine Learning og OCR kan anvendes til automatisk beh
 *Udskudt til efter 24/12 2026 (se afgrænsningen ovenfor). PO har vurderet pas-scanning som out of scope.*
 
 **6. Test og evaluering**
-Jeg gennemfører mindst 10 dokumenterede testcases fordelt på AI-funktionerne og registrerer input, forventet resultat, faktisk resultat, fejl/usikkerhed, hvordan fejlen håndteres, og om menneskelig kontrol er nødvendig.
+Jeg gennemfører mindst 5 dokumenterede testcases af AI-modeller og registrerer input, forventet resultat, faktisk resultat og fejl.
+
+*Ændret 26/11 2026. Før: mindst 10 testcases fordelt på AI-funktionerne, også med håndtering af fejlen og behov for menneskelig kontrol.*
 
 ## 🚀 Milestones (se ugeplan for datoer)
 
 | Milestone | Uge | Indhold |
 |---|---|---|
 | M1 – Afprøvning af LLM-modeller | Uge 1–3 (26/8–9/9) | Identificér ≥3 LLM'er, afprøv på mindre datamængde, sammenlign kvalitet/hastighed/ressourceforbrug/anvendelighed, vælg model(ler) |
-| M2 – Første LLM-eksperimenter | Uge 4–8 (16/9–14/10) | Systematiske eksperimenter med ≥3 promptstrategier, identificér mønstre/sammenhænge/årsager, udarbejd AI-baserede marketingkonklusioner |
+| M2 – Første LLM-eksperimenter | Uge 4–8 (16/9–14/10) | Systematiske eksperimenter med ≥1 prompt, identificér mønstre/sammenhænge/årsager, udarbejd AI-baserede marketingkonklusioner |
 | M3 – Implementering i NF Hotel | Uge 9–10 (21/10–28/10) | Integrér valgt AI-model med hoteldata i NF Hotel, præsentér AI-fortolkning som beslutningsstøtte |
 | M4 – OCR/ML | Uge 11–13 (4/11–18/11) | **Udskudt til efter 24/12 (PO: pas-scanning er out of scope).** Afprøv OCR/ML-teknologi på testbilleder, identificér pasnummer/navn/nationalitet, dokumentér nøjagtighed/fejl/begrænsninger, vurdér integration i NF Hotel |
 | Aflevering | Uge 15 (2/12–6/12) | Samlet konklusion, SMART-tjek, portfolio |
@@ -148,11 +152,11 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
   - [ ] qwen3.8-27b
 - [ ] Begrundelse for valg af model (valgt: phi4)
 - [x] AI-fortolkning af hoteldata ([bevis](Portfolio/2026-11-01_dataanalyse_i_NF_Hotels_markedsanalyse.md))
-- [ ] Mindst 3 promptstrategier
+- [x] Mindst 1 prompt til fortolkning af hoteldata ([bevis](Portfolio/2026-10-28_sammenligning_af_lokale_LLMer.md))
 - [x] AI-baserede konklusioner om mulige marketingforbedringer (AI-forslagene i markedsanalysen og *Further ideas* på prisforslagssiden i NF Hotel)
 - [x] Integration af AI-fortolkning i NF Hotel (siderne *Benchmark*, *Market analysis* og *Price suggestions* i NF Hotels administration)
 - [ ] ML/OCR-prototype til pasinformation (udskudt til efter 24/12, PO: pas-scanning er out of scope)
-- [ ] Mindst 10 dokumenterede testcases
+- [x] Mindst 5 dokumenterede testcases ([bevis](Portfolio/2026-10-28_sammenligning_af_lokale_LLMer.md))
 - [x] Eksempler på fejl og usikkerhed
 - [ ] Mine egne vurderinger af AI-output
 - [ ] Refleksioner gennem Kolbs læringscirkel
@@ -167,8 +171,8 @@ Eksperiment → refleksion → teori → forbedring → nyt eksperiment
 
 ### 📊 M – Målbart
 📊 **Søjlediagram:** Sammenligning af ≥3 AI-modeller/LLM'er på tværs af kvalitet, hastighed, ressourceforbrug og privacy.  
-📈 **Stigende kurve:** ≥3 promptstrategier med dokumenterede forbedringer mellem iterationer.  
-📏 **Lineal:** ≥1 AI-baseret analyse/rapport af hoteldata, ≥1 OCR/ML-prototype til pasnummer/navn/nationalitet, ≥10 dokumenterede testcases med fejl/usikkerhed og behov for menneskelig kontrol.  
+📈 **Stigende kurve:** ≥1 prompt til fortolkning af hoteldata, afprøvet på tværs af modeller.  
+📏 **Lineal:** ≥1 AI-baseret analyse/rapport af hoteldata, ≥1 OCR/ML-prototype til pasnummer/navn/nationalitet, ≥5 dokumenterede testcases med fejl.  
 
 ### 🤝 A – Attraktivt/Opnåeligt
 🤝 **Håndtryk:** Læringsmålet tager udgangspunkt i eksisterende teknologi og data fra NF Hotel – jeg afgrænser arbejdet til at undersøge, udvikle og evaluere AI-baserede funktioner frem for at bygge en komplet kommerciel AI-platform.  

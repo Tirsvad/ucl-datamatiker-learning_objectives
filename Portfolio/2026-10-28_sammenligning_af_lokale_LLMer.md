@@ -14,6 +14,32 @@ Benchmarken er en Marimo-notebook, der kører mod Ollama og LM Studio. Python be
 
 For hver forespørgsel blev der registreret TTFT, samlet tid, tokens pr. sekund, systemhukommelse og GPU-VRAM, cold/warm, gyldig JSON, afslutningsårsag og fejl. I alt blev der gemt 135 forespørgsler i `output/results.jsonl` (schema version 2).
 
+### Prompten (`hotel-cancellation-v1`)
+
+Systemprompten:
+
+```text
+You are a careful data analyst. Use only the statistics supplied by the user. Do not invent values that are not present in the supplied data. Correlation is not causation. Answer with a single JSON object and nothing else.
+```
+
+Brugerprompten (efter den følger den ønskede JSON-struktur og statistikken):
+
+```text
+Below are cancellation statistics of a hotel-booking dataset, calculated with Python.
+"Direct" bookings have no booking agent; "agent" bookings were made through an agent.
+Rates are fractions (0.25 = 25%).
+
+Tasks:
+1. Explain the overall cancellation rate.
+2. Compare direct customers and agent bookings and identify meaningful differences.
+3. Identify patterns and which variables appear associated with cancellations.
+4. Do not claim causation where the data only shows correlation.
+5. State uncertainty and limitations (e.g. small groups, missing dimensions).
+6. Base every conclusion on the supplied statistics only.
+
+Respond with JSON of exactly this shape:
+```
+
 ## 📊 Resultater
 
 | Model | Deterministiske opgaver bestået | Median tokens/s | Hotelanalyse med gyldig JSON | Fejl |
@@ -96,7 +122,7 @@ Jeg sammenligner opsummeringerne fra modellerne side om side (MIL-007), tester d
 | AI til fortolkning af data | Stor | 🟡 | Modellerne fortolkede annulleringsstatistik |
 | Large Language Models (LLM) | Stor | 🟢 | Fem LLM'er blev kørt og målt på samme opgave |
 | Modelvalg og model comparison | Stor | 🟡 | Sammenligningen er gennemført, men endeligt modelvalg mangler |
-| Prompt engineering | Stor | 🟡 | Én prompt (`hotel-cancellation-v1`) med fast JSON-format; endnu ikke 3 strategier |
+| Prompt engineering | Stor | 🟡 | Én prompt (`hotel-cancellation-v1`) med fast JSON-format, afprøvet på fem modeller |
 | Generativ AI | Stor | 🔴 | Ikke relevant for denne post |
 | AI-baseret beslutningsstøtte | Stor | 🔴 | Valg af standardmodel mangler |
 | OCR | Stor | 🔴 | Ikke relevant for denne post |

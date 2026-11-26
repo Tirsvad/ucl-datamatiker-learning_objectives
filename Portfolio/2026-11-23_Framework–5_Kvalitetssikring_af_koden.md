@@ -72,7 +72,7 @@ Værktøjerne er fastlåst til bestemte versioner. I CI har hvert job kun læser
 
 - **Jeg er min egen reviewer.** Review-rapporten for webshoppens kode siger, at AI'en er stand-in for mig. CI, kodekontrol og tests er det, der er uafhængigt af mig.
 - **Frameworket håndhæver ikke reglerne.** Det gør workflowene i `git-workflows`. Et projekt uden dem har kun tjeklisten.
-- **Meget arbejde i workflowene.** `git-workflows` har 558 commits og 28 udgivelser. Det er vedligeholdelse oven i selve projekterne.
+- **Meget arbejde i workflowene.** `git-workflows` har 561 commits og 28 udgivelser. Det er vedligeholdelse oven i selve projekterne.
 - **Dokumentationen halter.** README'en i `git-workflows` siger stadig "ikke kørt på serveren" for flere workflows, selvom de har fanget fejl i webshoppen. Den skal opdateres.
 - **NF Hotel har ingen automatiske kontroller.** Projektet har ingen workflow-mappe i min lokale kopi, og det ligger på GitHub og ikke på min Gitea. Tjekscriptet i en review-rapport er ikke committet, så kontrollen kan kun gentages med et tilsvarende script.
 

@@ -3,11 +3,11 @@
 **Dato:** 23/11 2026
 **Læringsmål dækket:** [AI i softwareprojekter](https://tirsvad.studiesites.dk/laeringsmal-ai-til-softwarelosninger/) og [Dataanalyse og databehandling](https://tirsvad.studiesites.dk/laeringsmaal-dataanalyse-og-databehandling/)
 
-Dette er post 3 i serien om mit framework. [Post 2](2026-11-23_Framework–2_AI_laver_artefakter_med_human-in-the-loop.md) viser, hvordan AI'en skriver dokumenter (artefakter). Her viser jeg, hvordan de kontrolleres, før noget bygges oven på dem. For hver dokumenttype har jeg en tjekliste, og hver gennemgang giver en review-rapport. Beviset er repositoriet [`sqa-qc-checklists`](https://git.tirsystem.com/TirSystem/sqa-qc-checklists) og de 87 review-rapporter i [`SQA-and-QC`](https://git.tirsystem.com/TirSystem/SQA-and-QC).
+Dette er post 3 i serien om mit framework. [Post 2](2026-11-23_Framework–2_AI_laver_artefakter_med_human-in-the-loop.md) viser, hvordan AI'en skriver dokumenter (artefakter). Her viser jeg, hvordan de kontrolleres, før noget bygges oven på dem. For hver dokumenttype har jeg en tjekliste, og hver gennemgang giver en review-rapport. Beviset er repositoriet [`sqa-qc-checklists`](https://git.tirsystem.com/TirSystem/sqa-qc-checklists) og de 93 review-rapporter i [`SQA-and-QC`](https://git.tirsystem.com/TirSystem/SQA-and-QC).
 
 ## 🧭 Sådan fungerer kvalitetssikringen
 
-**Tjeklisterne.** Der er 33 tjeklister: 23 til dokumenter (fx Business Case, Use Case, Domain Model og ADR) og 10 til kode og automatisering ([post 5](2026-11-23_Framework–5_Kvalitetssikring_af_koden.md)). Tilsammen har de godt 400 kriterier. Hvert kriterium er enten *Mandatory* (skal altid opfyldes) eller *Optional*, og hvert har et kvalitetsområde fra standarden ISO/IEC 25010:2023, fx pålidelighed, sikkerhed og vedligeholdelighed. En tjekliste peger aldrig på et rigtigt dokument i et projekt, så den kan bruges overalt. Tjeklisterne ligger i et eget repository med en åben licens (CC BY-SA 4.0). En tværgående tjekliste, `QC-LANG-001`, tjekker desuden sprog og fagord i alle dokumenter på produktejerens sprog.
+**Tjeklisterne.** Der er 36 tjeklister: 26 til dokumenter (fx Business Case, Use Case, Domain Model og ADR) og 10 til kode og automatisering ([post 5](2026-11-23_Framework–5_Kvalitetssikring_af_koden.md)). Tilsammen har de godt 450 kriterier. Hvert kriterium er enten *Mandatory* (skal altid opfyldes) eller *Optional*, og hvert har et kvalitetsområde fra standarden ISO/IEC 25010:2023, fx pålidelighed, sikkerhed og vedligeholdelighed. En tjekliste peger aldrig på et rigtigt dokument i et projekt, så den kan bruges overalt. Tjeklisterne ligger i et eget repository med en åben licens (CC BY-SA 4.0). En tværgående tjekliste, `QC-LANG-001`, tjekker desuden sprog og fagord i alle dokumenter på produktejerens sprog.
 
 **En review-rapport pr. gennemgang.** Reviewer finder dokumentet og dets tjekliste og tjekker, at reviewer ikke er forfatteren. Hvert kriterium markeres som bestået, fejlet, ikke relevant eller afventende, med **evidens, en anden kan kontrollere**. Til sidst kommer en samlet afgørelse:
 
@@ -27,23 +27,23 @@ Et dokument skal gennemgås igen, når indholdet eller tjeklisten ændres. Et *d
 
 ## 📊 Hvad rapporterne viser
 
-Et script tæller kriterier og resultater ud fra 52 rapporter, hvor kun én tjekliste er brugt:
+Et script tæller kriterier og resultater ud fra 55 rapporter, hvor kun én tjekliste er brugt:
 
-| Kvalitetsområde | Kriterier | Mandatory | Bestået | Fejlet | Ikke relevant |
-|---|---:|---:|---:|---:|---:|
-| Functional Suitability | 89 | 80 | 143 | 5 | 8 |
-| Performance Efficiency | 22 | 12 | 4 | 0 | 0 |
-| Compatibility | 20 | 15 | 10 | 2 | 0 |
-| Interaction Capability | 91 | 59 | 76 | 2 | 5 |
-| Reliability | 131 | 105 | 143 | 2 | 6 |
-| Security | 35 | 24 | 39 | 0 | 2 |
-| Maintainability | 216 | 169 | 163 | 10 | 9 |
-| Flexibility | 44 | 37 | 11 | 0 | 0 |
-| Safety | 1 | 0 | 0 | 0 | 0 |
+| Kvalitetsområde | Kriterier | Mandatory | Bestået | Fejlet | Ikke relevant | Afventer |
+|---|---:|---:|---:|---:|---:|---:|
+| Functional Suitability | 94 | 82 | 148 | 5 | 9 | 1 |
+| Performance Efficiency | 22 | 12 | 4 | 0 | 0 | 0 |
+| Compatibility | 21 | 15 | 11 | 2 | 0 | 0 |
+| Interaction Capability | 91 | 59 | 78 | 1 | 5 | 0 |
+| Reliability | 156 | 122 | 151 | 2 | 6 | 4 |
+| Security | 76 | 50 | 56 | 1 | 3 | 3 |
+| Maintainability | 233 | 178 | 176 | 5 | 9 | 4 |
+| Flexibility | 45 | 38 | 11 | 0 | 0 | 0 |
+| Safety | 1 | 0 | 0 | 0 | 0 | 0 |
 
 Et kriterium kan have flere kvalitetsområder, så rækkerne skal ikke lægges sammen. Det, jeg læser ud af tabellen:
 
-- Fejlene samler sig om vedligeholdelighed (10 fejl), men det område har også flest kriterier (216).
+- Flest fejl er der i Functional Suitability og Maintainability (5 i hver), men Maintainability har også flest kriterier (233).
 - Flexibility og Performance Efficiency har få resultater i forhold til antallet af kriterier, så jeg ved mindre om dem.
 - Tallene siger, hvad **tjeklisten** ser, ikke at dokumenterne er gode. De viser, at tjeklisterne er brugt, og hvor reglerne blev brudt. De er ikke et uafhængigt review.
 
@@ -61,7 +61,7 @@ Et kriterium kan have flere kvalitetsområder, så rækkerne skal ikke lægges s
 
 ### Runde 2: En ny regel betød mange gennemgange
 
-**1. Konkret erfaring:** Da alle dokumenter fik rækker for sprog og domæne (5/10), skulle hvert dokument gennemgås igen. Det blev til en lang række delta-rapporter. Af de 87 rapporter er 28 delta-gennemgange.
+**1. Konkret erfaring:** Da alle dokumenter fik rækker for sprog og domæne (5/10), skulle hvert dokument gennemgås igen. Det blev til en lang række delta-rapporter. Af de 93 rapporter er 32 delta-gennemgange.
 
 **2. Refleksion:** En ændring i en regel kan ramme mange dokumenter. Det er prisen for at have mange dokumenter, der følger samme regler.
 
@@ -93,7 +93,7 @@ Et kriterium kan have flere kvalitetsområder, så rækkerne skal ikke lægges s
 - Scriptet viser, hvor kriterierne oftest fejler, og det peger på, hvilke skabeloner jeg skal forbedre.
 - Tjeklisterne er åbne og bruges af alle projekter, der bruger frameworket.
 
-Prisen er tiden til at lave og vedligeholde 33 tjeklister og 87 rapporter.
+Prisen er tiden til at lave og vedligeholde 36 tjeklister og 93 rapporter.
 
 ## ➡️ Næste skridt
 
