@@ -20,8 +20,8 @@ Hvert repository har ét ansvar. En ændring hører hjemme i det repository, der
 
 | Repository | Ejer | Bruges af | Udgives som |
 |---|---|---|---|
-| [`sqa-qc-checklists`](https://git.tirsystem.com/TirSystem/sqa-qc-checklists) | QC-tjeklisterne: 33 tjeklister, 23 til dokumenter og 10 til kode og automatisering, med godt 400 kriterier i alt | frameworket | en commit, låst som undermodulet `qc/` |
-| [`sqa-qc-framework`](https://git.tirsystem.com/TirSystem/sqa-qc-framework) (privat) | 5 skills, skabeloner, katalog, procesdokumenter og 26 scripts. Ingen projektdata | hvert projekt, som undermodulet `framework/` | et release-tag (`v0.1.0` til `v0.24`, 47 tags) |
+| [`sqa-qc-checklists`](https://git.tirsystem.com/TirSystem/sqa-qc-checklists) | QC-tjeklisterne: 36 tjeklister, 26 til dokumenter og 10 til kode og automatisering, med godt 450 kriterier i alt | frameworket | en commit, låst som undermodulet `qc/` |
+| [`sqa-qc-framework`](https://git.tirsystem.com/TirSystem/sqa-qc-framework) (privat) | 5 skills, skabeloner, katalog, procesdokumenter og 32 scripts. Ingen projektdata | hvert projekt, som undermodulet `framework/` | et release-tag (`v0.1.0` til `v0.27.1`, 54 tags) |
 | [`git-workflows`](https://git.tirsystem.com/TirSystem/git-workflows) | de delte workflows til CI og CD og de scripts, de kalder | alle repositories i organisationen | et release-tag og et flydende hovedtag (`v4.0.0`, 28 tags) |
 | [`SQA-and-QC`](https://git.tirsystem.com/TirSystem/SQA-and-QC) | selve projektet: Business Case, milepæle, review-records og sporbarhedsmatrix | sig selv | den pull request, der fletter det |
 
@@ -36,7 +36,7 @@ Alle dokumenter er markdown-filer med den samme form:
 - en tabel **Version History** med dato, status, forfatter, reviewer, ændring og et link til den commit, der lavede ændringen
 - links til andre dokumenter samlet nederst, mærket med målets ID (`[SA-001]`) og aldrig skrevet ind i teksten
 
-Frameworkets katalog har 38 artefakttyper: 28 dokumenttyper og 10 typer til kode og konfiguration (Python, C, C++, C#, Rust, Flutter, React, shell, YAML og workflows). Dokumenttyperne hænger sammen i en kæde, hvor hver type kun kan oprettes, når de typer, den kræver, allerede findes. De vigtigste led er:
+Frameworkets katalog har 41 artefakttyper: 31 dokumenttyper og 10 typer til kode og konfiguration (Python, C, C++, C#, Rust, Flutter, React, shell, YAML og workflows). Dokumenttyperne hænger sammen i en kæde, hvor hver type kun kan oprettes, når de typer, den kræver, allerede findes. De vigtigste led er:
 
 ```
 BC → SA → PP → MIL → US → UC → DM → SSD → OC → SD → DCD → (ERD) → kode
@@ -110,7 +110,7 @@ Frameworket overlader det deterministiske til scripts og det, der kræver dømme
 | `check-languages.sh`, `check-readme.sh`, `check-qc-tags.sh` | Fejler, når et dokument, en README eller en tjekliste afviger fra reglerne |
 | `install-skills.sh`, `update-framework.sh` | Kopierer skills til det sted, agenten leder, og skifter til en ny udgave af frameworket |
 
-Der er 26 shell-scripts, og 11 af dem er testscripts, som bygger et lille projekt og sammenligner exit-koder.
+Der er 32 shell-scripts, og 12 af dem er testscripts, som bygger et lille projekt og sammenligner exit-koder.
 
 ## 🧩 Udfordringer undervejs
 
@@ -190,11 +190,11 @@ Frameworkets opbygning bygger på:
 - ISO/IEC 25010:2023 til tagging af kriterier (se [post 3](2026-11-23_Framework–3_Kvalitetssikring_af_artefakter.md))
 - mine egne erfaringer med skills og token-forbrug fra [posten om artefakt-færdigheden](2026-09-21_Artefakt-færdighed–én_samlet_færdighed_i_stedet_for_19.md)
 
-Tallene i posten er talt i repositories den 23/11 2026. Git-historikken i de nuværende repositories starter 28/9–3/10 (frameworkets første commit er en import af udgave 0.1.0 den 1/10), men arbejdet begyndte før, som posten fra 21/9 viser.
+Tallene om de fire repositories er talt den 26/11 2026 (framework `v0.27.1`). Git-historikken i de nuværende repositories starter 28/9–3/10 (frameworkets første commit er en import af udgave 0.1.0 den 1/10), men arbejdet begyndte før, som posten fra 21/9 viser.
 
 ## 📈 Hvad det har kostet, og hvad det giver på lang sigt
 
-**Pris.** Git viser 1.377 commits fordelt på de fire repositories: 420 i `SQA-and-QC`, 306 i frameworket, 93 i tjeklisterne og 558 i `git-workflows`. Der er 47 framework-tags og 28 tags i `git-workflows`. Et antal commits er ikke et antal timer, og jeg har ikke regnet timer med her. Det er et groft mål for omfanget.
+**Pris.** Git viser 1.486 commits fordelt på de fire repositories: 451 i `SQA-and-QC`, 339 i frameworket, 135 i tjeklisterne og 561 i `git-workflows`. Der er 54 framework-tags og 28 tags i `git-workflows`. Et antal commits er ikke et antal timer, og jeg har ikke regnet timer med her. Det er et groft mål for omfanget.
 
 **Gevinst.**
 

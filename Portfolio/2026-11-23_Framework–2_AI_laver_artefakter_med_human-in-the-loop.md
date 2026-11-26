@@ -36,6 +36,22 @@ AI'en stopper og melder tilbage, når et tjek fejler tre gange i træk, når arb
 
 **Prompt-log:** Hver session har en fil, hvor hver prompt står ordret med et kort resultat. Hemmeligheder erstattes med `[redacted]`. Loggen i `SQA-and-QC` har 4 sessioner og 62 prompts. Et eksempel på, hvordan en kort prompt blev en regel: *"…it have to be test in docker container (linux) or Windows sandbox … so i do not get interrupted in windows GUI"* blev til reglen om, at en GUI-test aldrig kører på min egen skærm.
 
+## 🧠 Promptstrategier til artefakter
+
+Strategierne har jeg brugt sammen med Claude og frameworket. Citaterne er ordrette fra prompt-loggen i `SQA-and-QC`. Skabeloner, skills og `AGENTS.md` bærer de faste krav, så selve prompten kan være kort. Jeg har også brugt ChatGPT til at gøre sproget tydeligere.
+
+| Strategi | Eksempel på prompt | Hvad der skete |
+|---|---|---|
+| **Spørg først, bed så om handlingen** | *"mangler vi QC-tjekliste for en Project Plan?"* og derefter *"ja"* | AI'en bekræftede hullet og skrev så et udkast til `QC-PP-001` med 15 kriterier |
+| **Afgræns opgaven og sig, hvor den stopper** | *"Ja. Omdøb Usability til Interaction Capability og Portability til Flexibility i alle checklister i framework/qc. Bevar linjeskift. Ingen commit."* | 100 tags i 28 tjeklister blev omdøbt, og intet blev committet |
+| **Giv kilden med** | En indsat liste over de ni karakteristikker i ISO/IEC 25010:2023 | De ni karakteristikker og mappingen fra 2011-udgaven kom ind i procesdokumentet |
+| **Godkend som en handling med ID** | *"MIL-012 is accepted as S01, with target date 2026-11-06. Write the RC record, set the row to Accepted, … Don't commit yet."* | `RC-080` og `RC-081` blev skrevet, og milepælen blev sat til godkendt |
+| **Lad en kort prompt blive til en regel** | *"We need some rules so app gui is not test under my windows. …"* | Reglen om, at GUI-test aldrig kører på min egen skærm, kom ind i frameworket |
+
+<!-- UDKAST: Vurderingen skal rettes til mine egne ord. -->
+
+**Min vurdering:** Korte prompts virker, når reglerne allerede står i frameworket, og opgaven kan peges ud med et ID eller en sti. De vigtigste ord er ofte dem, der siger, hvad AI'en **ikke** må (fx *"Ingen commit"*). Jeg har ikke sammenlignet strategierne systematisk eller målt, hvor ofte de lykkes i første forsøg.
+
 ## 🔄 Kolbs læringscirkel: tre runder
 
 ### Runde 1: Systemet godkendte sig selv
@@ -150,7 +166,7 @@ Jeg starter prompt-loggen første dag og får en anden person til at gennemgå m
 | AI til fortolkning af data | Stor | 🔴 | Ikke relevant for denne post |
 | Large Language Models (LLM) | Stor | 🟡 | En LLM bruges som agent; modellen er ikke sammenlignet her |
 | Modelvalg og model comparison | Stor | 🔴 | Ikke relevant for denne post |
-| Prompt engineering | Stor | 🟡 | Skills, `AGENTS.md` og korte prompts i en log; prompts er ikke testet systematisk |
+| Prompt engineering | Stor | 🟡 | Fem promptstrategier til artefakter med eksempler fra prompt-loggen; de er ikke sammenlignet systematisk |
 | Generativ AI | Stor | 🟡 | AI'en genererer dokumenter ud fra skabeloner; kvaliteten er vurderet gennem reviews |
 | AI-baseret beslutningsstøtte | Stor | 🟡 | AI'en forbereder review og forslag til go/no-go; jeg beslutter |
 | OCR | Stor | 🔴 | Ikke relevant for denne post |

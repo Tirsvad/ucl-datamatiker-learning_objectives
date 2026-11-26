@@ -40,6 +40,25 @@ Frameworket kontrollerer det på tre måder:
 
 NF Hotel-projektet bruger stadig den tidligste udgave af frameworket (`v0.1.0`).
 
+## 🧠 Promptstrategier til kode
+
+Strategierne har jeg brugt sammen med Claude og frameworket. ChatGPT har jeg brugt til at gøre sproget tydeligere og til at formulere den første prompt til markedsanalysen og benchmarken. Eksemplerne kommer fra prompt-loggen i `SQA-and-QC` og fra `docs/ai-prompts/` i projekterne `notebook-market-analysis` og `notebook-ai-benchmark`.
+
+| Strategi | Eksempel på prompt | Hvad der skete |
+|---|---|---|
+| **Lad ét værktøj formulere prompten og et andet udføre den** | Den første prompt til markedsanalysen og til benchmarken, formuleret med ChatGPT | Claude arbejdede videre ud fra de to prompts; eksemplerne i de næste rækker kommer derfra |
+| **Planlæg først, kod ikke** | *"Start With Planning — DO NOT CODE YET"* i en kravprompt på godt 1.000 linjer | AI'en leverede en udviklingsplan, foreslog en anden struktur end min og ventede på svar |
+| **Svar kort på nummererede spørgsmål** | *"2. Auth: Could we use token and CORS"* | Svaret blev til en beslutning (`ADR-008`), og AI'en stoppede igen, før fase 1 begyndte |
+| **Byg videre, skriv ikke om** | *"Do not rewrite the project from scratch. First inspect the existing implementation and extend it …"* | AI'en spurgte, da mit ønske om flade moduler stred mod repositoryets regler om lag |
+| **Lad frameworket stoppe koden** | *"Also need a workflow that ensure we only have comment using english in source code …"* | Det blev planlagt som `MIL-013` (14 opgaver) i stedet for kodet, fordi ny kode kræver en godkendt milepæl. Efter godkendelsen var *"go"* nok |
+| **En fase ad gangen med kontrol** | Godkendelse af én fase | AI'en kørte selv lint, typetjek og 76 tests efter fase 1, nævnte det, den ikke havde kontrolleret, og spurgte, om den skulle fortsætte |
+
+Den lange kravprompt til benchmarken er den, jeg skrev om i [AI-prompts, der rammer kriterierne](2026-09-27_Processen_i_at_lære–AI-prompts_der_rammer_kriterierne.md).
+
+<!-- UDKAST: Vurderingen skal rettes til mine egne ord. -->
+
+**Min vurdering:** Til kode er den vigtigste strategi at skille planen fra koden. En lang prompt giver en god start, men det er stoppene og de godkendte dokumenter, der holder AI'en på sporet bagefter. Jeg har ikke sammenlignet strategierne mod hinanden på den samme opgave.
+
 ## 🔄 Kolbs læringscirkel: tre runder
 
 ### Runde 1: Design kom efter koden
@@ -156,7 +175,7 @@ I næste use case i NF Hotel-projektet godkender jeg designet, før AI'en skrive
 | AI til fortolkning af data | Stor | 🔴 | Ikke relevant for denne post |
 | Large Language Models (LLM) | Stor | 🟡 | En LLM skriver koden; modellen er ikke sammenlignet her |
 | Modelvalg og model comparison | Stor | 🔴 | Ikke relevant for denne post |
-| Prompt engineering | Stor | 🟡 | Reglen, planen og skillerne er prompten; prompts er ikke testet systematisk |
+| Prompt engineering | Stor | 🟡 | Seks promptstrategier til kode med eksempler fra rigtige projekter; de er ikke sammenlignet systematisk |
 | Generativ AI | Stor | 🟡 | AI'en genererer kode ud fra en plan, og i NF Hotel-projektet findes hele kæden; designet blev dog skrevet efter koden for de første to use cases |
 | AI-baseret beslutningsstøtte | Stor | 🔴 | Ikke relevant for denne post |
 | OCR | Stor | 🔴 | Ikke relevant for denne post |
